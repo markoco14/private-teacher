@@ -3,6 +3,7 @@ package main
 import (
   "fmt"
   "net/http"
+  "html/template"
 )
 
 func main() {
@@ -17,6 +18,11 @@ func main() {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintf(w, "Maybe it is.")
+  w.WriteHeader(http.StatusOK)
+  template := template.Must(template.ParseFiles("./templates/index.html"))
+  if err := template.Execute(w, nil);
+  err != nil {
+    http.Error(w, "Error rendering template", http.StatusInternalServerError)
+  }
 }
 
