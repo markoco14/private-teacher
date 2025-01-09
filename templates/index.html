@@ -8,19 +8,49 @@
     <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
     <meta name="author" content="Mark O'Connor">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#020517',
+                    },
+                },
+            },
+        }
+    </script>
   </head>
   <body>
-    <header class="bg-[#020517] text-white h-[48px] flex items-center">
+    <header class="bg-deep text-white h-[48px] flex items-center">
         <div class="w-full max-w-[1000px] mx-auto px-4 sm:px-0">
             <span>Teacher Mark</span>
         </div>
     </header>
     <main>
-        <section class="min-h-[50vh] bg-[#020517] grid place-content-center">
+        <section class="min-h-[50vh] bg-deep grid place-content-center">
             <div class="max-w-[500px] mx-auto px-4 sm:px-0">
                 <h1 class="text-5xl text-gray-100 mb-2 font-bold">Achieve confidence, comfort, and clarity in English.</h1>
                 <p class="text-lg text-balance text-purple-100 mb-4">From cafe to boardroom, beginner to advanced, we have classes for your level and learning style.</p>
                 <a href="#" class="inline-block text-lg bg-purple-800 text-white rounded-md px-4 py-1 hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">Start your journey today</a>
+            </div>
+        </section>
+        <section class="min-h-[50vh] grid place-content-center">
+            <div class="max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">See our classes to boost your career and open the doors to new opportunities</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="shadow py-4 px-2">
+                        <h3 class="md:text-center text-xl text-deep font-semibold">IELTS</h3>
+                        <p>Study and work in English speaking countries. Surpass your target score with personalized lessons on speaking, writing, and test strategies.</p>
+                    </div>
+                    <div class="shadow py-4 px-2">
+                        <h3 class="md:text-center text-xl text-deep font-semibold">GEPT</h3>
+                        <p>Elevate your education and career possibilities. Build confidence in your English and master practical communication to excel in the GEPT with ease.</p>
+                    </div>
+                    <div class="shadow py-4 px-2">
+                        <h3 class="md:text-center text-xl text-deep font-semibold">Business English</h3>
+                        <p>Enhance your career by mastering professional communication. Connect fluently with clients and partners worldwide through lessons tailored for workplace success.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
