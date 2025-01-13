@@ -75,6 +75,13 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+    // process the form here
+    // will need to store in DB
+    // email to my teacher's email
+    fmt.Println("Form submitted")
+    fmt.Println("Name:", form.Name)
+    fmt.Println("Email:", form.Email) 
+
     // if the form succeeds
     http.Redirect(w, r, "/", http.StatusSeeOther)
 	}
