@@ -7,6 +7,7 @@
     <meta name="description" content="A brief description of your site.">
     <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
     <meta name="author" content="Mark O'Connor">
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -147,43 +148,7 @@
                 <h2 class="text-2xl font-semibold text-purple-900 mb-2">Contact Me To Arrange Your First Class</h2>
                 <p>Make sure to include your email so we can reply to you as quickly as possible.</p>
                 <hr class="my-8"/>
-                <form action="/" method="post">
-                    <div class="flex flex-col items-start mb-4">
-                        <label class="text-purple-900 mb-1">Name</label>
-                        <input 
-                            type="text"
-                            name="name"
-                            class="border rounded p-2 w-full"
-                            placeholder="Please tell us your name."
-                            />
-                        {{range .Errors}}
-                            {{if eq .Field "name"}}
-                                <span class="text-red-500">{{.Message}}</span>
-                            {{end}}
-                        {{end}}
-                    </div>
-                    <div class="flex flex-col items-start mb-4">
-                        <label class="text-purple-900 mb-1">Email</label>
-                        <input 
-                            type="text"
-                            name="email"
-                            class="border rounded p-2 w-full"
-                            placeholder="Please tell us your email."
-                            />
-                        {{range .Errors}}
-                            {{if eq .Field "email"}}
-                                <span class="text-red-500">{{.Message}}</span>
-                            {{end}}
-                        {{end}}
-                    </div>
-                    <div class="flex flex-col items-start mb-4">
-                        <label class="text-purple-900 mb-1">Message</label>
-                        <textarea 
-                            class="border rounded p-2 w-full" 
-                            rows="5"></textarea>
-                    </div>
-                    <input type="submit" class="bg-purple-700 text-white rounded px-4 py-1 self-start w-full"/>
-                </form>
+                {{ template "form" . }}
             </div>
         </section>
 
