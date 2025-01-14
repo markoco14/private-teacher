@@ -9,10 +9,18 @@ import (
 var templates = template.Must(template.ParseGlob("./templates/*.html"))
 
 func main() {
+	// handle server static files
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	// Handle favicon.ico requests explicitly
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.NotFound(w, r)
+	})
+
 	// Routes
 	http.HandleFunc("/", homeHandler)
-
-	// http.HandleFunc()
+	http.HandleFunc("/contact", contactHandler)
 
 	// Start the server
 	fmt.Println("Server is running on port 8080")
@@ -22,9 +30,29 @@ func main() {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+
+	err := templates.ExecuteTemplate(w, "index.html", nil)
+	if err != nil {
+		http.Error(w, "Error rendering index template", http.StatusInternalServerError)
+	}
+}
+
+func contactHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
 	type formValues struct {
-		Name  string
-		Email string
+		Name    string
+		Email   string
+		Message string
 	}
 
 	type formError struct {
@@ -32,58 +60,58 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		Message string
 	}
 
-	if r.Method == http.MethodGet {
-		data := map[string]interface{}{
-			"Form":   formValues{},
-			"Errors": nil,
-		}
-		if err := templates.ExecuteTemplate(w, "index.html", data); err != nil {
-			http.Error(w, "Error rendering template", http.StatusInternalServerError)
-		}
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, "Error parsing form", http.StatusBadRequest)
 		return
 	}
 
-	if r.Method == http.MethodPost {
-		if err := r.ParseForm(); err != nil {
-			http.Error(w, "Error parsing form", http.StatusBadRequest)
-			return
-		}
-		form := formValues{
-			Name:  r.FormValue("name"),
-			Email: r.FormValue("email"),
-		}
-
-		var errors []formError
-
-		if form.Name == "" {
-			errors = append(errors, formError{Field: "name", Message: "Name is required"})
-		}
-
-		if form.Email == "" {
-			errors = append(errors, formError{Field: "email", Message: "Email is required"})
-		}
-
-		if len(errors) > 0 {
-			data := map[string]interface{}{
-				"Form":   form,
-				"Errors": errors,
-			}
-			w.WriteHeader(http.StatusOK)
-			if err := templates.ExecuteTemplate(w, "index.html", data); err != nil {
-				http.Error(w, "Error rendering template", http.StatusInternalServerError)
-			}
-			return
-		}
-
-    // process the form here
-    // will need to store in DB
-    // email to my teacher's email
-    fmt.Println("Form submitted")
-    fmt.Println("Name:", form.Name)
-    fmt.Println("Email:", form.Email) 
-
-    // if the form succeeds
-    http.Redirect(w, r, "/", http.StatusSeeOther)
+	form := formValues{
+		Name:    r.FormValue("name"),
+		Email:   r.FormValue("email"),
+		Message: r.FormValue("message"),
 	}
 
+	var errors []formError
+
+	if form.Name == "" {
+		errors = append(errors, formError{Field: "name", Message: "Name is required"})
+	}
+
+	if form.Email == "" {
+		errors = append(errors, formError{Field: "email", Message: "Email is required"})
+	}
+
+	if form.Message == "" {
+		errors = append(errors, formError{Field: "message", Message: "Message is required"})
+	} else if len(form.Message) < 10 {
+		errors = append(errors, formError{Field: "message", Message: "Message must be at least 10 characters"})
+	} else if len(form.Message) > 1000 {
+		errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
+	}
+	
+	w.WriteHeader(http.StatusOK)
+
+	if len(errors) > 0 {
+		type responseWithErrors struct {
+			Form   formValues
+			Errors []formError
+		}
+
+		data := responseWithErrors{
+			Form:   form,
+			Errors: errors,
+		}
+
+		err := templates.ExecuteTemplate(w, "form", data)
+		if err != nil {
+			http.Error(w, "Error rendering template", http.StatusInternalServerError)
+		}
+
+		return
+	}
+
+	err := templates.ExecuteTemplate(w, "form", nil)
+	if err != nil {
+		http.Error(w, "Error rendering template", http.StatusInternalServerError)
+	}
 }
