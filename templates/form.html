@@ -1,5 +1,5 @@
 {{ define "form" }}
-<form hx-post="/contact" hx-swap="outerHTML" hx-target="this" action="/contact" method="post">
+<form hx-post="/contact" hx-swap="outerHTML" action="/contact" method="post">
     <div class="flex flex-col items-start mb-4">
         <label class="text-purple-900 mb-1">Name</label>
         <input 
@@ -33,6 +33,7 @@
     <div class="flex flex-col items-start mb-4">
         <label class="text-purple-900 mb-1">Message</label>
         <textarea 
+            name="message"
             class="border rounded p-2 w-full" 
             rows="5">{{.Form.Message}}</textarea>
         {{range .Errors}}
