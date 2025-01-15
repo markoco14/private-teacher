@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"regexp"
 )
 
 var templates = template.Must(template.ParseGlob("./templates/*.html"))
@@ -79,6 +80,14 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 
 	if form.Email == "" {
 		errors = append(errors, formError{Field: "email", Message: "Email is required"})
+	}
+
+	if form.Email != "" {
+		emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
+		matched, err := regexp.MatchString(emailRegex, form.Email)
+		if err != nil || !matched {
+			errors = append(errors, formError{Field: "email", Message: "Invalid email address"})
+		}
 	}
 
 	if form.Message == "" {
