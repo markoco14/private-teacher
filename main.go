@@ -119,14 +119,15 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
-	w.Header().Set("Hx-Trigger",  `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
-	w.WriteHeader(http.StatusOK)
-
-
-
-	err := templates.ExecuteTemplate(w, "form", nil)
-	if err != nil {
-		http.Error(w, "Error rendering template", http.StatusInternalServerError)
+	
+	if r.Header.Get("Hx-Request") == "true" {
+		w.Header().Set("Hx-Trigger",  `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
+		w.WriteHeader(http.StatusOK)
+		err := templates.ExecuteTemplate(w, "form", nil)
+		if err != nil {
+			http.Error(w, "Error rendering template", http.StatusInternalServerError)
+		}
 	}
 
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
