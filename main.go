@@ -1,20 +1,26 @@
 package main
 
 import (
-	"crypto/tls"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
+	"os"
 	"regexp"
+	"strconv"
 
+	"github.com/joho/godotenv"
 	"gopkg.in/gomail.v2"
-	"github.com/aws/aws-sdk-go/aws"
-    "github.com/aws/aws-sdk-go/aws/session"
-    "github.com/aws/aws-sdk-go/service/ses"
-    "github.com/aws/aws-sdk-go/aws/awserr"
 )
 
 var templates = template.Must(template.ParseGlob("./templates/*.html"))
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
 
 func main() {
 	// handle server static files
@@ -104,8 +110,7 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 	} else if len(form.Message) > 1000 {
 		errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
 	}
-	
-	
+
 	if len(errors) > 0 {
 		type responseWithErrors struct {
 			Form   formValues
@@ -116,20 +121,59 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 			Form:   form,
 			Errors: errors,
 		}
-		
-		w.WriteHeader(http.StatusOK)
+
 		err := templates.ExecuteTemplate(w, "form", data)
 		if err != nil {
 			http.Error(w, "Error rendering template", http.StatusInternalServerError)
 		}
-		
+
 		return
 	}
-	
-	
+
+	// Hardcoded email addresses
+	fromEmail := os.Getenv("FROM_EMAIL")
+	toEmail := os.Getenv("TEST_EMAIL")
+
+	// send email
+	message := gomail.NewMessage()
+	message.SetHeader("From", fromEmail)
+	message.SetHeader("To", toEmail)
+	message.SetHeader("Subject", "Teacher Mark Contact Form")
+	message.SetBody("text/html", fmt.Sprintf("Name: %s<br>Email: %s<br>Message: %s", form.Name, form.Email, form.Message))
+
+	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
+	if smtpEndpoint == "" {
+		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
+		return
+	}
+
+	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
+	if err != nil {
+		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
+		return
+	}
+
+	smtpUsername := os.Getenv("SMTP_USERNAME")
+	if smtpUsername == "" {
+		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
+		return
+	}
+
+	smtpPassword := os.Getenv("SMTP_PASSWORD")
+	if smtpPassword == "" {
+		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
+		return
+	}
+
+	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
+
+	if err := d.DialAndSend(message); err != nil {
+		http.Error(w, "Error sending email", http.StatusInternalServerError)
+		return
+	}
+
 	if r.Header.Get("Hx-Request") == "true" {
-		w.Header().Set("Hx-Trigger",  `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
-		w.WriteHeader(http.StatusOK)
+		w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
 		err := templates.ExecuteTemplate(w, "form", nil)
 		if err != nil {
 			http.Error(w, "Error rendering template", http.StatusInternalServerError)
