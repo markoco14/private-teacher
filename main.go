@@ -98,8 +98,7 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 		errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
 	}
 	
-	w.WriteHeader(http.StatusOK)
-
+	
 	if len(errors) > 0 {
 		type responseWithErrors struct {
 			Form   formValues
@@ -110,17 +109,24 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 			Form:   form,
 			Errors: errors,
 		}
-
+		
+		w.WriteHeader(http.StatusOK)
 		err := templates.ExecuteTemplate(w, "form", data)
 		if err != nil {
 			http.Error(w, "Error rendering template", http.StatusInternalServerError)
 		}
-
+		
 		return
 	}
+	
+	w.Header().Set("Hx-Trigger", "formSuccess")
+	w.WriteHeader(http.StatusOK)
+
+
 
 	err := templates.ExecuteTemplate(w, "form", nil)
 	if err != nil {
 		http.Error(w, "Error rendering template", http.StatusInternalServerError)
 	}
+
 }
