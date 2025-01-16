@@ -1,10 +1,17 @@
 package main
 
 import (
+	"crypto/tls"
 	"fmt"
 	"html/template"
 	"net/http"
 	"regexp"
+
+	"gopkg.in/gomail.v2"
+	"github.com/aws/aws-sdk-go/aws"
+    "github.com/aws/aws-sdk-go/aws/session"
+    "github.com/aws/aws-sdk-go/service/ses"
+    "github.com/aws/aws-sdk-go/aws/awserr"
 )
 
 var templates = template.Must(template.ParseGlob("./templates/*.html"))
