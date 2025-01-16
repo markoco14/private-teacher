@@ -119,7 +119,7 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
-	w.Header().Set("Hx-Trigger", "formSuccess")
+	w.Header().Set("Hx-Trigger",  `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
 	w.WriteHeader(http.StatusOK)
 
 
