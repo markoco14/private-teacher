@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -108,14 +110,29 @@ func emailTeacherMark(form formValues) error {
 	// Hardcoded email addresses
 	infoEmail := os.Getenv("INFO_EMAIL")
 	customerEmail := os.Getenv("TEST_CUSTOMER_EMAIL")
-	
+	// customerEmail := form.Email
+
+	// load the email tempalte
+	tmpl, err := template.ParseFiles("./templates/email-to-info.html")
+	if err != nil {
+		log.Fatalf("Error loading email template: %v", err)
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+
+	// create a buffer to write the template to
+	var body bytes.Buffer
+	if err := tmpl.Execute(&body, form); err != nil {
+		log.Fatalf("Error writing to email template: %v", err)
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+
 	// send email
 	message := gomail.NewMessage()
-	message.SetHeader("From", customerEmail)
-	message.SetHeader("To", infoEmail)
-	message.SetHeader("Reply-To", customerEmail)
+	message.SetHeader("From", infoEmail) // email always comes from info@
+	message.SetHeader("To", infoEmail) // we are emailing ourself for our records and so we can reply back
+	message.SetHeader("Reply-To", customerEmail) // the is the customer's email from the form
 	message.SetHeader("Subject", "Teacher Mark Contact Form")
-	message.SetBody("text/html", fmt.Sprintf("Name: %s<br>Email: %s<br>Message: %s", form.Name, form.Email, form.Message))
+	message.SetBody("text/html", body.String())
 
 	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
 	if smtpEndpoint == "" {
@@ -144,7 +161,7 @@ func emailTeacherMark(form formValues) error {
 	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
 	
 	if err := d.DialAndSend(message); err != nil {
-		log.Fatalf("Something went wrong with dial and send. Please try again.")
+		log.Fatalf("Something went wrong with dial and send: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
 

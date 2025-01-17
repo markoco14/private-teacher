@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-container {
+            background-color: black;
+            color: white;
+            padding: 1rem;
+        }
+        .footer {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body style="background-color: #8D50BD; padding: 1rem;">
+     <div style="background-color: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #581C87; font-size: 24px;">Contact Form Submission</h2>
+        <p>Hi Teacher Mark,</p>
+        <p><strong>{{.Name}}</strong> has sent you an email from your contact form.</p>
+        <p>{{.Name}}'s email is: {{.Email}}, in case you want to reply to them in another thread.</p>
+        <p>"{{.Message}}"</p>
+    </div>
+    <footer class="footer">
+        <p>&copy; | Teacher Mark 2025 | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
