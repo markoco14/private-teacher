@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"regexp"
@@ -10,21 +11,21 @@ import (
 	"gopkg.in/gomail.v2"
 )
 
+type formValues struct {
+	Name    string
+	Email   string
+	Message string
+}
+
+type formError struct {
+	Field   string
+	Message string
+}
+
 func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
-	}
-
-	type formValues struct {
-		Name    string
-		Email   string
-		Message string
-	}
-
-	type formError struct {
-		Field   string
-		Message string
 	}
 
 	if err := r.ParseForm(); err != nil {
@@ -83,48 +84,14 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Hardcoded email addresses
-	fromEmail := os.Getenv("FROM_EMAIL")
-	toEmail := os.Getenv("TEST_EMAIL")
-
-	// send email
-	message := gomail.NewMessage()
-	message.SetHeader("From", fromEmail)
-	message.SetHeader("To", toEmail)
-	message.SetHeader("Reply-To", fromEmail)
-	message.SetHeader("Subject", "Teacher Mark Contact Form")
-	message.SetBody("text/html", fmt.Sprintf("Name: %s<br>Email: %s<br>Message: %s", form.Name, form.Email, form.Message))
-
-	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
-	if smtpEndpoint == "" {
-		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
-		return
-	}
-
-	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
+	err := emailTeacherMark(form)
 	if err != nil {
-		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
+		http.Error(w, "Something went wrong on our server. Please try again.", http.StatusInternalServerError)
 		return
 	}
 
-	smtpUsername := os.Getenv("SMTP_USERNAME")
-	if smtpUsername == "" {
-		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
-		return
-	}
-
-	smtpPassword := os.Getenv("SMTP_PASSWORD")
-	if smtpPassword == "" {
-		http.Error(w, "Something went wrong with our email server. Please try again.", http.StatusInternalServerError)
-		return
-	}
-
-	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
-
-	if err := d.DialAndSend(message); err != nil {
-		http.Error(w, "Error sending email", http.StatusInternalServerError)
-		return
-	}
+	log.Println(err)
+	log.Println("Email sent successfully")
 
 	if r.Header.Get("Hx-Request") == "true" {
 		w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
@@ -135,4 +102,51 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
+func emailTeacherMark(form formValues) error {
+	// Hardcoded email addresses
+	infoEmail := os.Getenv("INFO_EMAIL")
+	customerEmail := os.Getenv("TEST_CUSTOMER_EMAIL")
+	
+	// send email
+	message := gomail.NewMessage()
+	message.SetHeader("From", customerEmail)
+	message.SetHeader("To", infoEmail)
+	message.SetHeader("Reply-To", customerEmail)
+	message.SetHeader("Subject", "Teacher Mark Contact Form")
+	message.SetBody("text/html", fmt.Sprintf("Name: %s<br>Email: %s<br>Message: %s", form.Name, form.Email, form.Message))
+
+	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
+	if smtpEndpoint == "" {
+		log.Fatalf("Something went wrong with our SMTP endpoint. Please try again.")
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
+	if err != nil {
+		log.Fatalf("Something went wrong with our SMTP port. Please try again.")
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	smtpUsername := os.Getenv("SMTP_USERNAME")
+	if smtpUsername == "" {
+		log.Fatalf("Something went wrong with our SMTP username. Please try again.")
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	smtpPassword := os.Getenv("SMTP_PASSWORD")
+	if smtpPassword == "" {
+		log.Fatalf("Something went wrong with our SMTP password. Please try again.")
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
+	
+	if err := d.DialAndSend(message); err != nil {
+		log.Fatalf("Something went wrong with dial and send. Please try again.")
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+
+	return nil
 }
