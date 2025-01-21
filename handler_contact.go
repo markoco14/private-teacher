@@ -41,31 +41,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		Message: r.FormValue("message"),
 	}
 
-	var errors []formError
-
-	if form.Name == "" {
-		errors = append(errors, formError{Field: "name", Message: "Name is required"})
-	}
-
-	if form.Email == "" {
-		errors = append(errors, formError{Field: "email", Message: "Email is required"})
-	}
-
-	if form.Email != "" {
-		emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
-		matched, err := regexp.MatchString(emailRegex, form.Email)
-		if err != nil || !matched {
-			errors = append(errors, formError{Field: "email", Message: "Invalid email address"})
-		}
-	}
-
-	if form.Message == "" {
-		errors = append(errors, formError{Field: "message", Message: "Message is required"})
-	} else if len(form.Message) < 10 {
-		errors = append(errors, formError{Field: "message", Message: "Message must be at least 10 characters"})
-	} else if len(form.Message) > 1000 {
-		errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
-	}
+	errors := validateFormData(form)
 
 	if len(errors) > 0 {
 		type responseWithErrors struct {
@@ -92,9 +68,6 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Println(err)
-	log.Println("Email sent successfully")
-
 	if r.Header.Get("Hx-Request") == "true" {
 		w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
 		err := templates.ExecuteTemplate(w, "form", nil)
@@ -104,6 +77,36 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
+func validateFormData(form formValues) []formError {
+	var errors []formError
+
+	if form.Name == "" {
+		errors = append(errors, formError{Field: "name", Message: "Name is required"})
+	}
+
+	if form.Email == "" {
+		errors = append(errors, formError{Field: "email", Message: "Email is required"})
+	}
+
+	if form.Email != "" {
+		emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
+		matched, err := regexp.MatchString(emailRegex, form.Email)
+		if err != nil || !matched {
+			errors = append(errors, formError{Field: "email", Message: "Invalid email address"})
+		}
+	}
+
+	if form.Message == "" {
+		errors = append(errors, formError{Field: "message", Message: "Message is required"})
+	} else if len(form.Message) < 10 {
+		errors = append(errors, formError{Field: "message", Message: "Message must be at least 10 characters"})
+	} else if len(form.Message) > 1000 {
+		errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
+	}
+
+	return errors
 }
 
 func emailTeacherMark(form formValues) error {
@@ -128,8 +131,8 @@ func emailTeacherMark(form formValues) error {
 
 	// send email
 	message := gomail.NewMessage()
-	message.SetHeader("From", infoEmail) // email always comes from info@
-	message.SetHeader("To", infoEmail) // we are emailing ourself for our records and so we can reply back
+	message.SetHeader("From", infoEmail)         // email always comes from info@
+	message.SetHeader("To", infoEmail)           // we are emailing ourself for our records and so we can reply back
 	message.SetHeader("Reply-To", customerEmail) // the is the customer's email from the form
 	message.SetHeader("Subject", "Teacher Mark Contact Form")
 	message.SetBody("text/html", body.String())
@@ -139,27 +142,27 @@ func emailTeacherMark(form formValues) error {
 		log.Fatalf("Something went wrong with our SMTP endpoint. Please try again.")
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
 	if err != nil {
 		log.Fatalf("Something went wrong with our SMTP port. Please try again.")
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	smtpUsername := os.Getenv("SMTP_USERNAME")
 	if smtpUsername == "" {
 		log.Fatalf("Something went wrong with our SMTP username. Please try again.")
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	smtpPassword := os.Getenv("SMTP_PASSWORD")
 	if smtpPassword == "" {
 		log.Fatalf("Something went wrong with our SMTP password. Please try again.")
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
-	
+
 	if err := d.DialAndSend(message); err != nil {
 		log.Fatalf("Something went wrong with dial and send: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
