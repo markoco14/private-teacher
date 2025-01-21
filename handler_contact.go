@@ -68,6 +68,13 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	err = emailPotentialStudent()
+	if err != nil {
+		// because email to Teacher successfully sent, don't need to break out
+		// just log the error and continue
+		log.Printf("Error sending email to potential student: %v", err)
+	}
+
 	if r.Header.Get("Hx-Request") == "true" {
 		w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
 		err := templates.ExecuteTemplate(w, "form", nil)
@@ -168,5 +175,9 @@ func emailTeacherMark(form formValues) error {
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
 
+	return nil
+}
+
+func emailPotentialStudent() error {
 	return nil
 }
