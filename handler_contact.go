@@ -116,6 +116,34 @@ func validateFormData(form formValues) []formError {
 	return errors
 }
 
+func getSMPTInfo() (string, int, string, string, error) {
+	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
+	if smtpEndpoint == "" {
+		log.Fatalf("Something went wrong with our SMTP endpoint. Please try again.")
+		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
+	if err != nil {
+		log.Fatalf("Something went wrong with our SMTP port. Please try again.")
+		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	smtpUsername := os.Getenv("SMTP_USERNAME")
+	if smtpUsername == "" {
+		log.Fatalf("Something went wrong with our SMTP username. Please try again.")
+		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	smtpPassword := os.Getenv("SMTP_PASSWORD")
+	if smtpPassword == "" {
+		log.Fatalf("Something went wrong with our SMTP password. Please try again.")
+		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+	
+	return smtpEndpoint, smtpPort, smtpUsername, smtpPassword, nil
+}
+
 func emailTeacherMark(form formValues) error {
 	// Hardcoded email addresses
 	infoEmail := os.Getenv("INFO_EMAIL")
@@ -144,28 +172,9 @@ func emailTeacherMark(form formValues) error {
 	message.SetHeader("Subject", "Teacher Mark Contact Form")
 	message.SetBody("text/html", body.String())
 
-	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
-	if smtpEndpoint == "" {
-		log.Fatalf("Something went wrong with our SMTP endpoint. Please try again.")
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
-	}
-
-	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
+	smtpEndpoint, smtpPort, smtpUsername, smtpPassword, err := getSMPTInfo()
 	if err != nil {
-		log.Fatalf("Something went wrong with our SMTP port. Please try again.")
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
-	}
-
-	smtpUsername := os.Getenv("SMTP_USERNAME")
-	if smtpUsername == "" {
-		log.Fatalf("Something went wrong with our SMTP username. Please try again.")
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
-	}
-
-	smtpPassword := os.Getenv("SMTP_PASSWORD")
-	if smtpPassword == "" {
-		log.Fatalf("Something went wrong with our SMTP password. Please try again.")
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
