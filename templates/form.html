@@ -1,5 +1,10 @@
 {{ define "form" }}
-<form hx-post="/contact" hx-swap="outerHTML" action="/contact" method="post">
+<form 
+    hx-post="/contact"
+    hx-swap="outerHTML"
+    hx-disabled-elt="find button"
+    action="/contact"
+    method="post">
     <div class="flex flex-col mb-2">
         <label class="text-purple-900">Name</label>
         <p class="text-gray-700 text-sm mb-1">Share your name so we know how to address you.</p>
@@ -49,6 +54,12 @@
             {{end}}
         </p>
     </div>
-    <input type="submit" class="bg-purple-700 text-white rounded px-4 py-1 self-start w-full hover:bg-purple-600 active:bg-purple-800 active:scale-95 cursor-pointer duration-200 ease-in-out"/>
+    <button 
+        type="submit"
+        hx-indicator="this"
+        class="bg-purple-700 text-white rounded px-4 py-1 self-start w-full hover:bg-purple-600 active:bg-purple-800 active:scale-95 cursor-pointer duration-200 ease-in-out disabled:bg-purple-900 disabled:opacity-80 disabled:cursor-default disabled:active:bg-purple-900 disabled:active:scale-100" >
+        <span class="htmx-indicator-hide">Send message</span>
+        <span class="htmx-indicator">Sending...</span>
+    </button>
 </form>
 {{ end }}
