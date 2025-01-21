@@ -1,14 +1,15 @@
 {{ define "form" }}
 <form hx-post="/contact" hx-swap="outerHTML" action="/contact" method="post">
-    <div class="flex flex-col items-start mb-4">
-        <label class="text-purple-900 mb-1">Name</label>
+    <div class="flex flex-col mb-2">
+        <label class="text-purple-900">Name</label>
+        <p class="text-gray-700 text-sm mb-1">Share your name so we know how to address you.</p>
         <input 
             type="text"
             name="name"
             class="border rounded p-2 w-full"
-            placeholder="Please tell us your name."
+            placeholder="Mrs. Chen"
             value="{{.Form.Name}}"/>
-        <p class="h-6">
+        <p class="h-5 text-right text-sm">
             {{range .Errors}}
                 {{if eq .Field "name"}}
                     <span class="text-red-500">{{.Message}}</span>
@@ -16,15 +17,16 @@
             {{end}}
         </p>
     </div>
-    <div class="flex flex-col items-start mb-4">
-        <label class="text-purple-900 mb-1">Email</label>
+    <div class="flex flex-col mb-2">
+        <label class="text-purple-900">Email</label>
+        <p class="text-gray-700 text-sm mb-1">Use the email where you want us to contact you.</p>
         <input 
             type="text"
             name="email"
             class="border rounded p-2 w-full"
-            placeholder="Please tell us your email."
+            placeholder="chenxiaojie@gmail.com"
             value="{{.Form.Email}}"/>
-        <p class="h-6">
+        <p class="h-5 text-right text-sm">
             {{range .Errors}}
                 {{if eq .Field "email"}}
                     <span class="text-red-500">{{.Message}}</span>
@@ -32,14 +34,14 @@
             {{end}}
         </p>
     </div>
-    <div class="flex flex-col items-start mb-4">
-        <label class="text-purple-900 mb-1">Message</label>
-        <p class="text-gray-700 text-sm">Write a short message to say what type of class you are looking for. Feel free to share your preferred way for me to contact you, thank you. </p>
+    <div class="flex flex-col mb-2">
+        <label class="text-purple-900">Message</label>
+        <p class="text-gray-700 text-sm mb-1">Write a short message to say what type of class you are looking for.</p>
         <textarea 
             name="message"
             class="border rounded p-2 w-full" 
             rows="5">{{.Form.Message}}</textarea>
-        <p class="h-6">
+        <p class="h-5 text-right text-sm">
             {{range .Errors}}
                 {{if eq .Field "message"}}
                     <span class="text-red-500">{{.Message}}</span>
