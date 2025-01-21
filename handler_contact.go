@@ -68,7 +68,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = emailPotentialStudent()
+	err = emailPotentialStudent(form)
 	if err != nil {
 		// because email to Teacher successfully sent, don't need to break out
 		// just log the error and continue
@@ -187,6 +187,46 @@ func emailTeacherMark(form formValues) error {
 	return nil
 }
 
-func emailPotentialStudent() error {
+func emailPotentialStudent(form formValues) error {
+	infoEmail := os.Getenv("INFO_EMAIL")
+	if infoEmail == "" {
+		log.Fatalf("Something went wrong getting our info email.")
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+
+	customerEmail := form.Email
+
+	tmpl, err := template.ParseFiles("./templates/email-to-customer.html")
+	if err != nil {
+		log.Fatalf("Error loading email template: %v", err)
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+
+	var body bytes.Buffer
+	if err := tmpl.Execute(&body, form); err != nil {
+		log.Fatalf("Error writing to email template: %v", err)
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+
+	// prepare email info
+	message := gomail.NewMessage()
+	message.SetHeader("From", infoEmail) // email always comes from info@markoco14
+	message.SetHeader("To", customerEmail)
+	message.SetHeader("Reply-To", infoEmail)
+	message.SetHeader("Subject", "Thank you for contacting Teacher Mark")
+	message.SetBody("text/html", body.String())
+
+	smtpEndpoint, smtpPort, smtpUsername, smtpPassword, err := getSMPTInfo()
+	if err != nil {
+		return fmt.Errorf("something went wrong on our server, please try again")
+	}
+
+	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
+
+	if err := d.DialAndSend(message); err != nil {
+		log.Fatalf("Something went wrong with dial and send: %v", err)
+		return fmt.Errorf("Something went wrong on our server. Please try again.")
+	}
+
 	return nil
 }
