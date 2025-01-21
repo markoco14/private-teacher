@@ -7,7 +7,7 @@
     <meta name="description" content="A brief description of your site.">
     <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
     <meta name="author" content="Mark O'Connor">
-    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -33,6 +33,26 @@
             opacity: 1;
             filter: blur(0);
             transform: translateY(0);
+        }
+
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
         }
 
         @media(pefers-reduced-motion) {
