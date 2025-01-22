@@ -22,6 +22,9 @@
         }
     </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         .hide {
             opacity: 0;
             filter: blur(2);
@@ -64,8 +67,8 @@
   </head>
   <body>
 
-    <header class="bg-deep text-white h-[48px] flex items-center">
-        <div class="w-full max-w-[1000px] mx-auto px-4 sm:px-0">
+    <header class="w-full h-[48px] bg-deep text-white flex items-center z-10">
+        <div class="w-full max-w-[1000px] mx-auto px-4 xl:px-0">
             <span>Teacher Mark</span>
         </div>
     </header>
@@ -73,14 +76,15 @@
     <main>
 
         <section class="min-h-[75vh] bg-deep grid place-content-center">
-            <div class="hide max-w-[500px] mx-auto px-4 sm:px-0">
-                <h1 class="text-5xl text-gray-100 mb-2 font-bold">Achieve confidence, comfort, and clarity in English.</h1>
-                <p class="text-lg text-balance text-purple-100 mb-4">From cafe to boardroom, beginner to advanced, we have classes for your level and learning style.</p>
-                <a href="/" class="inline-block text-lg bg-purple-800 text-white rounded-md px-4 py-1 hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">Start your journey today</a>
+            <div class="hide max-w-[600px] mx-auto px-4 md:px-0">
+                <h1 class="text-5xl text-gray-100 text-pretty mb-4 md:mb-2 font-bold">Achieve confidence, comfort, and clarity in English.</h1>
+                <p class="text-lg text-balance text-purple-100 mb-4">Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.</p>
+                <a href="/#test-prep" class="inline-block text-lg bg-purple-800 text-white rounded-md px-4 py-1 hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">Prepare For Test</a>
+                <a href="/#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">Improve Business English</a>
             </div>
         </section>
 
-        <section class="min-h-[50vh] grid place-content-center py-32">
+        <section id="test-prep" class="min-h-[50vh] grid place-content-center py-32">
             <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
                 <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">See our classes to boost your career and open the doors to new opportunities</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
@@ -105,9 +109,9 @@
             </div>
         </section>
 
-        <section class="min-h-[50vh] bg-purple-200 grid place-content-center py-32">
+        <section id="business-english" class="min-h-[50vh] bg-purple-200 grid place-content-center py-32">
             <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
-                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">Build your English skills and start having fun, fluent conversations in today.</h2>
+                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">Build your English skills and start having fun, fluent conversations today.</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
                     <div class="md:shadow py-4 md:px-2 md:rounded-xl md:bg-white">
                         <h3 class="md:text-center text-xl font-semibold">Conversation</h3>
