@@ -22,6 +22,16 @@
         }
     </script>
     <style>
+
+        .stacked {
+            display: grid;
+        }
+
+        .stacked > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
         .hide {
             opacity: 0;
             filter: blur(2);
@@ -63,7 +73,6 @@
     </style>
   </head>
   <body>
-
     <header class="w-full h-[48px] bg-deep text-white flex items-center z-10">
         <div class="w-full max-w-[1000px] mx-auto px-4 xl:px-0">
             <span>Teacher Mark</span>
@@ -71,14 +80,31 @@
     </header>
     
     <main>
-
         <section class="min-h-[75vh] bg-deep grid place-content-center">
-            <div class="hide max-w-[600px] mx-auto px-4 md:px-0">
+            <div class="hide max-w-[600px] mx-auto px-4 py-4 md:px-0">
                 <h1 class="text-5xl text-gray-100 text-pretty mb-4 md:mb-2 font-bold">Achieve confidence, comfort, and clarity in English.</h1>
                 <p class="text-lg text-balance text-purple-100 mb-4">Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.</p>
-                <div class="flex gap-4">
-                    <a href="/#test-prep" class="inline-block text-lg bg-purple-800 text-white rounded-md px-4 py-1 hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">Prepare For Test</a>
-                    <a href="/#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">Improve Business English</a>
+                <div class="grid sm:grid-cols-2 text-center gap-4">
+                    <a href="/#test-prep" class="inline-block text-lg bg-purple-800 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
+                        <div class="w-full mx-auto stacked rounded-md">
+                            <img 
+                            src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/boy-writing-test.jpg" 
+                            class="w-full max-h-[150px] object-cover rounded-md"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
+                                <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">Prepare For Test</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">
+                        <div class="w-full mx-auto stacked rounded-md">
+                            <img 
+                            src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/girl-giving-presentation.jpg" 
+                            class="w-full max-h-[150px] object-cover rounded-md"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
+                                <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">Improve Business English</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -223,7 +249,6 @@
         </footer>
 
         <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
-        
     </main>
     <script src="static/js/behaviors/accordion.js"></script>
     <script src="static/js/behaviors/observer.js"></script>
