@@ -7,7 +7,7 @@
     <meta name="description" content="A brief description of your site.">
     <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
     <meta name="author" content="Mark O'Connor">
-    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,6 +35,26 @@
             transform: translateY(0);
         }
 
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
+        }
+
         @media(pefers-reduced-motion) {
             .hide {
                 transition: none;
@@ -43,92 +63,90 @@
     </style>
   </head>
   <body>
-    <header class="bg-deep text-white h-[48px] flex items-center">
-        <div class="w-full max-w-[1000px] mx-auto px-4 sm:px-0">
+
+    <header class="w-full h-[48px] bg-deep text-white flex items-center z-10">
+        <div class="w-full max-w-[1000px] mx-auto px-4 xl:px-0">
             <span>Teacher Mark</span>
         </div>
     </header>
+    
     <main>
 
         <section class="min-h-[75vh] bg-deep grid place-content-center">
-            <div class="hide max-w-[500px] mx-auto px-4 sm:px-0">
-                <h1 class="text-5xl text-gray-100 mb-2 font-bold">Achieve confidence, comfort, and clarity in English.</h1>
-                <p class="text-lg text-balance text-purple-100 mb-4">From cafe to boardroom, beginner to advanced, we have classes for your level and learning style.</p>
-                <a href="/" class="inline-block text-lg bg-purple-800 text-white rounded-md px-4 py-1 hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">Start your journey today</a>
-            </div>
-        </section>
-
-        <section class="min-h-[50vh] grid place-content-center py-32">
-            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
-                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">See our classes to boost your career and open the doors to new opportunities</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-                    <div class="md:shadow py-4 md:px-2 rounded-xl">
-                        <h3 class="md:text-center text-xl text-deep font-semibold">IELTS</h3>
-                        <p>Study and work in English speaking countries. Surpass your target score with personalized lessons on speaking, writing, and test strategies.</p>
-                    </div>
-                    <div class="md:shadow py-4 md:px-2 rounded-xl">
-                        <h3 class="md:text-center text-xl text-deep font-semibold">GEPT</h3>
-                        <p>Elevate your education and career possibilities. Build confidence in your English and master practical communication to excel in the GEPT with ease.</p>
-                    </div>
-                    <div class="md:shadow py-4 md:px-2 rounded-xl">
-                        <h3 class="md:text-center text-xl text-deep font-semibold">Business English</h3>
-                        <p>Enhance your career by mastering professional communication. Connect fluently with clients and partners worldwide through lessons tailored for workplace success.</p>
-                    </div>
-                </div>
-                <div class="flex justify-center">
-                    <a href="/" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
-                        Start Your Career Journey Today
-                    </a>
+            <div class="hide max-w-[600px] mx-auto px-4 md:px-0">
+                <h1 class="text-5xl text-gray-100 text-pretty mb-4 md:mb-2 font-bold">Achieve confidence, comfort, and clarity in English.</h1>
+                <p class="text-lg text-balance text-purple-100 mb-4">Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.</p>
+                <div class="flex gap-4">
+                    <a href="/#test-prep" class="inline-block text-lg bg-purple-800 text-white rounded-md px-4 py-1 hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">Prepare For Test</a>
+                    <a href="/#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">Improve Business English</a>
                 </div>
             </div>
         </section>
 
-        <section class="min-h-[50vh] bg-purple-200 grid place-content-center py-32">
+        <section id="test-prep" class="min-h-[50vh] grid place-content-center py-32 bg-gray-50">
             <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
-                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">Build your English skills and start having fun, fluent conversations in today.</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-                    <div class="md:shadow py-4 md:px-2 md:rounded-xl md:bg-white">
-                        <h3 class="md:text-center text-xl font-semibold">Conversation</h3>
-                        <p>Enrich your life and grow your confidence in English. Learn the skills to have fast, natural conversations with English speakers.</p>
+                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">Test preparation classes for IELTS, GEPT, and more.</h2>
+                <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">IELTS</h3>
+                        <div class="h-[150px] bg-purple-500"></div>
+                        <p class="py-2 px-4">Study and work in English speaking countries.</p>
                     </div>
-                    <div class="md:shadow py-4 md:px-2 md:rounded-xl md:bg-white">
-                        <h3 class="md:text-center text-xl font-semibold">Intermediate</h3>
-                        <p>Already know some English? Refine your grammar, expand your vocabulary, and take your speaking skills to the next level.</p>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">GEPT</h3>
+                        <div class="h-[150px] bg-purple-500"></div>
+                        <p class="py-2 px-4">Elevate your education and career possibilities.</p>
                     </div>
-                    <div class="md:shadow py-4 md:px-2 md:rounded-xl md:bg-white">
-                        <h3 class="md:text-center text-xl font-semibold">Beginner</h3>
-                        <p>New to English? Develop a strong foundation with fun, practical lessons to make school easier and talking to friends more enjoyable.</p>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">Other</h3>
+                        <div class="h-[150px] bg-purple-500"></div>
+                        <p class="py-2 px-4">Take any language test with confidence.</p>
                     </div>
+
                 </div>
-                <div class="flex justify-center">
-                    <a href="/" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
-                        Explore Conversation Classes Now
+                <div class="flex justify-center gap-4">
+                    <a href="#contact" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
+                        Book Now
                     </a>
+                    <a href="#test-prep" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">Learn More</a>
                 </div>
             </div>
         </section>
 
-        <section class="min-h-[50vh] grid place-content-center py-32">
-            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
-                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">Learn coding skills in English and open the doors to exciting opportunities in tech.</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-                    <div class="md:shadow py-4 md:px-2 rounded-xl">
-                        <h3 class="md:text-center text-xl font-semibold">Fundamentals</h3>
-                        <p>Lay the groundwork for your coding journey. Learn essential programming concepts, logic, and problem-solving with languages like Python, JavaScript, and Go.</p>
-                    </div>
-                    <div class="md:shadow py-4 md:px-2 rounded-xl">
-                        <h3 class="md:text-center text-xl font-semibold">Web and App</h3>
-                        <p>Design and build modern, responsive websites and apps. This class combines front-end and back-end development, equipping you to create dynamic, user-friendly digital experiences.</p>
-                    </div>
-                    <div class="md:shadow py-4 md:px-2 rounded-xl">
-                        <h3 class="md:text-center text-xl font-semibold">AI and Automations</h3>
-                        <p>Explore the cutting-edge world of artificial intelligence and process automation. Learn how to harness AI tools and create scripts to save time and solve real-world problems.</p>
-                    </div>
+        <section id="business-english" class="min-h-[50vh] bg-purple-200 grid place-content-center py-32">
+            <div class="hide max-w-[600px] mx-auto">
+                <div class="px-4">
+                    <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">Professional English classes for career success.</h2>
+                    <p class="text-lg text-gray-800 mb-4">Our classes are customized for your personal needs and are designed to build well-rounded English skills and instill confidence with professional communication in English.</p>
+                    <p class="text-lg text-purple-800 mb-4">We help you improve your skills in:</p>
                 </div>
-                <div class="flex justify-center">
-                    <a href="/" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
-                        Kickstart Your Coding Journey Today
+                <ul class="grid gap-4 mb-8">
+                    <li class="bg-white flex justify-between items-center sm:rounded-xl">
+                        <h3 class="text-center text-pretty grow text-md md:text-xl">Public Speaking and Presentations</h3>
+                        <div class="w-[125px] h-[125px] bg-purple-500 sm:rounded-r-xl"></div>
+                    </li>
+                    <li class="bg-white flex justify-between items-center sm:rounded-xl">
+                        <div class="w-[125px] h-[125px] bg-purple-500 sm:rounded-l-xl"></div>
+                        <h3 class="text-center text-pretty grow text-md md:text-xl">Problem Solving and Negotiations</h3>
+                    </li>
+                    <li class="bg-white flex justify-between items-center sm:rounded-xl">
+                        <h3 class="text-center text-pretty grow text-md md:text-xl">Writing Reports and Emails</h3>
+                        <div class="w-[125px] h-[125px] bg-purple-500 sm:rounded-r-xl"></div>
+                    </li>
+                    <li class="bg-white flex justify-between items-center sm:rounded-xl">
+                        <div class="w-[125px] h-[125px] bg-purple-500 sm:rounded-l-xl"></div>
+                        <h3 class="text-center text-pretty grow text-md md:text-xl">Listening and Understanding</h3>
+                    </li>
+                    <li class="bg-white flex justify-between items-center sm:rounded-xl">
+                        <h3 class="text-center text-pretty grow text-md md:text-xl">Knowledge of Global Events</h3>
+                        <div class="w-[125px] h-[125px] bg-purple-500 sm:rounded-r-xl"></div>
+                    </li>
+                </ul>
+                <div class="flex justify-center gap-4">
+                    <a href="#contact" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
+                        Book Now
                     </a>
+                    <a href="#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">Learn More</a>
                 </div>
             </div>
         </section>
@@ -203,30 +221,12 @@
         <footer class="bg-deep text-white h-[48px] flex items-center justify-center">
             <p>&copy; All rights reserved Teacher Mark 2025</p>
         </footer>
+
+        <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
+        
     </main>
-    <script>
-        let faqItems = document.querySelectorAll('dt');
-        faqItems.forEach(item => {
-            item.addEventListener('click', async () => {
-            item.nextElementSibling.classList.toggle('hidden')
-            })
-        })
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                console.log(entry)
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show')
-                } else {
-                    entry.target.classList.remove('show')
-                }
-            })
-        })
-
-        const hiddenElements = document.querySelectorAll('.hide')
-        hiddenElements.forEach((element) => {
-            observer.observe(element)
-        })
-    </script>
+    <script src="static/js/behaviors/accordion.js"></script>
+    <script src="static/js/behaviors/observer.js"></script>
+    <script src="static/js/behaviors/toast.js"></script>
   </body>
 </html>   
