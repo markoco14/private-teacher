@@ -122,25 +122,25 @@ func getSMPTInfo() (string, int, string, string, error) {
 		log.Fatalf("Something went wrong with our SMTP endpoint. Please try again.")
 		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
 	if err != nil {
 		log.Fatalf("Something went wrong with our SMTP port. Please try again.")
 		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	smtpUsername := os.Getenv("SMTP_USERNAME")
 	if smtpUsername == "" {
 		log.Fatalf("Something went wrong with our SMTP username. Please try again.")
 		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	smtpPassword := os.Getenv("SMTP_PASSWORD")
 	if smtpPassword == "" {
 		log.Fatalf("Something went wrong with our SMTP password. Please try again.")
 		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-	
+
 	return smtpEndpoint, smtpPort, smtpUsername, smtpPassword, nil
 }
 
