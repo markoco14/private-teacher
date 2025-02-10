@@ -35,7 +35,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error parsing form", http.StatusBadRequest)
 		return
 	}
-	
+
 	lang := strings.TrimPrefix(r.URL.Path, "/")
 	fmt.Println(lang)
 	if lang != "en/contact" {
@@ -56,14 +56,13 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		type responseWithErrors struct {
 			Form   formValues
 			Errors []formError
-			Lang string
+			Lang   string
 		}
-
 
 		data := responseWithErrors{
 			Form:   form,
 			Errors: errors,
-			Lang:  lang,
+			Lang:   lang,
 		}
 
 		err := templates.ExecuteTemplate(w, "form", data)
@@ -150,7 +149,7 @@ func validateFormData(form formValues, lang string) []formError {
 			errors = append(errors, formError{Field: "message", Message: "訊息必須至少10個字符"})
 		}
 	} else if len(form.Message) > 1000 {
-		if lang	== "en" {
+		if lang == "en" {
 			errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
 		} else {
 			errors = append(errors, formError{Field: "message", Message: "訊息必須少於1000個字符"})
@@ -195,7 +194,7 @@ func emailTeacherMark(form formValues) error {
 	// customerEmail := form.Email
 
 	// load the email tempalte
-	tmpl, err := template.ParseFiles("./templates/email-to-info.html.go")
+	tmpl, err := template.ParseFiles("./templates/email-to-info.gohtml")
 	if err != nil {
 		log.Fatalf("Error loading email template: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
@@ -240,7 +239,7 @@ func emailPotentialStudent(form formValues, lang string) error {
 
 	customerEmail := form.Email
 
-	tmpl, err := template.ParseFiles("./templates/email-to-customer.html.go")
+	tmpl, err := template.ParseFiles("./templates/email-to-customer.gohtml")
 	if err != nil {
 		log.Fatalf("Error loading email template: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
@@ -249,7 +248,7 @@ func emailPotentialStudent(form formValues, lang string) error {
 		"Name": form.Name,
 		"Lang": lang,
 	}
-	
+
 	var body bytes.Buffer
 	if err := tmpl.Execute(&body, data); err != nil {
 		log.Fatalf("Error writing to email template: %v", err)

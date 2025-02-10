@@ -22,7 +22,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		"Lang": lang,
 	}
 	
-	err := templates.ExecuteTemplate(w, "index.html.go", data)
+	err := templates.ExecuteTemplate(w, "index.gohtml", data)
 	if err != nil {
 		http.Error(w, "Error rendering index template", http.StatusInternalServerError)
 	}

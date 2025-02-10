@@ -11,12 +11,12 @@ import (
 
 func loadTemplates() (*template.Template, error) {
 	tmpl := template.New("")
-	tmpl, err := tmpl.ParseGlob("./templates/*.html.go")
+	tmpl, err := tmpl.ParseGlob("./templates/*.gohtml")
 	if err != nil {
 		log.Fatalf("Error loading templates: %v", err)
 	}
 
-	_, err = tmpl.ParseGlob("./templates/partials/*.html.go")
+	_, err = tmpl.ParseGlob("./templates/partials/*.gohtml")
 	if err != nil {
 		log.Fatalf("Error loading partials: %v", err)
 	}
@@ -25,7 +25,6 @@ func loadTemplates() (*template.Template, error) {
 }
 
 var templates = template.Must(loadTemplates())
-// var templates = template.Must(template.ParseGlob("./templates/*.html.go"))
 
 func init() {
 	err := godotenv.Load()
