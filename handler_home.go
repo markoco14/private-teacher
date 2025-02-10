@@ -1,6 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+	"strings"
+)
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -8,9 +11,18 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	lang := strings.TrimPrefix(r.URL.Path, "/")
+	if lang != "en" {
+		lang = "zh"
+	}
+
 	w.WriteHeader(http.StatusOK)
 
-	err := templates.ExecuteTemplate(w, "index.html.go", nil)
+	data := map[string]string{
+		"Lang": lang,
+	}
+	
+	err := templates.ExecuteTemplate(w, "index.html.go", data)
 	if err != nil {
 		http.Error(w, "Error rendering index template", http.StatusInternalServerError)
 	}
