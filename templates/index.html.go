@@ -84,64 +84,7 @@
     </header>
     <main>
         {{ template "hero" . }}
-
-        <section id="test-prep" class="min-h-[50vh] grid place-content-center py-32 bg-gray-50">
-            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
-                <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">Test preparation classes for IELTS, GEPT, and more.</h2>
-                <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">IELTS</h3>
-                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
-                            <img 
-                                height="200"
-                                width="200"
-                                loading="lazy" 
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-student-with-book.jpg" 
-                                alt="A girl looking up from a book."
-                                class="w-full h-full object-cover"/>
-                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
-                        </div>
-                        <p class="py-2 px-4">Study and work in English speaking countries.</p>
-                    </div>
-                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">GEPT</h3>
-                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
-                            <img 
-                                height="200"
-                                width="200"
-                                loading="lazy" 
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-students-classroom.jpg" 
-                                alt="A girl looking up from a book."
-                                class="w-full h-full object-cover"/>
-                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
-                        </div>
-                        <p class="py-2 px-4">Elevate your education and career possibilities.</p>
-                    </div>
-                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">Other</h3>
-                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
-                            <img 
-                                height="200"
-                                width="200"
-                                loading="lazy" 
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-write-test.jpg" 
-                                alt="A girl looking up from a book."
-                                class="w-full h-full object-cover"/>
-                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
-                        </div>
-                        <p class="py-2 px-4">Take any language test with confidence.</p>
-                    </div>
-
-                </div>
-                <div class="flex justify-center gap-4">
-                    <a href="#contact" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
-                        Book Now
-                    </a>
-                    <a href="#test-prep" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">Learn More</a>
-                </div>
-            </div>
-        </section>
-
+        {{ template "test-prep" . }}
         <section id="business-english" class="min-h-[50vh] bg-purple-200 grid place-content-center py-32">
             <div class="hide">
                 <div class="px-4 max-w-[600px] mx-auto">
