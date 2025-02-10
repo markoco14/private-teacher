@@ -74,8 +74,12 @@
   </head>
   <body>
     <header class="w-full h-[48px] bg-deep text-white flex items-center z-10">
-        <div class="w-full max-w-[1000px] mx-auto px-4 xl:px-0">
+        <div class="flex justify-between w-full max-w-[1000px] mx-auto px-4 xl:px-0">
             <span>Teacher Mark</span>
+            <nav>
+                <a href="/en" class='{{if eq .Lang "en"}} underline underline-offset-2 {{ end }}'>English</a>
+                <a href="/" class='{{if eq .Lang "zh"}} underline underline-offset-2 {{ end }}'>中文</a>
+            </nav>
         </div>
     </header>
     <main>
