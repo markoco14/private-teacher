@@ -92,32 +92,8 @@
         {{ template "hero" . }}
         {{ template "test-prep" . }}
         {{ template "business-english" . }}        
-
-        <section id="about">
-            <div class="hide max-w-[1000px] mx-auto grid sm:grid-cols-2">
-                <section class="w-full h-full">
-                    <img 
-                        height="500"
-                        width="500"
-                        loading="lazy"
-                        fetchpriority="low"
-                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-about-teacher.png" 
-                        class="w-full h-full object-cover mx-auto"/>
-                </section>
-                <section class="py-8 text-center grid place-content-center">
-                    <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8 text-purple-950">About me</h2>
-                    <div class="flex flex-col max-w-[200px] mx-auto gap-2">
-                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">7+ years experience</span>
-                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">TEFL Certified</span>
-                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">500+ students</span>
-                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">Private classes</span>
-                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">Group classes</span>
-                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">Kids classes</span>
-                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">Adult classes</span>
-                    </div>
-                </section>
-            </div>
-        </section>
+        {{ template "about" . }}
+        
 
         <section id="contact" class="bg-gradient-to-r from-purple-700/80 to-purple-800/80 text-white py-24 md:py-24">
             <div class="hide max-w-[500px] mx-auto bg-white text-black px-6 py-6 sm:rounded-2xl">
