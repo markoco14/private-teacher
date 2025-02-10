@@ -26,7 +26,7 @@
             name="name"
             class="border rounded p-2 w-full"
             placeholder='{{ if eq .Lang "en" }} Ms. Emily {{ else }} 陳小姐 {{ end }}'
-            value="{{.Form.Name}}"/>
+            value="{{ if .Form }}{{ .Form.Name }}{{ end }}"/>
         <p class="h-5 text-right text-sm">
             {{range .Errors}}
                 {{if eq .Field "name"}}
@@ -56,7 +56,7 @@
             name="email"
             class="border rounded p-2 w-full"
             placeholder="your-email@email.com"
-            value="{{.Form.Email}}"/>
+            value="{{ if .Form }}{{ .Form.Email }}{{ end }}"/>
         <p class="h-5 text-right text-sm">
             {{range .Errors}}
                 {{if eq .Field "email"}}
@@ -84,7 +84,7 @@
             id="message"
             name="message"
             class="border rounded p-2 w-full" 
-            rows="5">{{.Form.Message}}</textarea>
+            rows="5">{{ if .Form }}{{ .Form.Message }}{{ end }}</textarea>
         <p class="h-5 text-right text-sm">
             {{range .Errors}}
                 {{if eq .Field "message"}}

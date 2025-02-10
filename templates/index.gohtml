@@ -94,46 +94,16 @@
         {{ template "business-english" . }}        
         {{ template "about" . }}
         {{ template "contact" . }} 
-
-       
-
         <section id="faq">
-            {{/*<div class="py-16 mx-auto px-4 sm:px-0 bg-deep text-white shadow-[0px_-30px_0px_30px_#020517] sm:shadow-[0px_-50px_0px_50px_#020517]">*/}}
             <div class="py-16 mx-auto px-4 sm:px-0 bg-deep text-white">
                 <div class="hide max-w-[700px] mx-auto">
                     <h2 class="text-4xl mb-8">The answers to frequently asked questions</h2>
                     <dl>
-                        <dt class="hide text-xl mb-2 cursor-pointer">How can I contact you?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">You can contact me anytime between 8AM and 8PM by Line or Email through the Contact Me section of this website.</dd>
+                    {{ range $value := .Faq }}
+                        <dt class="hide text-xl mb-2 cursor-pointer">{{$value.Question}}</dt>
+                        <dd class="hidden max-w-[60ch] text-purple-50/90">{{$value.Answer}}</dd>
                         <hr class="my-4"/>
-
-                        <dt class="hide text-xl mb-2 cursor-pointer">How long is each class?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">Students can choose from 1 hour, 1.5 hour, or 2 hour classes.</dd>
-                        <hr class="my-4"/>
-
-                        <dt class="hide text-xl mb-2 cursor-pointer">What materials are provided by the teacher?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">Materials depend on the class. For Test Preparation classes, the teacher provides materials and students are welcome to ask for help with their own textbooks. For Business English classes, the teacher provides materials and students are welcome to bring materials related to their job or other parts of life.</dd>
-                        <hr class="my-4"/>
-
-                        <dt class="hide text-xl mb-2 cursor-pointer">Where are the classes?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">I currently offer classes online and in-person. In-person classes can be at the student's residence, a local coffee shop, or other convenient location.</dd>
-                        <hr class="my-4"/>
-
-                        <dt class="hide text-xl mb-2 cursor-pointer">How can I book a class?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">You can sign up for a class by contacting the teacher directly. The teacher's contact information is available in the Contact Me section of this website. The teacher is available from 8AM to 8PM by Line or Email.</dd>
-                        <hr class="my-4"/>
-
-                        <dt class="hide text-xl mb-2 cursor-pointer">Can I book classes in advance?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">Yes, students can book single classes or multiple classes in advance. For a single class, students will choose the day with the teacher and pay in advance. For multiple classes, students will choose which days they can attend class for a lesson package. Each week, students can confirm their days with their teacher. With multiple classes, students can reschedule on 24-hour notice, because we understand that things happen in life.</dd>
-                        <hr class="my-4"/>
-
-                        <dt class="hide text-xl mb-2 cursor-pointer">Do you offer refunds or rescheduling?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">I do offer rescheduling, but it depends on what booking the students make. If students buy multiple classes in advance, we can reschedule on 24-hour notice. However, students will need to use their classes within a specified timeframe. Refunds can be available under certain circumstances on agreement with the teacher.</dd>
-                        <hr class="my-4"/>
-
-                        <dt class="hide text-xl mb-2 cursor-pointer">How can I pay for classes?</dt>
-                        <dd class="hidden max-w-[60ch] text-purple-50/90">After contacting the teacher and agreeing upon the class and time, you can pay by Line Pay or bank transfer.</dd>
-                        <hr class="my-4"/>
+                    {{ end }}
                     </dl>
                     <p class="text-purple-50/90">For questions about other class types such as children's classes and adult conversation classes, please contact the teacher directly using the Contact Me section of the website. Teacher Mark is available from 8AM to 8PM to help you.</p>
                 </div>
