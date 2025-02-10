@@ -93,28 +93,9 @@
         {{ template "test-prep" . }}
         {{ template "business-english" . }}        
         {{ template "about" . }}
-        
+        {{ template "contact" . }} 
 
-        <section id="contact" class="bg-gradient-to-r from-purple-700/80 to-purple-800/80 text-white py-24 md:py-24">
-            <div class="hide max-w-[500px] mx-auto bg-white text-black px-6 py-6 sm:rounded-2xl">
-                <h2 class="text-2xl font-semibold text-purple-900 mb-2">Contact Me To Arrange Your First Class</h2>
-                <p>Scan the Line QR code or fill out the email form below. I am available between 8 am and 8 pm everyday to respond to your inquiries. I will do my best to reply to you within 2 hours of messaging me.</p>
-                <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
-                    <h3>Line</h3>
-                    <hr />
-                </div>
-                <img 
-                    id="line" 
-                    loading="lazy" 
-                    src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/tr-mark-qr.jpg" 
-                    class="w-full max-w-[200px] mx-auto"/>
-                <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
-                    <h3>Email</h3>
-                    <hr />
-                </div>
-                {{ template "form" . }}
-            </div>
-        </section>
+       
 
         <section id="faq">
             {{/*<div class="py-16 mx-auto px-4 sm:px-0 bg-deep text-white shadow-[0px_-30px_0px_30px_#020517] sm:shadow-[0px_-50px_0px_50px_#020517]">*/}}

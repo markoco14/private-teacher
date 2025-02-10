@@ -9,6 +9,7 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+	"strings"
 
 	"gopkg.in/gomail.v2"
 )
@@ -34,6 +35,14 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error parsing form", http.StatusBadRequest)
 		return
 	}
+	
+	lang := strings.TrimPrefix(r.URL.Path, "/")
+	fmt.Println(lang)
+	if lang != "en/contact" {
+		lang = "zh"
+	} else {
+		lang = "en"
+	}
 
 	form := formValues{
 		Name:    r.FormValue("name"),
@@ -41,22 +50,25 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		Message: r.FormValue("message"),
 	}
 
-	errors := validateFormData(form)
+	errors := validateFormData(form, lang)
 
 	if len(errors) > 0 {
 		type responseWithErrors struct {
 			Form   formValues
 			Errors []formError
+			Lang string
 		}
+
 
 		data := responseWithErrors{
 			Form:   form,
 			Errors: errors,
+			Lang:  lang,
 		}
 
 		err := templates.ExecuteTemplate(w, "form", data)
 		if err != nil {
-			http.Error(w, "Error rendering template", http.StatusInternalServerError)
+			http.Error(w, "Error rendering form template", http.StatusInternalServerError)
 		}
 
 		return
@@ -68,7 +80,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = emailPotentialStudent(form)
+	err = emailPotentialStudent(form, lang)
 	if err != nil {
 		// because email to Teacher successfully sent, don't need to break out
 		// just log the error and continue
@@ -77,40 +89,72 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.Header.Get("Hx-Request") == "true" {
 		w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
-		err := templates.ExecuteTemplate(w, "form", nil)
+
+		data := map[string]string{
+			"Lang": lang,
+		}
+		err := templates.ExecuteTemplate(w, "form", data)
 		if err != nil {
 			http.Error(w, "Error rendering template", http.StatusInternalServerError)
 		}
 	}
 
-	http.Redirect(w, r, "/", http.StatusSeeOther)
+	if lang == "en" {
+		http.Redirect(w, r, "/en", http.StatusSeeOther)
+	} else {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+	}
 }
 
-func validateFormData(form formValues) []formError {
+func validateFormData(form formValues, lang string) []formError {
 	var errors []formError
 
 	if form.Name == "" {
-		errors = append(errors, formError{Field: "name", Message: "Name is required"})
+		if lang == "en" {
+			errors = append(errors, formError{Field: "name", Message: "Name is required"})
+		} else {
+			errors = append(errors, formError{Field: "name", Message: "名字是必需的"})
+		}
 	}
 
 	if form.Email == "" {
-		errors = append(errors, formError{Field: "email", Message: "Email is required"})
+		if lang == "en" {
+			errors = append(errors, formError{Field: "email", Message: "Email is required"})
+		} else {
+			errors = append(errors, formError{Field: "email", Message: "電子郵件是必需的"})
+		}
 	}
 
 	if form.Email != "" {
 		emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
 		matched, err := regexp.MatchString(emailRegex, form.Email)
 		if err != nil || !matched {
-			errors = append(errors, formError{Field: "email", Message: "Invalid email address"})
+			if lang == "en" {
+				errors = append(errors, formError{Field: "email", Message: "Invalid email address"})
+			} else {
+				errors = append(errors, formError{Field: "email", Message: "無效的電子郵件地址"})
+			}
 		}
 	}
 
 	if form.Message == "" {
-		errors = append(errors, formError{Field: "message", Message: "Message is required"})
+		if lang == "en" {
+			errors = append(errors, formError{Field: "message", Message: "Message is required"})
+		} else {
+			errors = append(errors, formError{Field: "message", Message: "訊息是必需的"})
+		}
 	} else if len(form.Message) < 10 {
-		errors = append(errors, formError{Field: "message", Message: "Message must be at least 10 characters"})
+		if lang == "en" {
+			errors = append(errors, formError{Field: "message", Message: "Message must be at least 10 characters"})
+		} else {
+			errors = append(errors, formError{Field: "message", Message: "訊息必須至少10個字符"})
+		}
 	} else if len(form.Message) > 1000 {
-		errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
+		if lang	== "en" {
+			errors = append(errors, formError{Field: "message", Message: "Message must be shorter than 1000 characters"})
+		} else {
+			errors = append(errors, formError{Field: "message", Message: "訊息必須少於1000個字符"})
+		}
 	}
 
 	return errors
@@ -187,7 +231,7 @@ func emailTeacherMark(form formValues) error {
 	return nil
 }
 
-func emailPotentialStudent(form formValues) error {
+func emailPotentialStudent(form formValues, lang string) error {
 	infoEmail := os.Getenv("INFO_EMAIL")
 	if infoEmail == "" {
 		log.Fatalf("Something went wrong getting our info email.")
@@ -201,19 +245,27 @@ func emailPotentialStudent(form formValues) error {
 		log.Fatalf("Error loading email template: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
-
+	data := map[string]string{
+		"Name": form.Name,
+		"Lang": lang,
+	}
+	
 	var body bytes.Buffer
-	if err := tmpl.Execute(&body, form); err != nil {
+	if err := tmpl.Execute(&body, data); err != nil {
 		log.Fatalf("Error writing to email template: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
 	}
 
+	subject := "Thank you for contacting Teacher Mark"
+	if lang == "zh" {
+		subject = "感謝您聯繫Teacher Mark"
+	}
 	// prepare email info
 	message := gomail.NewMessage()
 	message.SetHeader("From", infoEmail) // email always comes from info@markoco14
 	message.SetHeader("To", customerEmail)
 	message.SetHeader("Reply-To", infoEmail)
-	message.SetHeader("Subject", "Thank you for contacting Teacher Mark")
+	message.SetHeader("Subject", subject)
 	message.SetBody("text/html", body.String())
 
 	smtpEndpoint, smtpPort, smtpUsername, smtpPassword, err := getSMPTInfo()
