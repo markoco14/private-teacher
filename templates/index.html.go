@@ -79,62 +79,7 @@
         </div>
     </header>
     <main>
-        <section class="min-h-[75vh] bg-deep grid place-content-center">
-            <div class="hide max-w-[600px] mx-auto px-4 py-4 md:px-0">
-                <h1 class="text-5xl text-gray-100 text-pretty mb-4 md:mb-2 font-bold">
-                    {{ if eq .Lang "en" }}
-                        Achieve confidence, comfort, and clarity in English.
-                    {{ else }}
-                        我是一個英文老師
-                    {{ end }}
-                </h1>
-                <p class="text-lg text-balance text-purple-100 mb-4">
-                    {{ if eq .Lang "en" }}
-                        Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.</p>
-                    {{ else }}
-                        我是一個老師
-                    {{ end }}
-                </p>
-                <div class="grid sm:grid-cols-2 text-center gap-4">
-                    <a href="/#test-prep" class="inline-block text-lg bg-purple-800 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
-                        <div class="w-full mx-auto stacked rounded-md">
-                            <img 
-                                height="200"
-                                width="200"
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-hero-write-test.jpg" 
-                                class="w-full max-h-[150px] object-cover rounded-md"/>
-                            <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
-                                <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
-                                {{ if eq .Lang "en" }}
-                                    Prepare For Test
-                                {{ else }}
-                                    准備考試
-                                {{ end }}
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">
-                        <div class="w-full mx-auto stacked rounded-md">
-                            <img 
-                                height="267"
-                                width="400"
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-hero-presentation.jpg" 
-                                class="w-full max-h-[150px] object-cover rounded-md"/>
-                            <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
-                                <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
-                                {{ if eq .Lang "en"}}
-                                    Improve Business English
-                                {{ else }}
-                                    進步公司英文
-                                {{ end }}
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
+        {{ template "hero" . }}
 
         <section id="test-prep" class="min-h-[50vh] grid place-content-center py-32 bg-gray-50">
             <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
