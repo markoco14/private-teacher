@@ -78,7 +78,6 @@
             <span>Teacher Mark</span>
         </div>
     </header>
-    
     <main>
         <section class="min-h-[75vh] bg-deep grid place-content-center">
             <div class="hide max-w-[600px] mx-auto px-4 py-4 md:px-0">

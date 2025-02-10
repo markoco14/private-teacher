@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var templates = template.Must(template.ParseGlob("./templates/*.html"))
+var templates = template.Must(template.ParseGlob("./templates/*.html.go"))
 
 func init() {
 	err := godotenv.Load()

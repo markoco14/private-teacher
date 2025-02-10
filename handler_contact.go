@@ -151,7 +151,7 @@ func emailTeacherMark(form formValues) error {
 	// customerEmail := form.Email
 
 	// load the email tempalte
-	tmpl, err := template.ParseFiles("./templates/email-to-info.html")
+	tmpl, err := template.ParseFiles("./templates/email-to-info.html.go")
 	if err != nil {
 		log.Fatalf("Error loading email template: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")
@@ -196,7 +196,7 @@ func emailPotentialStudent(form formValues) error {
 
 	customerEmail := form.Email
 
-	tmpl, err := template.ParseFiles("./templates/email-to-customer.html")
+	tmpl, err := template.ParseFiles("./templates/email-to-customer.html.go")
 	if err != nil {
 		log.Fatalf("Error loading email template: %v", err)
 		return fmt.Errorf("Something went wrong on our server. Please try again.")

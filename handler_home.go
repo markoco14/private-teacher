@@ -10,7 +10,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 
-	err := templates.ExecuteTemplate(w, "index.html", nil)
+	err := templates.ExecuteTemplate(w, "index.html.go", nil)
 	if err != nil {
 		http.Error(w, "Error rendering index template", http.StatusInternalServerError)
 	}
