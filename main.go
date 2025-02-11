@@ -5,16 +5,34 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/joho/godotenv"
 )
 
-var templates = template.Must(template.ParseGlob("./templates/*.html"))
+func loadTemplates() (*template.Template, error) {
+	tmpl := template.New("")
+	tmpl, err := tmpl.ParseGlob("./templates/*.gohtml")
+	if err != nil {
+		log.Fatalf("Error loading templates: %v", err)
+	}
+
+	_, err = tmpl.ParseGlob("./templates/partials/*.gohtml")
+	if err != nil {
+		log.Fatalf("Error loading partials: %v", err)
+	}
+
+	return tmpl, nil
+}
+
+var templates = template.Must(loadTemplates())
 
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if os.Getenv("ENV") != "production" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file")
+		}
 	}
 }
 
@@ -31,6 +49,7 @@ func main() {
 	// Routes
 	http.HandleFunc("/", HomeHandler)
 	http.HandleFunc("/contact", ContactHandler)
+	http.HandleFunc("/en/contact", ContactHandler)
 
 	// Start the server
 	fmt.Println("Server is running on port 8080")

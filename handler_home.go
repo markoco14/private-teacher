@@ -1,6 +1,51 @@
 package main
 
-import "net/http"
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"os"
+	"strings"
+)
+
+type Question struct {
+	English string `json:"english"`
+	Chinese string `json:"chinese"`
+}
+
+type Answer struct {
+	English string `json:"english"`
+	Chinese string `json:"chinese"`
+}
+
+type FrequentlyAskedQuestion struct {
+	Question Question `json:"question"`
+	Answer   Answer `json:"answer"`
+}
+
+type PageData struct {
+	Lang string						`json:"lang"`
+	Faq  []FrequentlyAskedQuestion	`json:"faq"`
+	Form formValues					`json:"form"`
+	Errors []formError				`json:"errors"`
+}
+
+func loadFrequentlyAsked() ([]FrequentlyAskedQuestion, error) {
+	data, err := os.ReadFile("./data/faq.json")
+	if err != nil {
+		fmt.Println("Error reading file")
+		return nil, err
+	}
+
+	var faqs []FrequentlyAskedQuestion
+	err = json.Unmarshal(data, &faqs)
+	if err != nil {
+		fmt.Println("Error unmarshalling JSON")
+		return nil, err
+	}
+
+	return faqs, nil
+}
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -8,10 +53,30 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.WriteHeader(http.StatusOK)
+	lang := strings.TrimPrefix(r.URL.Path, "/")
+	if lang != "en" {
+		lang = "zh"
+	}
 
-	err := templates.ExecuteTemplate(w, "index.html", nil)
+	faqContent, err := loadFrequentlyAsked()
 	if err != nil {
+		fmt.Println("Error loading FAQs", err)
+		faqContent = []FrequentlyAskedQuestion{}
+	}
+
+	pageData := PageData{
+		Lang: lang,
+		Faq: faqContent,
+		Form: formValues{},
+		Errors: []formError{},
+	}
+	
+
+	
+
+	err = templates.ExecuteTemplate(w, "index.gohtml", pageData)
+	if err != nil {
+		fmt.Println("Error rendering index template", err)
 		http.Error(w, "Error rendering index template", http.StatusInternalServerError)
 	}
 }
