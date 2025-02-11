@@ -37,7 +37,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	lang := strings.TrimPrefix(r.URL.Path, "/")
-	fmt.Println(lang)
+	
 	if lang != "en/contact" {
 		lang = "zh"
 	} else {
