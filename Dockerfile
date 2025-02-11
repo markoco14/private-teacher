@@ -17,6 +17,7 @@ COPY --from=builder /app/teacher-site .
 
 # Copy template files into the final image
 COPY --from=builder /app/templates ./templates
+COPY --from=builder /app/data ./data
 
 EXPOSE 8080
 
