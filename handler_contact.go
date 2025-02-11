@@ -190,8 +190,8 @@ func getSMPTInfo() (string, int, string, string, error) {
 func emailTeacherMark(form formValues) error {
 	// Hardcoded email addresses
 	infoEmail := os.Getenv("INFO_EMAIL")
-	customerEmail := os.Getenv("TEST_CUSTOMER_EMAIL")
-	// customerEmail := form.Email
+	// customerEmail := os.Getenv("TEST_CUSTOMER_EMAIL")
+	customerEmail := form.Email
 
 	// load the email tempalte
 	tmpl, err := template.ParseFiles("./templates/email-to-info.gohtml")
@@ -233,16 +233,16 @@ func emailTeacherMark(form formValues) error {
 func emailPotentialStudent(form formValues, lang string) error {
 	infoEmail := os.Getenv("INFO_EMAIL")
 	if infoEmail == "" {
-		log.Fatalf("Something went wrong getting our info email.")
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Something went wrong getting our info email.")
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	customerEmail := form.Email
 
 	tmpl, err := template.ParseFiles("./templates/email-to-customer.gohtml")
 	if err != nil {
-		log.Fatalf("Error loading email template: %v", err)
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Error loading email template: %v", err)
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 	data := map[string]string{
 		"Name": form.Name,
@@ -251,8 +251,8 @@ func emailPotentialStudent(form formValues, lang string) error {
 
 	var body bytes.Buffer
 	if err := tmpl.Execute(&body, data); err != nil {
-		log.Fatalf("Error writing to email template: %v", err)
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Error writing to email template: %v", err)
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	subject := "Thank you for contacting Teacher Mark"
@@ -261,7 +261,7 @@ func emailPotentialStudent(form formValues, lang string) error {
 	}
 	// prepare email info
 	message := gomail.NewMessage()
-	message.SetHeader("From", infoEmail) // email always comes from info@markoco14
+	message.SetHeader("From", infoEmail) // email always comes from info@teachermark.com.tw
 	message.SetHeader("To", customerEmail)
 	message.SetHeader("Reply-To", infoEmail)
 	message.SetHeader("Subject", subject)
@@ -275,8 +275,8 @@ func emailPotentialStudent(form formValues, lang string) error {
 	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
 
 	if err := d.DialAndSend(message); err != nil {
-		log.Fatalf("Something went wrong with dial and send: %v", err)
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Something went wrong with dial and send: %v", err)
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	return nil
