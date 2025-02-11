@@ -8,9 +8,19 @@ import (
 	"strings"
 )
 
+type Question struct {
+	English string `json:"english"`
+	Chinese string `json:"chinese"`
+}
+
+type Answer struct {
+	English string `json:"english"`
+	Chinese string `json:"chinese"`
+}
+
 type FrequentlyAskedQuestion struct {
-	Question string `json:"question"`
-	Answer   string `json:"answer"`
+	Question Question `json:"question"`
+	Answer   Answer `json:"answer"`
 }
 
 type PageData struct {

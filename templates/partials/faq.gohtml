@@ -4,10 +4,26 @@
         <div class="hide max-w-[700px] mx-auto">
             <h2 class="text-4xl mb-8">The answers to frequently asked questions</h2>
             <dl>
-            {{ range $value := .Faq }}
-                <dt class="hide text-xl mb-2 cursor-pointer">{{$value.Question}}</dt>
-                <dd class="hidden max-w-[60ch] text-purple-50/90">{{$value.Answer}}</dd>
-                <hr class="my-4"/>
+            {{ if eq .Lang "en" }}
+                {{ range $value := .Faq }}
+                    <dt class="hide text-xl mb-2 cursor-pointer">
+                        {{$value.Question.English}}
+                    </dt>
+                    <dd class="hidden max-w-[60ch] text-purple-50/90">
+                        {{$value.Answer.English}}
+                    </dd>
+                    <hr class="my-4"/>
+                {{ end }}
+            {{ else }}
+                {{ range $value := .Faq }}
+                    <dt class="hide text-xl mb-2 cursor-pointer">
+                        {{$value.Question.Chinese}}
+                    </dt>
+                    <dd class="hidden max-w-[60ch] text-purple-50/90">
+                        {{$value.Answer.Chinese}}
+                    </dd>
+                    <hr class="my-4"/>
+                {{ end }}
             {{ end }}
             </dl>
             <p class="text-purple-50/90">For questions about other class types such as children's classes and adult conversation classes, please contact the teacher directly using the Contact Me section of the website. Teacher Mark is available from 8AM to 8PM to help you.</p>

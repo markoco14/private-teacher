@@ -1,34 +1,82 @@
 [
-    {
-      "question": "How can I contact you?",
-      "answer": "You can contact me anytime between 8AM and 8PM by Line or Email through the Contact Me section of this website."
+  {
+    "question": {
+      "english": "How can I contact you?", 
+      "chinese": "如何聯繫您？"
     },
-    {
-      "question": "How long is each class?",
-      "answer": "Students can choose from 1 hour, 1.5 hour, or 2 hour classes."
-    },
-    {
-      "question": "What materials are provided by the teacher?",
-      "answer": "Materials depend on the class. For Test Preparation classes, the teacher provides materials and students are welcome to ask for help with their own textbooks. For Business English classes, the teacher provides materials and students are welcome to bring materials related to their job or other parts of life."
-    },
-    {
-      "question": "Where are the classes?",
-      "answer": "I currently offer classes online and in-person. In-person classes can be at the student's residence, a local coffee shop, or other convenient location."
-    },
-    {
-      "question": "How can I book a class?",
-      "answer": "You can sign up for a class by contacting the teacher directly. The teacher's contact information is available in the Contact Me section of this website. The teacher is available from 8AM to 8PM by Line or Email."
-    },
-    {
-      "question": "Can I book classes in advance?",
-      "answer": "Yes, students can book single classes or multiple classes in advance. For a single class, students will choose the day with the teacher and pay in advance. For multiple classes, students will choose which days they can attend class for a lesson package. Each week, students can confirm their days with their teacher. With multiple classes, students can reschedule on 24-hour notice, because we understand that things happen in life."
-    },
-    {
-      "question": "Do you offer refunds or rescheduling?",
-      "answer": "I do offer rescheduling, but it depends on what booking the students make. If students buy multiple classes in advance, we can reschedule on 24-hour notice. However, students will need to use their classes within a specified timeframe. Refunds can be available under certain circumstances on agreement with the teacher."
-    },
-    {
-      "question": "How can I pay for classes?",
-      "answer": "After contacting the teacher and agreeing upon the class and time, you can pay by Line Pay or bank transfer."
+    "answer": {
+      "english": "You can contact me anytime between 8AM and 8PM by Line or Email through the Contact Me section of this website.", 
+      "chinese": "您可以在每天早上8點到晚上8點之間通過Line或電子郵件聯繫我，請至本網站的\"聯繫我\"部分。"
     }
-  ]
+  },
+  {
+    "question": {
+      "english": "How long is each class?", 
+      "chinese": "每堂課多長？"
+    },
+    "answer": {
+      "english": "Students can choose from 1 hour, 1.5 hour, or 2 hour classes.", 
+      "chinese": "學生可以選擇1小時、1.5小時或2小時的課程。"
+    }
+  },
+  {
+    "question": {
+      "english": "What materials are provided by the teacher?", 
+      "chinese": "老師提供哪些教材？"
+    },
+    "answer": {
+      "english": "Materials depend on the class. For Test Preparation classes, the teacher provides materials and students are welcome to ask for help with their own textbooks. For Business English classes, the teacher provides materials and students are welcome to bring materials related to their job or other parts of life.", 
+      "chinese": "教材視課程而定。對於考試準備課程，老師會提供教材，學生也可以請求使用自己的課本。對於商務英語課程，老師會提供教材，學生也可以攜帶與工作或生活相關的材料。"
+    }
+  },
+  {
+    "question": {
+      "english": "Where are the classes?", 
+      "chinese": "課程在哪裡上？"
+    },
+    "answer": {
+      "english": "I currently offer classes online and in-person. In-person classes can be at the student's residence, a local coffee shop, or other convenient location.", 
+      "chinese": "目前提供線上和面授課程。面授課程可在學生住所、當地咖啡店或其他方便的地點進行。"
+    }
+  },
+  {
+    "question": {
+      "english": "How can I book a class?", 
+      "chinese": "如何預約課程？"
+    },
+    "answer": {
+      "english": "You can sign up for a class by contacting the teacher directly. The teacher's contact information is available in the Contact Me section of this website. The teacher is available from 8AM to 8PM by Line or Email.", 
+      "chinese": "您可以直接聯繫老師預約課程。老師的聯繫方式可在本網站的\"聯繫我\"部分找到。老師的聯繫時間為每天早上8點到晚上8點，可通過Line或電子郵件聯繫。"
+    }
+  },
+  {
+    "question": {
+      "english": "Can I book classes in advance?", 
+      "chinese": "可以提前預約課程嗎？"
+    },
+    "answer": {
+      "english": "Yes, students can book single classes or multiple classes in advance. For a single class, students will choose the day with the teacher and pay in advance. For multiple classes, students will choose which days they can attend class for a lesson package. Each week, students can confirm their days with their teacher. With multiple classes, students can reschedule on 24-hour notice, because we understand that things happen in life.", 
+      "chinese": "是的，學生可以提前預約單堂課或多堂課。單堂課的學生需要與老師確認上課日期並提前付款。多堂課的學生可以選擇適合的上課日，並預訂課程套餐。每週學生可以與老師確認上課時間。多堂課學生可提前24小時通知重新安排課程，因為我們理解生活中可能會發生意外。"
+    }
+  },
+  {
+    "question": {
+      "english": "Do you offer refunds or rescheduling?", 
+      "chinese": "可以退款或改期嗎？"
+    },
+    "answer": {
+      "english": "I do offer rescheduling, but it depends on what booking the students make. If students buy multiple classes in advance, we can reschedule on 24-hour notice. However, students will need to use their classes within a specified timeframe. Refunds can be available under certain circumstances on agreement with the teacher.", 
+      "chinese": "我提供改期服務，但具體情況取決於學生的預訂方式。如果學生預約多堂課，則可以提前24小時通知進行改期。然而，學生需要在指定的時間內使用課程。退款可根據與老師的協議在某些情況下提供。"
+    }
+  },
+  {
+    "question": {
+      "english": "How can I pay for classes?", 
+      "chinese": "如何支付課程費用？"
+    },
+    "answer": {
+      "english": "After contacting the teacher and agreeing upon the class and time, you can pay by Line Pay or bank transfer.", 
+      "chinese": "與老師確認課程和時間後，您可以通過Line Pay或銀行轉帳付款。"
+    }
+  }
+]
