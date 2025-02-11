@@ -162,26 +162,26 @@ func validateFormData(form formValues, lang string) []formError {
 func getSMPTInfo() (string, int, string, string, error) {
 	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
 	if smtpEndpoint == "" {
-		log.Fatalf("Something went wrong with our SMTP endpoint. Please try again.")
-		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Something went wrong with our SMTP endpoint. Please try again.")
+		return "", 0, "", "", fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	smtpPort, err := strconv.Atoi(os.Getenv("SMTP_PORT"))
 	if err != nil {
-		log.Fatalf("Something went wrong with our SMTP port. Please try again.")
-		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Something went wrong with our SMTP port. Please try again.")
+		return "", 0, "", "", fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	smtpUsername := os.Getenv("SMTP_USERNAME")
 	if smtpUsername == "" {
-		log.Fatalf("Something went wrong with our SMTP username. Please try again.")
-		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Something went wrong with our SMTP username. Please try again.")
+		return "", 0, "", "", fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	smtpPassword := os.Getenv("SMTP_PASSWORD")
 	if smtpPassword == "" {
-		log.Fatalf("Something went wrong with our SMTP password. Please try again.")
-		return "", 0, "", "", fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Something went wrong with our SMTP password. Please try again.")
+		return "", 0, "", "", fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	return smtpEndpoint, smtpPort, smtpUsername, smtpPassword, nil
@@ -196,15 +196,15 @@ func emailTeacherMark(form formValues) error {
 	// load the email tempalte
 	tmpl, err := template.ParseFiles("./templates/email-to-info.gohtml")
 	if err != nil {
-		log.Fatalf("Error loading email template: %v", err)
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Error loading email template: %v", err)
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	// create a buffer to write the template to
 	var body bytes.Buffer
 	if err := tmpl.Execute(&body, form); err != nil {
-		log.Fatalf("Error writing to email template: %v", err)
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Error writing to email template: %v", err)
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	// send email
@@ -223,8 +223,8 @@ func emailTeacherMark(form formValues) error {
 	d := gomail.NewDialer(smtpEndpoint, smtpPort, smtpUsername, smtpPassword)
 
 	if err := d.DialAndSend(message); err != nil {
-		log.Fatalf("Something went wrong with dial and send: %v", err)
-		return fmt.Errorf("Something went wrong on our server. Please try again.")
+		log.Printf("Something went wrong with dial and send: %v", err)
+		return fmt.Errorf("something went wrong on our server, please try again")
 	}
 
 	return nil
