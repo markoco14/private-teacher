@@ -1,0 +1,9 @@
+# .air.toml
+[build]
+cmd = "go build -o tmp/main ."
+bin = "tmp/main"
+include_ext = ["go", "html", "gohtml", "tmpl"]  # Add template extensions
+exclude_dir = ["vendor", "node_modules"]
+
+[log]
+level = "debug"
