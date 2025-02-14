@@ -6,14 +6,14 @@
                 {{ if eq .Lang "en" }}
                     Professional English classes for career success.
                 {{ else }}
-                    职业英语课程，助您事业成功。
+                    專業英語課程協助職業成功。
                 {{ end }}
             </h2>
             <p class="text-lg text-gray-800 mb-4">
                 {{ if eq .Lang "en" }}
                     Our classes are customized for your personal needs and are designed to build well-rounded English skills and instill confidence with professional communication in English.
                 {{ else }}
-                    我们的课程根据您的个人需求定制，旨在培养全面的英语技能，并通过专业英语交流增强信心。
+                    我們的課程根據您的個人需求量身定制，旨在培養全面的英語技能並透過專業的英語交流建立信心。
                 {{ end }}
             </p>
         </div>
@@ -37,7 +37,7 @@
                         {{ if eq .Lang "en" }}
                             Communicate with <br> Clients and Colleagues
                         {{ else }}
-                            與客戶和同事順暢溝通
+                            與客戶和同事溝通
                         {{ end }}
                     </h3>
                 </div>
@@ -58,7 +58,7 @@
                         {{ if eq .Lang "en" }}
                             Write <br> Effectively
                         {{ else }}
-                            有效撰寫
+                            有效寫作
                         {{ end }}
                     </h3>
                 </div>
@@ -100,7 +100,7 @@
                         {{ if eq .Lang "en" }}
                             Master <br> Industry English
                         {{ else }}
-                            掌握行業術語
+                            掌握業界英語
                         {{ end }}
                     </h3>
                 </div>
@@ -108,20 +108,7 @@
         </ul>
 
         <div class="flex justify-center gap-4">
-            <a href="#contact" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
-                {{ if eq .Lang "en" }}
-                    Book Now
-                {{ else }}
-                    立即預約
-                {{ end }}
-            </a>
-            {{/* <a href="#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">
-                {{ if eq .Lang "en" }}
-                    Learn More
-                {{ else }}
-                    了解更多
-                {{ end }}
-            </a> */}}
+            {{ template "learn-more" . }}
         </div>
     </div>
 </section>

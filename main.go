@@ -19,7 +19,12 @@ func loadTemplates() (*template.Template, error) {
 
 	_, err = tmpl.ParseGlob("./templates/partials/*.gohtml")
 	if err != nil {
-		log.Fatalf("Error loading partials: %v", err)
+		log.Fatalf("Error loading partials folder: %v", err)
+	}
+
+	_, err = tmpl.ParseGlob("./templates/ui/*.gohtml")
+	if err != nil {
+		log.Fatalf("Error loading ui folder: %v", err)
 	}
 
 	return tmpl, nil

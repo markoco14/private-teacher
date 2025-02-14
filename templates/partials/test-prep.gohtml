@@ -5,7 +5,7 @@
         {{ if eq .Lang "en" }}
             Test preparation classes for IELTS, GEPT, and more.
         {{ else }}
-            IELTS、GEPT等考試準備課程。
+            IELTS、GEPT 等考試準備課程。
         {{ end }}
         </h2>
         <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
@@ -25,7 +25,7 @@
                     {{ if eq .Lang "en" }}
                         Study and work in English speaking countries.
                     {{ else }}
-                        學習和在英語國家工作。
+                        在英語國家學習和工作。
                     {{ end }}
                 </p>
             </div>
@@ -45,7 +45,7 @@
                     {{ if eq .Lang "en" }}
                         Elevate your education and career possibilities.
                     {{ else }}
-                        提升您的教育和職業機會。
+                        提升您的教育和職業可能性。
                     {{ end }}
                 </p>
             </div>
@@ -71,26 +71,13 @@
                 {{ if eq .Lang "en" }}
                     Take any language test with confidence.
                 {{ else }}
-                    有信心參加任何語言測試。
+                    自信地參加任何語言測驗。
                 {{ end }}
                 </p>
             </div>
         </div>
         <div class="flex justify-center gap-4">
-            <a href="#contact" class="inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
-            {{ if eq .Lang "en" }}
-                Book Now
-            {{ else }}
-                立即預約
-            {{ end }}
-            </a>
-            {{/* <a href="#test-prep" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md px-4 py-1 hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">
-            {{ if eq .Lang "en" }}
-                Learn More
-            {{ else }}
-                了解更多
-            {{ end }}
-            </a> */}}
+            {{ template "learn-more" . }}
         </div>
     </div>
 </section>

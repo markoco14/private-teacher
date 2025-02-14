@@ -13,19 +13,12 @@
             姓名
         {{ end }}
         </label>
-        <p class="text-gray-700 text-sm mb-1">
-        {{ if eq .Lang "en" }}
-            Share your name so we know how to address you.
-        {{ else }}
-            請告訴我們您的名字，以便我們知道如何稱呼您。
-        {{ end }}
-        </p>
         <input 
             id="name"
             type="text"
             name="name"
             class="border rounded p-2 w-full"
-            placeholder='{{ if eq .Lang "en" }} Ms. Emily {{ else }} 陳小姐 {{ end }}'
+            placeholder='{{ if eq .Lang "en" }} Please write your name {{ else }} 請寫下您的名字 {{ end }}'
             value="{{ if .Form }}{{ .Form.Name }}{{ end }}"/>
         <p class="h-5 text-right text-sm">
             {{range .Errors}}
@@ -43,19 +36,12 @@
             電子郵件
         {{ end }}
         </label>
-        <p class="text-gray-700 text-sm mb-1">
-        {{ if eq .Lang "en" }}
-            Use the email where you want us to contact you.
-        {{ else }}
-            使用您希望我們與您聯繫的電子郵件。
-        {{ end }}
-        </p>
         <input 
             id="email"
             type="text"
             name="email"
             class="border rounded p-2 w-full"
-            placeholder="your-email@email.com"
+            placeholder='{{ if eq .Lang "en" }} Please write your email {{ else }} 請寫下您電子郵件 {{ end }}'
             value="{{ if .Form }}{{ .Form.Email }}{{ end }}"/>
         <p class="h-5 text-right text-sm">
             {{range .Errors}}
@@ -68,18 +54,11 @@
     <div class="flex flex-col mb-2">
         <label for="message" class="text-purple-900">
         {{ if eq .Lang "en" }}
-            Message
-        {{ else }}
-            訊息
-        {{ end }}
-        </label>
-        <p class="text-gray-700 text-sm mb-1">
-        {{ if eq .Lang "en" }}
             Write a short message to say what type of class you are looking for.
         {{ else }}
             寫一個簡短的消息，說明您想要的課程類型。
         {{ end }}
-        </p>
+        </label>
         <textarea 
             id="message"
             name="message"
