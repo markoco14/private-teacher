@@ -81,3 +81,30 @@ TEFL 認證
 
 ---ABOUT_SEVEN---
 成人課程
+
+---CONTACT_HEADING---
+聯絡我安排第一堂課
+
+---CONTACT_DESCRIPTION---
+掃描 Line QR 碼或填寫下面的電子郵件表格。我每天早上 8 點至晚上 8 點之間都可以回覆您的詢問。我將盡力在您發送訊息後的兩小時內回覆您。
+
+---CONTACT_LINE---
+Line
+
+---CONTACT_EMAIL---
+電子郵件
+
+---CONTACT_FORM_NAME---
+姓名
+
+---CONTACT_FORM_EMAIL---
+電子郵件
+
+---CONTACT_FORM_MESSAGE---
+寫一個簡短的消息，說明您想要的課程類型。
+
+---CONTACT_FORM_CTA---
+發送消息
+
+---CONTACT_FORM_CTA_PENDING---
+發送中...

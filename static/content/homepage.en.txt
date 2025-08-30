@@ -81,3 +81,30 @@ Kids classes
 
 ---ABOUT_SEVEN---
 Adult classes
+
+---CONTACT_HEADING---
+Contact Me To Arrange Your First Class
+
+---CONTACT_DESCRIPTION---
+Scan the Line QR code or fill out the email form below. I am available between 8 am and 8 pm everyday to respond to your inquiries. I will do my best to reply to you within 2 hours of messaging me.
+
+---CONTACT_LINE---
+Line
+
+---CONTACT_EMAIL---
+Email
+
+---CONTACT_FORM_NAME---
+Name
+
+---CONTACT_FORM_EMAIL---
+Email
+
+---CONTACT_FORM_MESSAGE---
+Write a short message to say what type of class you are looking for.
+
+---CONTACT_FORM_CTA---
+Send message
+
+---CONTACT_FORM_CTA_PENDING---
+Sending...
