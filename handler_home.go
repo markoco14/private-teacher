@@ -102,7 +102,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if lang == "en" {
 		fileLocation = "./static/content/homepage.en.txt"
 	} else {
-		fileLocation = "./static/content/homepage.en.txt"
+		fileLocation = "./static/content/homepage.zh.txt"
 	}
 
 	pageContent, err := getPageContent(fileLocation)
