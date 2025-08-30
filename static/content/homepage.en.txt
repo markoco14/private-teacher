@@ -3,3 +3,15 @@ Teacher Mark
 
 ---RIGHTS---
 All rights reserved Teacher Mark 2025
+
+---HERO_HEADLINE---
+Achieve confidence, comfort, and clarity in English.
+
+---HERO_SUBHEAD---
+Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.
+
+---HERO_CTA_TEST---
+Prepare For Test
+
+---HERO_CTA_BUSINESS---
+Improve Business English

@@ -2,18 +2,10 @@
 <section class="min-h-[75vh] bg-deep grid place-content-center">
     <div class="hide max-w-[600px] mx-auto px-4 py-4 md:px-0">
         <h1 class="text-5xl text-gray-100 text-pretty mb-4 md:mb-2 font-bold">
-            {{ if eq .Lang "en" }}
-                Achieve confidence, comfort, and clarity in English.
-            {{ else }}
-                獲得自信、舒適、清晰的英語表達能力。
-            {{ end }}
+            {{.Content.hero_headline}}
         </h1>
         <p class="text-lg text-balance text-purple-100 mb-4">
-            {{ if eq .Lang "en" }}
-                Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.</p>
-            {{ else }}
-                考試準備和商務英語課程可幫助您實現目標。從初學者到高級，我們都有適合您需求和學習風格的課程。
-            {{ end }}
+           {{.Content.hero_subhead}}
         </p>
         <div class="grid sm:grid-cols-2 text-center gap-4">
             <a href="/#test-prep" class="inline-block text-lg bg-purple-800 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
@@ -25,11 +17,7 @@
                         class="w-full max-h-[150px] object-cover rounded-md"/>
                     <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
                         <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
-                        {{ if eq .Lang "en" }}
-                            Prepare For Test
-                        {{ else }}
-                            准備考試
-                        {{ end }}
+                            {{.Content.hero_cta_test}}
                         </span>
                     </div>
                 </div>
@@ -43,11 +31,7 @@
                         class="w-full max-h-[150px] object-cover rounded-md"/>
                     <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
                         <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
-                        {{ if eq .Lang "en"}}
-                            Improve Business English
-                        {{ else }}
-                            提升商務英語
-                        {{ end }}
+                            {{.Content.hero_cta_business}}
                         </span>
                     </div>
                 </div>
