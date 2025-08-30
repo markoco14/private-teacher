@@ -4,7 +4,7 @@
     <title>{{ if eq .Lang "en" }}Teacher Mark English Classes{{ else }}馬克老師英文課{{ end }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A brief description of your site.">
+    <meta name="description" content="English classes in Taiwan with Teacher Mark.">
     <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
     <meta name="author" content="Mark O'Connor">
     <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
@@ -76,11 +76,7 @@
     <header class="w-full h-[48px] bg-deep text-white flex items-center z-10">
         <div class="w-full max-w-[1000px] mx-auto px-4 xl:px-0">
             <span>
-                {{ if eq .Lang "en" }}
-                    Teacher Mark
-                {{ else }}
-                    老師馬克
-                {{ end }}
+                {{.Content.logo}}
             </span>
             {{/* <nav>
                 <a href="/en" class='{{if eq .Lang "en"}} underline underline-offset-2 {{ end }}'>English</a>
@@ -97,7 +93,7 @@
         {{ template "faq" .}}
 
         <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
-            <p>&copy; All rights reserved Teacher Mark 2025</p>
+            <p>&copy; {{.Content.rights}}</p>
         </footer>
 
         <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
