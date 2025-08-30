@@ -57,3 +57,27 @@ GEPT
 
 ---LEARN_MORE---
 立即預訂
+
+---ABOUT_HEADING---
+關於我
+
+---ABOUT_ONE---
+7年經驗
+
+---ABOUT_TWO---
+TEFL 認證
+
+---ABOUT_THREE---
+500+ 學生
+
+---ABOUT_FOUR---
+私人課程
+
+---ABOUT_FIVE---
+團體課程
+
+---ABOUT_SIX---
+兒童課程
+
+---ABOUT_SEVEN---
+成人課程

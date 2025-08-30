@@ -57,3 +57,27 @@ Master Industry English
 
 ---LEARN_MORE---
 Book Now
+
+---ABOUT_HEADING---
+About me
+
+---ABOUT_ONE---
+7+ years experience
+
+---ABOUT_TWO---
+TEFL Certified
+
+---ABOUT_THREE---
+500+ students
+
+---ABOUT_FOUR---
+Private classes
+
+---ABOUT_FIVE---
+Group classes
+
+---ABOUT_SIX---
+Kids classes
+
+---ABOUT_SEVEN---
+Adult classes
