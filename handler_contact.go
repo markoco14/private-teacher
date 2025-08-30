@@ -44,6 +44,23 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		lang = "en"
 	}
 
+	var fileLocation string
+	if lang == "en" {
+		fileLocation = "./static/content/homepage.en.txt"
+	} else {
+		fileLocation = "./static/content/homepage.zh.txt"
+	}
+
+	pageContent, err := getPageContent(fileLocation)
+	if err != nil {
+		log.Printf("Error getting page content from file: %v", err)
+		// Set the 500 status code
+        w.WriteHeader(http.StatusInternalServerError)
+        // Execute the error template
+        templates.ExecuteTemplate(w, "error.gohtml", nil)
+        return
+	}
+
 	form := formValues{
 		Name:    r.FormValue("name"),
 		Email:   r.FormValue("email"),
@@ -54,12 +71,14 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 
 	if len(errors) > 0 {
 		type responseWithErrors struct {
+			Content map[string]string
 			Form   formValues
 			Errors []formError
 			Lang   string
 		}
 
 		data := responseWithErrors{
+			Content: pageContent,
 			Form:   form,
 			Errors: errors,
 			Lang:   lang,
@@ -73,7 +92,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err := emailTeacherMark(form)
+	err = emailTeacherMark(form)
 	if err != nil {
 		http.Error(w, "Something went wrong on our server. Please try again.", http.StatusInternalServerError)
 		return
