@@ -36,3 +36,21 @@ Other
 
 ---TEST_PREP_OTHER_DESCRIPTION---
 Take any language test with confidence.
+
+---BUS_ENG_HEADING---
+Professional English classes for career success.
+
+---BUS_ENG_DESCRIPTION---
+Our classes are customized for your personal needs and are designed to build well-rounded English skills and instill confidence with professional communication in English.
+
+---BUS_ENG_CASE_ONE---
+Communicate with Clients and Colleagues
+
+---BUS_ENG_CASE_TWO---
+Write Effectively
+
+---BUS_ENG_CASE_THREE---
+Understand Native Speakers
+
+---BUS_ENG_CASE_FOUR---
+Master Industry English

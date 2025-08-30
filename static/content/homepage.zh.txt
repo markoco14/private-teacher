@@ -36,3 +36,21 @@ GEPT
 
 ---TEST_PREP_OTHER_DESCRIPTION---
 自信地參加任何語言測驗。
+
+---BUS_ENG_HEADING---
+專業英語課程協助職業成功
+
+---BUS_ENG_DESCRIPTION---
+我們的課程根據您的個人需求量身定制，旨在培養全面的英語技能並透過專業的英語交流建立信心。
+
+---BUS_ENG_CASE_ONE---
+與客戶和同事溝通
+
+---BUS_ENG_CASE_TWO---
+有效寫作
+
+---BUS_ENG_CASE_THREE---
+理解母語人士
+
+---BUS_ENG_CASE_FOUR---
+掌握業界英語

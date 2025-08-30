@@ -3,18 +3,10 @@
     <div class="hide">
         <div class="px-4 max-w-[600px] mx-auto">
             <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">
-                {{ if eq .Lang "en" }}
-                    Professional English classes for career success.
-                {{ else }}
-                    專業英語課程協助職業成功。
-                {{ end }}
+                {{.Content.bus_eng_heading}}
             </h2>
             <p class="text-lg text-gray-800 mb-4">
-                {{ if eq .Lang "en" }}
-                    Our classes are customized for your personal needs and are designed to build well-rounded English skills and instill confidence with professional communication in English.
-                {{ else }}
-                    我們的課程根據您的個人需求量身定制，旨在培養全面的英語技能並透過專業的英語交流建立信心。
-                {{ end }}
+                {{.Content.bus_eng_description}}
             </p>
         </div>
 
@@ -33,12 +25,8 @@
                     </div>
                 </div>
                 <div class="flex flex-col justify-end p-4">
-                    <h3 class="text-2xl font-semibold text-white">
-                        {{ if eq .Lang "en" }}
-                            Communicate with <br> Clients and Colleagues
-                        {{ else }}
-                            與客戶和同事溝通
-                        {{ end }}
+                    <h3 class="max-w-[250px] text-2xl font-semibold text-white">
+                        {{.Content.bus_eng_case_one}}
                     </h3>
                 </div>
             </li>
@@ -54,12 +42,8 @@
                 </div>
                 <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
                 <div class="flex flex-col justify-end p-4">
-                    <h3 class="text-xl text-white font-semibold">
-                        {{ if eq .Lang "en" }}
-                            Write <br> Effectively
-                        {{ else }}
-                            有效寫作
-                        {{ end }}
+                    <h3 class="max-w-[125px] text-xl text-white font-semibold">
+                        {{.Content.bus_eng_case_two}}
                     </h3>
                 </div>
             </li>
@@ -75,12 +59,8 @@
                 </div>
                 <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
                 <div class="flex flex-col justify-end p-4">
-                    <h3 class="text-xl text-white font-semibold">
-                        {{ if eq .Lang "en" }}
-                            Understand <br> Native Speakers
-                        {{ else }}
-                            理解母語人士
-                        {{ end }}
+                    <h3 class="max-w-[200px] text-xl text-white font-semibold">
+                        {{.Content.bus_eng_case_three}}
                     </h3>
                 </div>
             </li>
@@ -96,12 +76,8 @@
                 </div>
                 <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
                 <div class="flex flex-col justify-end p-4">
-                    <h3 class="text-xl font-semibold text-white">
-                        {{ if eq .Lang "en" }}
-                            Master <br> Industry English
-                        {{ else }}
-                            掌握業界英語
-                        {{ end }}
+                    <h3 class="max-w-[200px] text-xl font-semibold text-white">
+                        {{.Content.bus_eng_case_four}}
                     </h3>
                 </div>
             </li>
