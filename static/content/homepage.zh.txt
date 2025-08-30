@@ -15,3 +15,24 @@
 
 ---HERO_CTA_BUSINESS---
 提升商務英語
+
+---TEST_PREP_HEADING---
+IELTS、GEPT 等考試準備課程。
+
+---TEST_PREP_IELTS---
+IELTS
+
+---TEST_PREP_IELTS_DESCRIPTION---
+在英語國家學習和工作。
+
+---TEST_PREP_GEPT---
+GEPT
+
+---TEST_PREP_GEPT_DESCRIPTION---
+提升您的教育和職業可能性。
+
+---TEST_PREP_OTHER---
+其他
+
+---TEST_PREP_OTHER_DESCRIPTION---
+自信地參加任何語言測驗。

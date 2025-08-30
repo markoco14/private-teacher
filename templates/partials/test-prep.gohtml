@@ -1,16 +1,10 @@
 {{ define "test-prep" }}
 <section id="test-prep" class="min-h-[50vh] grid place-content-center py-32 bg-gray-50">
     <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
-        <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">
-        {{ if eq .Lang "en" }}
-            Test preparation classes for IELTS, GEPT, and more.
-        {{ else }}
-            IELTS、GEPT 等考試準備課程。
-        {{ end }}
-        </h2>
+        <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">{{.Content.test_prep_heading}}</h2>
         <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">IELTS</h3>
+                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_ielts}}</h3>
                 <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
                     <img 
                         height="200"
@@ -21,16 +15,10 @@
                         class="w-full h-full object-cover"/>
                     <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
                 </div>
-                <p class="py-2 px-4">
-                    {{ if eq .Lang "en" }}
-                        Study and work in English speaking countries.
-                    {{ else }}
-                        在英語國家學習和工作。
-                    {{ end }}
-                </p>
+                <p class="py-2 px-4">{{.Content.test_prep_ielts_description}}</p>
             </div>
             <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">GEPT</h3>
+                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_gept}}</h3>
                 <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
                     <img 
                         height="200"
@@ -41,22 +29,10 @@
                         class="w-full h-full object-cover"/>
                     <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
                 </div>
-                <p class="py-2 px-4">
-                    {{ if eq .Lang "en" }}
-                        Elevate your education and career possibilities.
-                    {{ else }}
-                        提升您的教育和職業可能性。
-                    {{ end }}
-                </p>
+                <p class="py-2 px-4">{{.Content.test_prep_gept_description}}</p>
             </div>
             <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">
-                    {{ if eq .Lang "en" }}
-                        Other
-                    {{ else }}
-                        其他
-                    {{ end }}
-                </h3>
+                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_other}}</h3>
                 <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
                     <img 
                         height="200"
@@ -67,13 +43,7 @@
                         class="w-full h-full object-cover"/>
                     <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
                 </div>
-                <p class="py-2 px-4">
-                {{ if eq .Lang "en" }}
-                    Take any language test with confidence.
-                {{ else }}
-                    自信地參加任何語言測驗。
-                {{ end }}
-                </p>
+                <p class="py-2 px-4">{{.Content.test_prep_other_description}}</p>
             </div>
         </div>
         <div class="flex justify-center gap-4">

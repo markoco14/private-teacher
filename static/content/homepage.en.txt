@@ -15,3 +15,24 @@ Prepare For Test
 
 ---HERO_CTA_BUSINESS---
 Improve Business English
+
+---TEST_PREP_HEADING---
+Test preparation classes for IELTS, GEPT, and more.
+
+---TEST_PREP_IELTS---
+IELTS
+
+---TEST_PREP_IELTS_DESCRIPTION---
+Study and work in English speaking countries.
+
+---TEST_PREP_GEPT---
+GEPT
+
+---TEST_PREP_GEPT_DESCRIPTION---
+Elevate your education and career possibilities.
+
+---TEST_PREP_OTHER---
+Other
+
+---TEST_PREP_OTHER_DESCRIPTION---
+Take any language test with confidence.
