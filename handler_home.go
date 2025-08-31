@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,19 +9,9 @@ import (
 	"strings"
 )
 
-type Question struct {
-	English string `json:"english"`
-	Chinese string `json:"chinese"`
-}
-
-type Answer struct {
-	English string `json:"english"`
-	Chinese string `json:"chinese"`
-}
-
 type FrequentlyAskedQuestion struct {
-	Question Question `json:"question"`
-	Answer   Answer `json:"answer"`
+	Question string 	`json:"question"`
+	Answer   string 	`json:"answer"`
 }
 
 type PageData struct {
@@ -33,18 +22,54 @@ type PageData struct {
 	Errors []formError				`json:"errors"`
 }
 
-func loadFrequentlyAsked() ([]FrequentlyAskedQuestion, error) {
-	data, err := os.ReadFile("./data/faq.json")
+func getFaqContent(location string) (string, error) {
+	content, err := os.ReadFile(location)
 	if err != nil {
-		fmt.Println("Error reading file")
-		return nil, err
+		return "", fmt.Errorf("error reading file %s: %w", location, err)
+	}
+	return string(content), nil
+}
+
+func createFaqList(content string) ([]FrequentlyAskedQuestion, error) {
+	var faqs []FrequentlyAskedQuestion
+	lines := strings.Split(content, "\n")
+
+	var currentFAQ *FrequentlyAskedQuestion
+	var isQuestion bool
+
+	for _, line := range lines {
+		trimmedLine := strings.TrimSpace(line)
+		if trimmedLine == "" {
+			continue // skip empty lines
+		}
+
+		if strings.HasPrefix(trimmedLine, "---") && strings.HasSuffix(trimmedLine, "---") {
+			header := strings.Trim(trimmedLine, "-")
+			if strings.HasPrefix(header, "Q_") {
+				if currentFAQ != nil {
+					faqs = append(faqs, *currentFAQ)
+				}
+				currentFAQ = &FrequentlyAskedQuestion{}
+				isQuestion = true
+			} else {
+				isQuestion = false
+			}
+		} else {
+			if currentFAQ != nil {
+				if isQuestion {
+					currentFAQ.Question += trimmedLine
+				} else {
+					if currentFAQ.Answer != "" {
+						currentFAQ.Answer += " "
+					}
+					currentFAQ.Answer += trimmedLine
+				}
+			}
+		}
 	}
 
-	var faqs []FrequentlyAskedQuestion
-	err = json.Unmarshal(data, &faqs)
-	if err != nil {
-		fmt.Println("Error unmarshalling JSON")
-		return nil, err
+	if currentFAQ != nil {
+		faqs = append(faqs, *currentFAQ)
 	}
 
 	return faqs, nil
@@ -104,7 +129,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		fileLocation = "./static/content/homepage.zh.txt"
 	}
-
+	
 	pageContent, err := getPageContent(fileLocation)
 	if err != nil {
 		log.Printf("Error getting page content from file: %v", err)
@@ -114,24 +139,36 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
         templates.ExecuteTemplate(w, "error.gohtml", nil)
         return
 	}
+	
+	if lang == "en" {
+		fileLocation = "./static/content/faq.en.txt"
+	} else {
+		fileLocation = "./static/content/faq.zh.txt"
+	}
 
-	faqContent, err := loadFrequentlyAsked()
+	faqContent, err := getFaqContent(fileLocation)
+	if err != nil {
+		log.Printf("Error getting faq content from file: %v", err)
+		// Set the 500 status code
+        w.WriteHeader(http.StatusInternalServerError)
+        // Execute the error template
+        templates.ExecuteTemplate(w, "error.gohtml", nil)
+        return
+	}
+
+	faqList, err := createFaqList(faqContent)
 	if err != nil {
 		fmt.Println("Error loading FAQs", err)
-		faqContent = []FrequentlyAskedQuestion{}
 	}
 
 	pageData := PageData{
 		Content: pageContent,
 		Lang: lang,
-		Faq: faqContent,
+		Faq: faqList,
 		Form: formValues{},
 		Errors: []formError{},
 	}
 	
-
-	
-
 	err = templates.ExecuteTemplate(w, "index.gohtml", pageData)
 	if err != nil {
 		fmt.Println("Error rendering index template", err)
