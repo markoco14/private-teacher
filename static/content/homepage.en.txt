@@ -108,3 +108,9 @@ Send message
 
 ---CONTACT_FORM_CTA_PENDING---
 Sending...
+
+---FAQ_HEADLINE---
+The answers to frequently asked questions
+
+---FAQ_DESCRIPTION---
+For questions about other class types such as children's classes and adult conversation classes, please contact me directly using the Contact Me section of the website. I am available from 8AM to 8PM to help you.
