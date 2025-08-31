@@ -1,0 +1,116 @@
+---LOGO---
+Teacher Mark
+
+---RIGHTS---
+All rights reserved Teacher Mark 2025
+
+---HERO_HEADLINE---
+Achieve confidence, comfort, and clarity in English.
+
+---HERO_SUBHEAD---
+Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.
+
+---HERO_CTA_TEST---
+Prepare For Test
+
+---HERO_CTA_BUSINESS---
+Improve Business English
+
+---TEST_PREP_HEADING---
+Test preparation classes for IELTS, GEPT, and more.
+
+---TEST_PREP_IELTS---
+IELTS
+
+---TEST_PREP_IELTS_DESCRIPTION---
+Study and work in English speaking countries.
+
+---TEST_PREP_GEPT---
+GEPT
+
+---TEST_PREP_GEPT_DESCRIPTION---
+Elevate your education and career possibilities.
+
+---TEST_PREP_OTHER---
+Other
+
+---TEST_PREP_OTHER_DESCRIPTION---
+Take any language test with confidence.
+
+---BUS_ENG_HEADING---
+Professional English classes for career success.
+
+---BUS_ENG_DESCRIPTION---
+Our classes are customized for your personal needs and are designed to build well-rounded English skills and instill confidence with professional communication in English.
+
+---BUS_ENG_CASE_ONE---
+Communicate with Clients and Colleagues
+
+---BUS_ENG_CASE_TWO---
+Write Effectively
+
+---BUS_ENG_CASE_THREE---
+Understand Native Speakers
+
+---BUS_ENG_CASE_FOUR---
+Master Industry English
+
+---LEARN_MORE---
+Book Now
+
+---ABOUT_HEADING---
+About me
+
+---ABOUT_ONE---
+7+ years experience
+
+---ABOUT_TWO---
+TEFL Certified
+
+---ABOUT_THREE---
+500+ students
+
+---ABOUT_FOUR---
+Private classes
+
+---ABOUT_FIVE---
+Group classes
+
+---ABOUT_SIX---
+Kids classes
+
+---ABOUT_SEVEN---
+Adult classes
+
+---CONTACT_HEADING---
+Contact Me To Arrange Your First Class
+
+---CONTACT_DESCRIPTION---
+Scan the Line QR code or fill out the email form below. I am available between 8 am and 8 pm everyday to respond to your inquiries. I will do my best to reply to you within 2 hours of messaging me.
+
+---CONTACT_LINE---
+Line
+
+---CONTACT_EMAIL---
+Email
+
+---CONTACT_FORM_NAME---
+Name
+
+---CONTACT_FORM_EMAIL---
+Email
+
+---CONTACT_FORM_MESSAGE---
+Write a short message to say what type of class you are looking for.
+
+---CONTACT_FORM_CTA---
+Send message
+
+---CONTACT_FORM_CTA_PENDING---
+Sending...
+
+---FAQ_HEADLINE---
+The answers to frequently asked questions
+
+---FAQ_DESCRIPTION---
+For questions about other class types such as children's classes and adult conversation classes, please contact me directly using the Contact Me section of the website. I am available from 8AM to 8PM to help you.

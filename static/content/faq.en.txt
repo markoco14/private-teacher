@@ -1,0 +1,47 @@
+---Q_HOW_CONTACT---
+How can I contact you?
+
+---A_HOW_CONTACT---
+You can contact me anytime between 8AM and 8PM by Line or Email through the Contact Me section of this website.
+
+---Q_CLASS_LENGTH---
+How long is each class?
+
+---A_CLASS_LENGTH---
+Students can choose from 1 hour, 1.5 hour, or 2 hour classes.
+
+---Q_CLASS_MATERIALS---
+What materials are provided by the teacher?
+
+---A_CLASS_MATERIALS---
+Materials depend on the class. For Test Preparation classes, the teacher provides materials and students are welcome to ask for help with their own textbooks. For Business English classes, the teacher provides materials and students are welcome to bring materials related to their job or other parts of life.
+
+---Q_CLASS_LOCATION---
+Where are the classes?
+
+---A_CLASS_LOCATION---
+I currently offer classes online and in-person. In-person classes can be at the student's residence, a local coffee shop, or other convenient location.
+
+---Q_HOW_BOOK---
+How can I book a class?
+
+---A_HOW_BOOK---
+You can sign up for a class by contacting the teacher directly. The teacher's contact information is available in the Contact Me section of this website. The teacher is available from 8AM to 8PM by Line or Email.
+
+---Q_BOOK_ADVANCE---
+Can I book classes in advance?
+
+---A_BOOK_ADVANCE---
+Yes, students can book single classes or multiple classes in advance. For a single class, students will choose the day with the teacher and pay in advance. For multiple classes, students will choose which days they can attend class for a lesson package. Each week, students can confirm their days with their teacher. With multiple classes, students can reschedule on 24-hour notice, because we understand that things happen in life.
+
+---Q_REFUNDS---
+Do you offer refunds or rescheduling
+
+---A_REFUNDS---
+I do offer rescheduling, but it depends on what booking the students make. If students buy multiple classes in advance, we can reschedule on 24-hour notice. However, students will need to use their classes within a specified timeframe. Refunds can be available under certain circumstances on agreement with the teacher.
+
+---Q_PAYMENTS---
+How can I pay for classes?
+
+---A_PAYMENTS---
+After contacting the teacher and agreeing upon the class and time, you can pay by Line Pay or bank transfer.

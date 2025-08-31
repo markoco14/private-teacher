@@ -3,41 +3,21 @@
     <div class="py-16 mx-auto px-4 sm:px-0 bg-deep text-white">
         <div class="hide max-w-[700px] mx-auto">
             <h2 class="text-4xl mb-8">
-            {{ if eq .Lang "en" }}
-                The answers to frequently asked questions
-            {{ else }}
-                常見問題的答案
-            {{ end }}
+            {{ .Content.faq_headline }}
             </h2>
             <dl>
-            {{ if eq .Lang "en" }}
-                {{ range $value := .Faq }}
+                {{- range .Faq }}
                     <dt class="hide text-xl mb-2 cursor-pointer">
-                        {{$value.Question.English}}
+                        {{.Question}}
                     </dt>
                     <dd class="hidden max-w-[60ch] text-purple-50/90">
-                        {{$value.Answer.English}}
+                        {{.Answer}}
                     </dd>
                     <hr class="my-4"/>
-                {{ end }}
-            {{ else }}
-                {{ range $value := .Faq }}
-                    <dt class="hide text-xl mb-2 cursor-pointer">
-                        {{$value.Question.Chinese}}
-                    </dt>
-                    <dd class="hidden max-w-[60ch] text-purple-50/90">
-                        {{$value.Answer.Chinese}}
-                    </dd>
-                    <hr class="my-4"/>
-                {{ end }}
-            {{ end }}
+                {{- end }}
             </dl>
             <p class="text-purple-50/90">
-            {{ if eq .Lang "en" }}
-                For questions about other class types such as children's classes and adult conversation classes, please contact me directly using the Contact Me section of the website. I am available from 8AM to 8PM to help you.
-            {{ else }}
-                如有關於其他課程類型的問題（例如兒童課程和成人會話課程），請使用網站的「聯絡我」部分直接與我聯絡。我可以從早上 8 點到晚上 8 點為您提供協助。
-            {{ end }}
+                {{ .Content.faq_description }}
             </p>
         </div>
     </div>
