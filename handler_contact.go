@@ -36,12 +36,11 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	lang := strings.TrimPrefix(r.URL.Path, "/")
-	
-	if lang != "en/contact" {
-		lang = "zh"
-	} else {
+	var lang string
+	if strings.Contains(r.Header.Get("Referer"), "en") {
 		lang = "en"
+		} else {
+		lang = "zh"
 	}
 
 	var fileLocation string
