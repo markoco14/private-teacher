@@ -99,9 +99,20 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Header.Get("Hx-Request") == "true" {
 		w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
 
-		data := map[string]string{
-			"Lang": lang,
+		type response struct {
+			Content map[string]string
+			Form formValues
+			Errors []formError
+			Lang string
 		}
+
+		data := response{
+			Content: pageContent,
+			Form: formValues{},
+			Errors: errors,
+			Lang: lang,
+		}
+
 		err := templates.ExecuteTemplate(w, "form", data)
 		if err != nil {
 			http.Error(w, "Error rendering template", http.StatusInternalServerError)
