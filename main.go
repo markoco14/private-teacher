@@ -44,16 +44,18 @@ func init() {
 func main() {
 	// handle server static files
 	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	http.HandleFunc("GET 	/static/", func(w http.ResponseWriter, r *http.Request) {
+		http.StripPrefix("/static/", fs).ServeHTTP(w, r)
+	})
 
 	// Handle favicon.ico requests explicitly
-	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("GET 	/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 	})
 
 	// Routes
-	http.HandleFunc("/", HomeHandler)
-	http.HandleFunc("/contact", ContactHandler)
+	http.HandleFunc("GET 	/", HomeHandler)
+	http.HandleFunc("POST 	/contact", ContactHandler)
 
 	// Start the server
 	fmt.Println("Server is running on port 8080")
