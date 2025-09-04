@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
+	"errors"
+	"time"
 )
 
 type FrequentlyAskedQuestion struct {
@@ -27,9 +28,21 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
-	lang := strings.TrimPrefix(r.URL.Path, "/")
-	if lang != "en" {
-		lang = "zh"
+	var lang string
+	cookie, err := r.Cookie("SITE_LANG")
+	if errors.Is(err, http.ErrNoCookie) {
+		lang = "en"
+		newCookie := http.Cookie{
+			Name: "SITE_LANG",
+			Value: "en",
+			Expires: time.Now().Add(365 * 24 * time.Hour),
+			HttpOnly: true,
+			SameSite: http.SameSiteLaxMode,
+			Secure: true,
+		}
+		http.SetCookie(w, &newCookie)
+	} else {
+		lang = cookie.Value
 	}
 	
 	var fileLocation string
