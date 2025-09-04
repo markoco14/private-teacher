@@ -8,13 +8,13 @@ All rights reserved Teacher Mark 2025
 Achieve confidence, comfort, and clarity in English.
 
 ---HERO_SUBHEAD---
-Test Preparation and Business English classes to help you achieve your goals. From beginner to advanced, we have classes for your needs and learning style.
+Private English and Coding classes from beginner to advanced. Improve your English and learn new skills to help you achieve your goals.
 
----HERO_CTA_TEST---
-Prepare For Test
+---HERO_CTA_ENGLISH---
+Improve My English
 
----HERO_CTA_BUSINESS---
-Improve Business English
+---HERO_CTA_CODE---
+Learn To Code
 
 ---TEST_PREP_HEADING---
 Test preparation classes for IELTS, GEPT, and more.
