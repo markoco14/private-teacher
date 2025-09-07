@@ -1,9 +1,301 @@
 {{template "base" .}}
 {{ define "content" }}
-    {{ template "hero" . }}
-    {{ template "test-prep" . }}
-    {{ template "business-english" . }}        
-    {{ template "about" . }}
-    {{ template "contact" . }} 
-    {{ template "faq" .}}
+
+
+{{/* HERO SECTION */}}
+<section class="min-h-[75vh] bg-deep grid place-content-center">
+    <div class="hide max-w-[600px] mx-auto px-4 py-4 md:px-0">
+        <h1 class="text-5xl text-gray-100 text-pretty mb-4 md:mb-2 font-bold">
+            {{.NewContent.Hero.Headline}}
+        </h1>
+        <p class="text-lg text-balance text-purple-100 mb-4">
+        {{.NewContent.Hero.Subhead}}
+        </p>
+        <div class="grid sm:grid-cols-2 text-center gap-4">
+            <a href="/#test-prep" class="inline-block text-lg bg-purple-800 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
+                <div class="w-full mx-auto stacked rounded-md">
+                    <img 
+                        height="200"
+                        width="200"
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-hero-write-test.jpg" 
+                        class="w-full max-h-[150px] object-cover rounded-md"/>
+                    <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
+                        <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
+                            {{.NewContent.Hero.CtaClasses}}
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="/#business-english" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">
+                <div class="w-full mx-auto stacked rounded-md">
+                    <img 
+                        height="267"
+                        width="400"
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-hero-presentation.jpg" 
+                        class="w-full max-h-[150px] object-cover rounded-md"/>
+                    <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
+                        <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
+                            {{.NewContent.Hero.CtaTeacher}}
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+{{/* TEST PREPARATION SECTION */}}
+<section id="test-prep" class="min-h-[50vh] grid place-content-center py-32 bg-gray-50">
+    <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
+        <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8">{{.Content.test_prep_heading}}</h2>
+        <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+            <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_ielts}}</h3>
+                <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                    <img 
+                        height="200"
+                        width="200"
+                        loading="lazy" 
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-student-with-book.jpg" 
+                        alt="A girl looking up from a book."
+                        class="w-full h-full object-cover"/>
+                    <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                </div>
+                <p class="py-2 px-4">{{.Content.test_prep_ielts_description}}</p>
+            </div>
+            <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_gept}}</h3>
+                <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                    <img 
+                        height="200"
+                        width="200"
+                        loading="lazy" 
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-students-classroom.jpg" 
+                        alt="A girl looking up from a book."
+                        class="w-full h-full object-cover"/>
+                    <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                </div>
+                <p class="py-2 px-4">{{.Content.test_prep_gept_description}}</p>
+            </div>
+            <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_other}}</h3>
+                <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                    <img 
+                        height="200"
+                        width="200"
+                        loading="lazy" 
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-write-test.jpg" 
+                        alt="A girl looking up from a book."
+                        class="w-full h-full object-cover"/>
+                    <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                </div>
+                <p class="py-2 px-4">{{.Content.test_prep_other_description}}</p>
+            </div>
+        </div>
+        <div class="flex justify-center gap-4">
+            {{ template "learn-more" . }}
+        </div>
+    </div>
+</section>
+
+
+
+{{/* BUSINESS ENGLISH SECTION */}}
+<section id="business-english" class="min-h-[50vh] bg-purple-200 grid place-content-center py-32">
+    <div class="hide">
+        <div class="px-4 max-w-[600px] mx-auto">
+            <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">
+                {{.Content.bus_eng_heading}}
+            </h2>
+            <p class="text-lg text-gray-800 mb-4">
+                {{.Content.bus_eng_description}}
+            </p>
+        </div>
+
+        <ul class="px-2 max-w-[800px] mx-auto grid grid-rows-4 sm:grid-rows-3 md:grid-rows-2 sm:grid-cols-6 md:grid-cols-8 gap-4 mb-16">
+            <li class="row-span-1 md:row-span-2 stacked rounded-xl sm:col-span-6 md:col-span-8 h-[200px]">
+                <div class="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 sm:bg-purple-950 rounded-xl">
+                    <div class="stacked sm:col-start-2 sm:col-span-2">
+                        <img
+                            height="200"
+                            widht="200"
+                            loading="lazy"
+                            fetchpriority="low"
+                            src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-presentation.jpg" 
+                            class="w-full object-cover h-[200px] rounded-xl sm:rounded-tr-xl sm:rounded-br-xl"/>
+                        <div class="bg-purple-950/50 sm:bg-gradient-to-r sm:from-purple-950 sm:to-transparent rounded-xl sm:rounded-tr-xl sm:rounded-br-xl"></div>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-end p-4">
+                    <h3 class="max-w-[250px] text-2xl font-semibold text-white">
+                        {{.Content.bus_eng_case_one}}
+                    </h3>
+                </div>
+            </li>
+            <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-3 md:col-span-2 h-[200px]">
+                <div class="w-full h-full">
+                    <img
+                        height="200"
+                        wids="200"
+                        loading="lazy"
+                        fetchpriority="low" 
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-write-effectively.jpg" 
+                        class="w-full object-cover h-[200px] rounded-xl"/>
+                </div>
+                <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                <div class="flex flex-col justify-end p-4">
+                    <h3 class="max-w-[125px] text-xl text-white font-semibold">
+                        {{.Content.bus_eng_case_two}}
+                    </h3>
+                </div>
+            </li>
+            <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-3 md:col-span-2 h-[200px]">
+                <div class="w-full h-full">
+                    <img
+                        height="200"
+                        width="200"
+                        loading="lazy"
+                        fetchpriority="low"
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-understand.jpg"
+                        class="w-full object-cover h-[200px] rounded-xl"/>
+                </div>
+                <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                <div class="flex flex-col justify-end p-4">
+                    <h3 class="max-w-[200px] text-xl text-white font-semibold">
+                        {{.Content.bus_eng_case_three}}
+                    </h3>
+                </div>
+            </li>
+            <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-6 md:col-span-4 h-[200px]">
+                <div class="w-full h-full">
+                    <img
+                        height="200"
+                        width="200"
+                        loading="lazy" 
+                        fetchpriority="low"
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-master-industry.jpg"
+                        class="w-full object-cover h-[200px] rounded-xl"/>
+                </div>
+                <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                <div class="flex flex-col justify-end p-4">
+                    <h3 class="max-w-[200px] text-xl font-semibold text-white">
+                        {{.Content.bus_eng_case_four}}
+                    </h3>
+                </div>
+            </li>
+        </ul>
+
+        <div class="flex justify-center gap-4">
+            {{ template "learn-more" . }}
+        </div>
+    </div>
+</section>
+
+
+
+{{/* ABOUT SECTION */}}
+<section id="about">
+    <div class="hide max-w-[1000px] mx-auto grid sm:grid-cols-2">
+        <section class="w-full h-full">
+            <img 
+                height="500"
+                width="500"
+                loading="lazy"
+                fetchpriority="low"
+                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-about-teacher.png" 
+                class="w-full h-full object-cover mx-auto"/>
+        </section>
+        <section class="py-8 text-center grid place-content-center">
+            <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8 text-purple-950">
+                {{ .Content.about_heading }}
+            </h2>
+            <div class="flex flex-col max-w-[200px] mx-auto gap-2">
+                <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                    {{ .Content.about_one }}
+                </span>
+                <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                    {{ .Content.about_two }}
+                </span>
+                <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                    {{ .Content.about_three }}
+                </span>
+                <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                    {{ .Content.about_four }}
+                </span>
+                <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                    {{ .Content.about_five }}
+                </span>
+                <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                    {{ .Content.about_six }}
+                </span>
+                <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                    {{ .Content.about_seven }}
+                </span>
+            </div>
+        </section>
+    </div>
+</section>
+
+
+{{/* CONTACT SECTION */}}
+<section id="contact" class="bg-gradient-to-r from-purple-700/80 to-purple-800/80 text-white py-24 md:py-24">
+    <div class="hide max-w-[500px] mx-auto bg-white text-black px-6 py-6 sm:rounded-2xl">
+        <h2 class="text-2xl font-semibold text-purple-900 mb-2">
+            {{ .Content.contact_heading }}
+        </h2>
+        <p>
+            {{ .Content.contact_description }}
+        </p>
+        <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
+            <h3>{{ .Content.contact_line }}</h3>
+            <hr />
+        </div>
+        <img 
+            id="line" 
+            loading="lazy" 
+            src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/tr-mark-qr.jpg" 
+            class="w-full max-w-[200px] mx-auto"/>
+        <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
+            <h3>
+                {{ .Content.contact_email }}
+            </h3>
+            <hr />
+        </div>
+        {{ template "form" . }}
+    </div>
+</section>
+
+
+{{/* FAQ SECTION */}}
+<section id="faq">
+    <div class="py-16 mx-auto px-4 sm:px-0 bg-deep text-white">
+        <div class="hide max-w-[700px] mx-auto">
+            <h2 class="text-4xl mb-8">
+            {{ .Content.faq_headline }}
+            </h2>
+            {{- range .Faq }}
+            <details name="faq" class="text-xl">
+                <summary class="cursor-pointer">{{.Question}}</summary>
+                <p class="text-lg text-purple-50/90 pt-2">{{.Answer}}</p>
+            </details>
+            <hr class="my-4"/>
+            {{- end}}
+            {{/* <dl>
+                {{- range .Faq }}
+                    <dt class="hide text-xl mb-2 cursor-pointer">
+                        {{.Question}}
+                    </dt>
+                    <dd class="hidden max-w-[60ch] text-purple-50/90">
+                        {{.Answer}}
+                    </dd>
+                    <hr class="my-4"/>
+                {{- end }}
+            </dl> */}}
+            <p class="text-purple-50/90">
+                {{ .Content.faq_description }}
+            </p>
+        </div>
+    </div>
+</section>
 {{ end }}

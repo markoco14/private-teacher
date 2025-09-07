@@ -27,8 +27,8 @@ type PageData struct {
 type HeroContent struct {
 	Headline   string `json:"headline"`
 	Subhead    string `json:"subhead"`
-	CtaEnglish string `json:"cta_english"`
-	CtaCode    string `json:"cta_code"`
+	CtaClasses string `json:"cta_classes"`
+	CtaTeacher    string `json:"cta_teacher"`
 }
 
 type PageContent struct {
