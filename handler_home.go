@@ -24,17 +24,6 @@ type PageData struct {
 	Errors     []formError               `json:"errors"`
 }
 
-type HeroContent struct {
-	Headline   string `json:"headline"`
-	Subhead    string `json:"subhead"`
-	CtaClasses string `json:"cta_classes"`
-	CtaTeacher    string `json:"cta_teacher"`
-}
-
-type PageContent struct {
-	Hero HeroContent `json:"hero"`
-}
-
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)

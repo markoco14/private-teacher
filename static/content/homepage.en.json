@@ -1,8 +1,12 @@
 {
+    "base": {
+        "logo": "Teacher Mark",
+        "rights": "All rights reserved Teacher Mark 2025"
+    },
     "hero": {
         "headline": "Achieve confidence, comfort, and clarity in English.",
-        "subhead": "Private English and Coding classes for students of all levels. From beginner to advanced, improve your English and learn new skills to help you achieve your goals.",
-        "cta_classes": "See The Classes",
-        "cta_teacher": "Meet The Teacher"
+        "subhead": "Private English and Coding classes for all students—from beginner to advanced. Improve your English and learn new skills to help you achieve your goals.",
+        "cta_classes": "Find a class",
+        "cta_teacher": "Meet the teacher"
     }
 }
