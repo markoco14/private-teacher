@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Teacher Mark English Classes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="English classes in Taiwan with Teacher Mark.">
+    <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
+    <meta name="author" content="Mark O'Connor">
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#020517',
+                        deephover: '#0a1971'
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+
+        .stacked {
+            display: grid;
+        }
+
+        .stacked > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
+        .hide {
+            opacity: 0;
+            filter: blur(2);
+            transform: translateY(10%);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
+        }
+
+        @media(pefers-reduced-motion) {
+            .hide {
+                transition: none;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <header class="w-full h-[48px] bg-deep text-white flex items-center z-10">
+        <div class="w-full max-w-[1000px] mx-auto px-4 xl:px-0">
+            <span>
+                Teacher Mark
+            </span>
+        </div>
+    </header>
+    <main>
+        <section class="min-h-screen">
+            <h1>The Coding classes page</h1>
+        </section>
+    </main>
+    <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
+        <p>&copy; {{.NewContent.Base.Rights}}</p>
+    </footer>
+
+    <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
+    <script src="static/js/behaviors/observer.js"></script>
+    <script src="static/js/behaviors/toast.js"></script>
+  </body>
+</html>   
+

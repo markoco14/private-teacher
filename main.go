@@ -56,6 +56,9 @@ func main() {
 	// Routes
 	http.HandleFunc("/", HomeHandler)
 	http.HandleFunc("/contact", ContactHandler)
+	http.HandleFunc("/english", English)
+	http.HandleFunc("/coding", Coding)
+
 
 	// Start the server
 	fmt.Println("Server is running on port 8080")
