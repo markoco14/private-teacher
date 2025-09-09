@@ -82,7 +82,190 @@
     </header>
     <main>
         <section>
-            <h1>The English classes page</h1>
+            <div class="max-w-[500px] md:max-w-[800px] mx-auto py-32 px-4">
+                <h1 class="text-5xl text-balance md:text-center font-semibold mb-4">English classes for every age and every level.</h1>
+                <p class="text-lg">Choose the classes designed for your age, ability, and learning goals.</p>
+                <ul>
+                    <li><a href="#kids">Kids</a></li>
+                    <li><a href="#adults">Adult Conversation</a></li>
+                    <li><a href="#test-prep">Test Preparation</a></li>
+                    <li><a href="#business-english">Business English</a></li>
+                </ul>
+            </div>
+        </section>
+        
+        {{/* KID CLASSES SECTION */}}
+        <section id="kids" class="min-h-[50vh] py-32 bg-gray-50">
+            <div class="hide max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">Kids English Classes</h2>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">Classes for Elementary and High School students. Book private and semi-private classes custom designed for your needs and ability level.</p>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">Classes practice all 4 fundamental language skills using a natural learning approach. Students develop the ability to think in English first without the need to translate from Chinese.</p>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">Through a variety of written and verbal activities, students develop North Amerian pronunciation and natural English grammar.</p>
+                <ul class="grid grid-cols-2 grid-rows-2">
+                    <li><h3>Speaking</h3><img src="./static/images/kids-speaking-skills.jpg" class="aspect-video object-cover"/></li>
+                    <li><h3>Reading</h3><img src="./static/images/kids-reading-skills.jpg" class="aspect-video object-cover"/></li>
+                    <li><h3>Writing</h3><img src="./static/images/kids-writing-skills-2.jpg" class="aspect-video object-cover"/></li>
+                    <li><h3>Listening</h3><img src="./static/images/kids-listening-skills.jpg" class="aspect-video object-cover"/></li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        {{/* ADULT CLASSES SECTION */}}
+        <section id="adults" class="min-h-[50vh] py-32 bg-gray-50">
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">Adult Conversation Classes</h2>
+                <p class="text-lg max-w-[65ch] mx-auto">Improve your English with topic-based conversation classes. Learn new vocabulary, proper pronunciation, and perfect your grammar while exploring real-world topics selected for your interests.</p>
+            </div>
+        </section>
+
+        
+        {{/* TEST PREPARATION SECTION */}}
+        <section id="test-prep" class="min-h-[50vh] py-32 bg-gray-50">
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">{{.Content.test_prep_heading}}</h2>
+                <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_ielts}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-student-with-book.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.Content.test_prep_ielts_description}}</p>
+                    </div>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_gept}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-students-classroom.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.Content.test_prep_gept_description}}</p>
+                    </div>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_other}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-write-test.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.Content.test_prep_other_description}}</p>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4">
+                    {{ template "learn-more" . }}
+                </div>
+            </div>
+        </section>
+
+
+
+        {{/* BUSINESS ENGLISH SECTION */}}
+        <section id="business-english" class="min-h-[50vh] bg-purple-200 py-32">
+            <div class="hide">
+                <div class="px-4 max-w-[600px] mx-auto">
+                    <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">
+                        {{.Content.bus_eng_heading}}
+                    </h2>
+                    <p class="text-lg text-gray-800 mb-4">
+                        {{.Content.bus_eng_description}}
+                    </p>
+                </div>
+
+                <ul class="px-2 max-w-[800px] mx-auto grid grid-rows-4 sm:grid-rows-3 md:grid-rows-2 sm:grid-cols-6 md:grid-cols-8 gap-4 mb-16">
+                    <li class="row-span-1 md:row-span-2 stacked rounded-xl sm:col-span-6 md:col-span-8 h-[200px]">
+                        <div class="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 sm:bg-purple-950 rounded-xl">
+                            <div class="stacked sm:col-start-2 sm:col-span-2">
+                                <img
+                                    height="200"
+                                    widht="200"
+                                    loading="lazy"
+                                    fetchpriority="low"
+                                    src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-presentation.jpg" 
+                                    class="w-full object-cover h-[200px] rounded-xl sm:rounded-tr-xl sm:rounded-br-xl"/>
+                                <div class="bg-purple-950/50 sm:bg-gradient-to-r sm:from-purple-950 sm:to-transparent rounded-xl sm:rounded-tr-xl sm:rounded-br-xl"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[250px] text-2xl font-semibold text-white">
+                                {{.Content.bus_eng_case_one}}
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-3 md:col-span-2 h-[200px]">
+                        <div class="w-full h-full">
+                            <img
+                                height="200"
+                                wids="200"
+                                loading="lazy"
+                                fetchpriority="low" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-write-effectively.jpg" 
+                                class="w-full object-cover h-[200px] rounded-xl"/>
+                        </div>
+                        <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[125px] text-xl text-white font-semibold">
+                                {{.Content.bus_eng_case_two}}
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-3 md:col-span-2 h-[200px]">
+                        <div class="w-full h-full">
+                            <img
+                                height="200"
+                                width="200"
+                                loading="lazy"
+                                fetchpriority="low"
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-understand.jpg"
+                                class="w-full object-cover h-[200px] rounded-xl"/>
+                        </div>
+                        <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[200px] text-xl text-white font-semibold">
+                                {{.Content.bus_eng_case_three}}
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-6 md:col-span-4 h-[200px]">
+                        <div class="w-full h-full">
+                            <img
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                fetchpriority="low"
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-master-industry.jpg"
+                                class="w-full object-cover h-[200px] rounded-xl"/>
+                        </div>
+                        <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[200px] text-xl font-semibold text-white">
+                                {{.Content.bus_eng_case_four}}
+                            </h3>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="flex justify-center gap-4">
+                    {{ template "learn-more" . }}
+                </div>
+            </div>
         </section>
     </main>
     <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
