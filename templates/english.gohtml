@@ -88,8 +88,8 @@
                 <ul>
                     <li><a href="#kids">Kids</a></li>
                     <li><a href="#adults">Adult Conversation</a></li>
-                    <li><a href="#test-prep">Test Preparation</a></li>
                     <li><a href="#business-english">Business English</a></li>
+                    <li><a href="#test-prep">Test Preparation</a></li>
                 </ul>
             </div>
         </section>
@@ -104,98 +104,61 @@
                 <ul class="grid sm:grid-cols-2 grid-rows-2 gap-4">
                     <li class="stacked text-white">
                         <img src="./static/images/kids-speaking-skills.jpg" class="aspect-video object-cover rounded-md"/>
-                        <div class="p-2 text-balanced text-center w-full h-full grid place-content-center bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="max-w-[250px]">Be heard by <strong>Speaking</strong></h3>
+                        <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">Be heard. <strong>Speak</strong></h3>
                         </div>
                     </li>
                     <li class="stacked text-white">
                         <img src="./static/images/kids-reading-skills.jpg" class="aspect-video object-cover rounded-md"/>
-                        <div class="p-2 text-balanced text-center w-full h-full grid place-content-center bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="max-w-[250px]">Explore the world through <strong>Reading</strong></h3>
+                        <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">Explore the world. <strong>Read</strong></h3>
                         </div>
                     </li>
                     <li class="stacked text-white">
                         <img src="./static/images/kids-writing-skills-2.jpg" class="aspect-video object-cover rounded-md"/>
-                        <div class="p-2 text-balanced text-center w-full h-full grid place-content-center bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="max-w-[250px]">Share your ideas by <strong>Writing</strong></h3>
+                        <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">Share your ideas. <strong>Write</strong></h3>
                         </div>
                     </li>
                     <li class="stacked text-white">
                         <img src="./static/images/kids-listening-skills.jpg" class="aspect-video object-cover rounded-md"/>
-                        <div class="p-2 text-balanced text-center w-full h-full grid place-content-center bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="max-w-[250px]">Seek to understand by <strong>Listening</strong></h3>
+                        <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">Seek to understand. <strong>Listen</strong></h3>
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
 
-
-
         {{/* ADULT CLASSES SECTION */}}
-        <section id="adults" class="min-h-[50vh] py-32 bg-gray-50">
+        <section id="adults" class="min-h-[50vh] py-32 bg-gray-50 text-lg">
             <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
                 <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">Adult Conversation Classes</h2>
-                <p class="text-lg max-w-[65ch] mx-auto">Improve your English with topic-based conversation classes. Learn new vocabulary, proper pronunciation, and perfect your grammar while exploring real-world topics selected for your interests.</p>
-            </div>
-        </section>
-
-        
-        {{/* TEST PREPARATION SECTION */}}
-        <section id="test-prep" class="min-h-[50vh] py-32 bg-gray-50">
-            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
-                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">{{.Content.test_prep_heading}}</h2>
-                <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_ielts}}</h3>
-                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
-                            <img 
-                                height="200"
-                                width="200"
-                                loading="lazy" 
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-student-with-book.jpg" 
-                                alt="A girl looking up from a book."
-                                class="w-full h-full object-cover"/>
-                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">Improve your English with topic-based conversation classes. Learn new vocabulary, proper pronunciation, and perfect your grammar while exploring real-world topics selected for your interests.</p>
+                <div class="grid md:grid-cols-2 md:gap-4 mb-4 md:mb-8">
+                    <div class="stacked text-white mb-4 md:mb-0">
+                        <img src="./static/images/adults-coffee-min.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-800/40 text-2xl rounded-md">
+                            <h3 class="text-2xl text-pretty">Tired of searching for the right words?</h3>
                         </div>
-                        <p class="py-2 px-4">{{.Content.test_prep_ielts_description}}</p>
                     </div>
-                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_gept}}</h3>
-                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
-                            <img 
-                                height="200"
-                                width="200"
-                                loading="lazy" 
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-students-classroom.jpg" 
-                                alt="A girl looking up from a book."
-                                class="w-full h-full object-cover"/>
-                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
-                        </div>
-                        <p class="py-2 px-4">{{.Content.test_prep_gept_description}}</p>
-                    </div>
-                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
-                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_other}}</h3>
-                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
-                            <img 
-                                height="200"
-                                width="200"
-                                loading="lazy" 
-                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-write-test.jpg" 
-                                alt="A girl looking up from a book."
-                                class="w-full h-full object-cover"/>
-                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
-                        </div>
-                        <p class="py-2 px-4">{{.Content.test_prep_other_description}}</p>
+                    <div class="flex items-center">
+                        <p>Join classes that give you confidence speaking English in the real world. Move beyond textbooks; master new vocabulary and proper grammar in a relaxed, friendly environment. You'll discuss real-world topics and gain the fluency you need to succeed in your career, social life, and everyday conversations.</p>
                     </div>
                 </div>
-                <div class="flex justify-center gap-4">
-                    {{ template "learn-more" . }}
+                <div class="grid md:grid-cols-2 md:gap-4">
+                    <div class="stacked md:col-start-2 text-white mb-4 md:mb-0">
+                        <img src="./static/images/adults-laughing-min.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-800/40 text-2xl rounded-md">
+                            <h3 class="text-2xl text-pretty">Feel confident connecting with others.</h3>
+                        </div>
+                    </div>
+                    <div class="md:row-start-1 md:col-start-1 flex items-center">
+                        <p>Go from feeling hesitant to feeling heard. Our topic-based conversation classes give you space to practice and perfect your English. You’ll engage in dynamic discussions, get real-time corrections, and learn to speak more naturally—you’ll build the confidence to express yourself clearly and connect with others in your daily life.</p>
+                    </div>
                 </div>
             </div>
         </section>
-
-
 
         {{/* BUSINESS ENGLISH SECTION */}}
         <section id="business-english" class="min-h-[50vh] bg-purple-200 py-32">
@@ -282,6 +245,60 @@
                     </li>
                 </ul>
 
+                <div class="flex justify-center gap-4">
+                    {{ template "learn-more" . }}
+                </div>
+            </div>
+        </section>
+
+        {{/* TEST PREPARATION SECTION */}}
+        <section id="test-prep" class="min-h-[50vh] py-32 bg-gray-50">
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">{{.Content.test_prep_heading}}</h2>
+                <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_ielts}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-student-with-book.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.Content.test_prep_ielts_description}}</p>
+                    </div>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_gept}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-students-classroom.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.Content.test_prep_gept_description}}</p>
+                    </div>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.Content.test_prep_other}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-write-test.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.Content.test_prep_other_description}}</p>
+                    </div>
+                </div>
                 <div class="flex justify-center gap-4">
                     {{ template "learn-more" . }}
                 </div>
