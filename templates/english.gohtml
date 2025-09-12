@@ -65,6 +65,10 @@
             display: none;
         }
 
+        dialog::backdrop {
+            background-color: rgba(72, 0, 96, 0.4);
+        }
+
         @media(pefers-reduced-motion) {
             .hide {
                 transition: none;
@@ -109,7 +113,7 @@
                 <p class="text-lg max-w-[65ch] mx-auto mb-4">Classes for Elementary and High School students. Book private and semi-private classes custom designed for your needs and ability level.</p>
                 <p class="text-lg max-w-[65ch] mx-auto mb-4">Improve all 4 fundamental language skills using a natural learning approach. Students develop the ability to think in English first without the need to translate from Chinese.</p>
                 <p class="text-lg max-w-[65ch] mx-auto mb-4">Through a variety of written and verbal activities, students develop North Amerian pronunciation and natural English grammar.</p>
-                <ul class="grid sm:grid-cols-2 grid-rows-2 gap-4">
+                <ul class="grid sm:grid-cols-2 grid-rows-2 gap-4 mb-16">
                     <li class="stacked text-white">
                         <img src="./static/images/kids-speaking-skills.jpg" class="aspect-video object-cover rounded-md"/>
                         <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
@@ -135,6 +139,9 @@
                         </div>
                     </li>
                 </ul>
+                <div class="flex justify-center gap-4">
+                    {{ template "open-modal" . }}
+                </div>
             </div>
         </section>
 
@@ -154,7 +161,7 @@
                         <p>Join classes that give you confidence speaking English in the real world. Move beyond textbooks; master new vocabulary and proper grammar in a relaxed, friendly environment. You'll discuss real-world topics and gain the fluency you need to succeed in your career, social life, and everyday conversations.</p>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 md:gap-4">
+                <div class="grid md:grid-cols-2 md:gap-4 mb-16">
                     <div class="stacked md:col-start-2 text-white mb-4 md:mb-0">
                         <img src="./static/images/adults-laughing-min.jpg" class="aspect-video object-cover rounded-md"/>
                         <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-800/40 text-2xl rounded-md">
@@ -164,6 +171,9 @@
                     <div class="md:row-start-1 md:col-start-1 flex items-center">
                         <p>Go from feeling hesitant to feeling heard. Our topic-based conversation classes give you space to practice and perfect your English. You’ll engage in dynamic discussions, get real-time corrections, and learn to speak more naturally—you’ll build the confidence to express yourself clearly and connect with others in your daily life.</p>
                     </div>
+                </div>
+                <div class="flex justify-center gap-4">
+                    {{ template "open-modal" . }}
                 </div>
             </div>
         </section>
@@ -254,7 +264,7 @@
                 </ul>
 
                 <div class="flex justify-center gap-4">
-                    {{ template "learn-more" . }}
+                    {{ template "open-modal" . }}
                 </div>
             </div>
         </section>
@@ -308,10 +318,26 @@
                     </div>
                 </div>
                 <div class="flex justify-center gap-4">
-                    {{ template "learn-more" . }}
+                    {{ template "open-modal" . }}
                 </div>
             </div>
         </section>
+        <dialog class="p-2 md:p-4 rounded-md">
+            {{ template "form" . }}
+            <div class="mt-4 flex justify-center">
+                <button 
+                    onclick="
+                        document.querySelector('dialog').close();
+                        document.querySelector('body').classList.toggle('overflow-y-hidden');" 
+                    class="rounded-full border p-1 stroke-red-500 border-red-500">
+
+                    <svg width="18px" height="18px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 21.32L21 3.32001"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 3.32001L21 21.32"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </dialog>
     </main>
     <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
         <p>&copy; {{.NewContent.Base.Rights}}</p>
