@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Teacher Mark English Classes</title>
+    <title>Teacher Mark English Classes | Coding</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="English classes in Taiwan with Teacher Mark.">
@@ -84,15 +84,35 @@
   <body>
     <header class="w-full h-[48px] bg-deep text-white flex items-center z-10">
         <div class="w-full max-w-[1000px] mx-auto px-4 xl:px-0">
-            <span>
+            <a href="/">
                 Teacher Mark
-            </span>
+            </a>
         </div>
     </header>
     <main>
-        <section class="min-h-screen">
-            <h1>The Coding classes page</h1>
+        <section id="business-english" class="min-h-screen bg-purple-200 py-32">
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto">
+                <h1 class="text-5xl text-balance md:text-center font-semibold mb-8">More information about Coding Classes coming soon.</h1>
+                <p class="max-w-[70ch] mx-auto text-lg mb-8">I'm working on the curriculum for coding classes and will start offering this service after October 1, 2025. If you are interested in Coding Classes for yourself or your teenagers, please contact me with the Contact button below. I will respond to your email within 24 hours.</p>
+                <div class="flex justify-center gap-4">
+                    {{ template "contact-coding" . }}
+                </div>
+            </div>
         </section>
+        <dialog class="p-2 md:p-4 rounded-md">
+            {{ template "form" . }}
+            <div class="mt-4 flex justify-center">
+                <button 
+                    onclick="document.querySelector('dialog').close();" 
+                    class="rounded-full border p-1 stroke-red-500 border-red-500">
+
+                    <svg width="18px" height="18px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 21.32L21 3.32001"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 3.32001L21 21.32"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </dialog>
     </main>
     <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
         <p>&copy; {{.NewContent.Base.Rights}}</p>
