@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -35,33 +34,29 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var lang string
-	cookie, err := r.Cookie("SITE_LANG")
-	if errors.Is(err, http.ErrNoCookie) {
-		lang = "en"
+	siteLang, cookieFound := getSiteLanguage(r)
+	if !cookieFound {
 		newCookie := http.Cookie{
 			Name:     "SITE_LANG",
-			Value:    "en",
+			Value:    siteLang,
 			Expires:  time.Now().Add(365 * 24 * time.Hour),
 			HttpOnly: true,
 			SameSite: http.SameSiteLaxMode,
 			Secure:   true,
 		}
 		http.SetCookie(w, &newCookie)
-	} else {
-		lang = cookie.Value
 	}
 
 	heroContentLocation := "./static/content/homepage.en.json"
 	var pageContentJSON PageContent
 	fileBytes, _ := os.ReadFile(heroContentLocation)
-	err = json.Unmarshal(fileBytes, &pageContentJSON)
+	err := json.Unmarshal(fileBytes, &pageContentJSON)
 	if err != nil {
 		fmt.Println("error getting json content")
 	}
 
 	var fileLocation string
-	if lang == "en" {
+	if siteLang == "en" {
 		fileLocation = "./static/content/homepage.en.txt"
 	} else {
 		fileLocation = "./static/content/homepage.zh.txt"
@@ -77,7 +72,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if lang == "en" {
+	if siteLang == "en" {
 		fileLocation = "./static/content/faq.en.txt"
 	} else {
 		fileLocation = "./static/content/faq.zh.txt"
@@ -101,7 +96,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	pageData := PageData{
 		NewContent: pageContentJSON,
 		Content:    pageContent,
-		Lang:       lang,
+		Lang:       siteLang,
 		Faq:        faqList,
 		Form:       formValues{},
 		Errors:     []formError{},

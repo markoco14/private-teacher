@@ -2,11 +2,22 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"strings"
 )
+
+func getSiteLanguage( r *http.Request) (string, bool) {
+	cookie, err := r.Cookie("SITE_LANG")
+	if errors.Is(err, http.ErrNoCookie) {
+		return "en", false
+	}
+	return cookie.Value, true
+}
+
 
 func getFaqContent(location string) (string, error) {
 	content, err := os.ReadFile(location)
