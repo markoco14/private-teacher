@@ -180,29 +180,29 @@
                 </section>
                 <section class="py-8 text-center grid place-content-center">
                     <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8 text-purple-950">
-                        {{ .Content.about_heading }}
+                        {{ .NewContent.About.Headline }}
                     </h2>
                     <div class="flex flex-col max-w-[200px] mx-auto gap-2">
                         <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
-                            {{ .Content.about_one }}
+                            {{ .NewContent.About.One }}
                         </span>
                         <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
-                            {{ .Content.about_two }}
+                            {{ .NewContent.About.Two }}
                         </span>
                         <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
-                            {{ .Content.about_three }}
+                            {{ .NewContent.About.Three }}
                         </span>
                         <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
-                            {{ .Content.about_four }}
+                            {{ .NewContent.About.Four }}
                         </span>
                         <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
-                            {{ .Content.about_five }}
+                            {{ .NewContent.About.Five }}
                         </span>
                         <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
-                            {{ .Content.about_six }}
+                            {{ .NewContent.About.Six }}
                         </span>
                         <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
-                            {{ .Content.about_seven }}
+                            {{ .NewContent.About.Seven }}
                         </span>
                     </div>
                 </section>
@@ -214,13 +214,13 @@
         <section id="contact" class="bg-gradient-to-r from-purple-700/80 to-purple-800/80 text-white py-24 md:py-24">
             <div class="hide max-w-[500px] mx-auto bg-white text-black px-6 py-6 sm:rounded-2xl">
                 <h2 class="text-2xl font-semibold text-purple-900 mb-2">
-                    {{ .Content.contact_heading }}
+                    {{ .NewContent.Contact.Headline }}
                 </h2>
                 <p>
-                    {{ .Content.contact_description }}
+                    {{ .NewContent.Contact.Description }}
                 </p>
                 <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
-                    <h3>{{ .Content.contact_line }}</h3>
+                    <h3>{{ .NewContent.Contact.Line }}</h3>
                     <hr />
                 </div>
                 <img 
@@ -230,7 +230,7 @@
                     class="w-full max-w-[200px] mx-auto"/>
                 <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
                     <h3>
-                        {{ .Content.contact_email }}
+                        {{ .NewContent.Contact.Email }}
                     </h3>
                     <hr />
                 </div>

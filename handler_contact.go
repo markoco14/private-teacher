@@ -96,6 +96,15 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			lang = "zh"
 		}
 
+		
+		heroContentLocation := "./static/content/homepage.en.json"
+		var pageContentJSON PageContent
+		fileBytes, _ := os.ReadFile(heroContentLocation)
+		err := json.Unmarshal(fileBytes, &pageContentJSON)
+		if err != nil {
+			fmt.Println("error getting json content")
+		}
+
 		var fileLocation string
 		if lang == "en" {
 			fileLocation = "./static/content/homepage.en.txt"
@@ -123,6 +132,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 
 		if len(errors) > 0 {
 			type responseWithErrors struct {
+				NewContent PageContent               `json:"NewContent"`
 				Content map[string]string
 				Form   formValues
 				Errors []formError
@@ -130,6 +140,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			}
 
 			data := responseWithErrors{
+				NewContent: pageContentJSON,
 				Content: pageContent,
 				Form:   form,
 				Errors: errors,
@@ -161,6 +172,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
 
 			type response struct {
+				NewContent PageContent               `json:"NewContent"`
 				Content map[string]string
 				Form formValues
 				Errors []formError
@@ -168,6 +180,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			}
 
 			data := response{
+				NewContent: pageContentJSON,
 				Content: pageContent,
 				Form: formValues{},
 				Errors: errors,
