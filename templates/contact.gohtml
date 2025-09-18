@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Teacher Mark English Classes | Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="English classes in Taiwan with Teacher Mark.">
+    <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
+    <meta name="author" content="Mark O'Connor">
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <style rel="stylesheet">
+        :root {
+            @media (prefers-reduced-motion: no-preference) {
+                    @view-transition {
+                            navigation: auto;
+                    }
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#020517',
+                        deephover: '#0a1971'
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+
+        .stacked {
+            display: grid;
+        }
+
+        .stacked > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
+        .hide {
+            opacity: 0;
+            filter: blur(2);
+            transform: translateY(10%);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
+        }
+
+        @media(pefers-reduced-motion) {
+            .hide {
+                transition: none;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    {{ template "header" }}
+    <main class="mt-[72px]">
+
+        {{/* CONTACT SECTION */}}
+        <section id="contact" class="bg-gradient-to-r from-purple-700/80 to-purple-800/80 text-white py-24 md:py-24">
+            <div class="hide max-w-[500px] mx-auto bg-white text-black px-6 py-6 sm:rounded-2xl">
+                <h2 class="text-2xl font-semibold text-purple-900 mb-2">
+                    {{ .Content.contact_heading }}
+                </h2>
+                <p>
+                    {{ .Content.contact_description }}
+                </p>
+                <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
+                    <h3>{{ .Content.contact_line }}</h3>
+                    <hr />
+                </div>
+                <img 
+                    id="line" 
+                    loading="lazy" 
+                    src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/tr-mark-qr.jpg" 
+                    class="w-full max-w-[200px] mx-auto"/>
+                <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
+                    <h3>
+                        {{ .Content.contact_email }}
+                    </h3>
+                    <hr />
+                </div>
+                {{ template "form" . }}
+            </div>
+        </section>
+
+
+    </main>
+    <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
+        <p>&copy; {{.NewContent.Base.Rights}}</p>
+    </footer>
+
+    <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
+    <script src="static/js/behaviors/observer.js"></script>
+    <script src="static/js/behaviors/toast.js"></script>
+  </body>
+</html>   
+
