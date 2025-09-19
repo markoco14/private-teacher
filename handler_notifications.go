@@ -3,10 +3,21 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"time"
+	"regexp"
 )
 
 type Data struct {
+	Form   subscribeFormValues  `json:"form"`
+	Errors []subscribeFormError `json:"errors"`
+}
+
+type subscribeFormValues struct {
+	Subscribe string `json:"subscribe"`
+}
+
+type subscribeFormError struct {
+	Field   string
+	Message string
 }
 
 // type PageData struct {
@@ -22,11 +33,43 @@ func NotificationsHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodPost:
 		fmt.Println("post to notifications")
-		time.Sleep(5 * time.Second)
 
-		pageData := Data{}
+		form := subscribeFormValues{
+			Subscribe: r.FormValue("subscribe"),
+		}
 
-		err := templates.ExecuteTemplate(w, "subscribe.gohtml", pageData)
+		var formErrors []subscribeFormError
+
+		if form.Subscribe == "" {
+			formErrors = append(
+				formErrors,
+				subscribeFormError{
+					Field:   "subscribe",
+					Message: "Email is required.",
+				})
+		}
+
+		if form.Subscribe != "" {
+			emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
+			matched, err := regexp.MatchString(emailRegex, form.Subscribe)
+			if err != nil || !matched {
+				formErrors = append(
+					formErrors,
+					subscribeFormError{
+						Field:   "subscribe",
+						Message: "Invalid email address",
+					})
+			}
+		}
+
+		fmt.Println(formErrors)
+
+		pageData := Data{
+			Form: subscribeFormValues{},
+			Errors: formErrors,
+		}
+
+		err := templates.ExecuteTemplate(w, "subscribe", pageData)
 		if err != nil {
 			fmt.Println("Error rendering index template", err)
 			http.Error(w, "Error rendering index template", http.StatusInternalServerError)

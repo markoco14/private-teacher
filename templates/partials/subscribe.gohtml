@@ -1,10 +1,20 @@
+{{ define "subscribe" }}
 <form hx-post="/notifications" hx-disabled-elt="find button">
     <div class="grid mb-4">
-        <label for="notifications-email" class="sr-only">Email</label>
-        <input type="text" name="notifications-email" id="notifications-email" placeholder="Enter your email to be notified about coding classes." class="p-2 text-lg border rounded-md"/>
+        <label for="subscribe" class="sr-only">Email</label>
+        <input type="text" name="subscribe" id="subscribe" placeholder="Enter your email for coding class notifications." class="p-2 text-lg border rounded-md mb-2"/>
+         <p class="h-5 text-right text-sm">
+            {{range .Errors}}
+                {{if eq .Field "subscribe"}}
+                    <span class="text-red-500">{{.Message}}</span>
+                {{end}}
+            {{end}}
+        </p>
     </div>
-    <button class="uppercase inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
+    <button class="w-[250px] text-center uppercase inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out mb-8">
         <span class="htmx-indicator-hide">Notify me</span>
-        <span class="htmx-indicator">Saving your email...</span>
+        <span class="htmx-indicator">Saving email...</span>
     </button>
+    <p class="text-sm">*We will only contact you with new information directly related to Coding classes.</p>
 </form>
+{{ end }}
