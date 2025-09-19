@@ -58,6 +58,7 @@ func main() {
 	http.HandleFunc("/contact", ContactHandler)
 	http.HandleFunc("/english", English)
 	http.HandleFunc("/coding", Coding)
+	http.HandleFunc("/notifications", NotificationsHandler)
 
 
 	// Start the server

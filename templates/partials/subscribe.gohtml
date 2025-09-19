@@ -1,0 +1,10 @@
+<form hx-post="/notifications" hx-disabled-elt="find button">
+    <div class="grid mb-4">
+        <label for="notifications-email" class="sr-only">Email</label>
+        <input type="text" name="notifications-email" id="notifications-email" placeholder="Enter your email to be notified about coding classes." class="p-2 text-lg border rounded-md"/>
+    </div>
+    <button class="uppercase inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
+        <span class="htmx-indicator-hide">Notify me</span>
+        <span class="htmx-indicator">Saving your email...</span>
+    </button>
+</form>
