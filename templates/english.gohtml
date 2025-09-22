@@ -116,33 +116,33 @@
         {{/* KID CLASSES SECTION */}}
         <section id="kids" class="min-h-[50vh] py-32 bg-gray-50">
             <div class="hide max-w-[800px] mx-auto px-4 sm:px-0">
-                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">Kids English Classes</h2>
-                <p class="text-lg max-w-[65ch] mx-auto mb-4">Classes for Elementary and High School students. Book private and semi-private classes custom designed for your needs and ability level.</p>
-                <p class="text-lg max-w-[65ch] mx-auto mb-4">Improve all 4 fundamental language skills using a natural learning approach. Students develop the ability to think in English first without the need to translate from Chinese.</p>
-                <p class="text-lg max-w-[65ch] mx-auto mb-4">Through a variety of written and verbal activities, students develop North Amerian pronunciation and natural English grammar.</p>
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">{{ .NewContent.Kids.Headline }}</h2>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">{{ .NewContent.Kids.First }}</p>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">{{ .NewContent.Kids.Second }}</p>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">{{ .NewContent.Kids.Third }}</p>
                 <ul class="grid sm:grid-cols-2 grid-rows-2 gap-4 mb-16">
                     <li class="stacked text-white">
                         <img src="./static/images/kids-speaking-skills.jpg" class="aspect-video object-cover rounded-md"/>
                         <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="">Be heard. <strong>Speak</strong></h3>
+                            <h3 class="">{{ .NewContent.Kids.Speak }}</h3>
                         </div>
                     </li>
                     <li class="stacked text-white">
                         <img src="./static/images/kids-reading-skills.jpg" class="aspect-video object-cover rounded-md"/>
                         <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="">Explore the world. <strong>Read</strong></h3>
+                            <h3 class="">{{ .NewContent.Kids.Read }}</h3>
                         </div>
                     </li>
                     <li class="stacked text-white">
                         <img src="./static/images/kids-writing-skills-2.jpg" class="aspect-video object-cover rounded-md"/>
                         <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="">Share your ideas. <strong>Write</strong></h3>
+                            <h3 class="">{{ .NewContent.Kids.Write }}</h3>
                         </div>
                     </li>
                     <li class="stacked text-white">
                         <img src="./static/images/kids-listening-skills.jpg" class="aspect-video object-cover rounded-md"/>
                         <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
-                            <h3 class="">Seek to understand. <strong>Listen</strong></h3>
+                            <h3 class="">{{ .NewContent.Kids.Listen }}</h3>
                         </div>
                     </li>
                 </ul>

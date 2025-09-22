@@ -1,5 +1,7 @@
 package main
 
+import "html/template"
+
 type BaseContent struct {
 	Logo   string
 	Rights string
@@ -34,9 +36,22 @@ type ContactContent struct {
 	Cta         string
 	CtaPending  string `json:"cta_pending"`
 }
+
+
+type KidsContent struct {
+	Headline string
+	First string
+	Second string
+	Third string
+	Speak template.HTML
+	Read template.HTML
+	Write template.HTML
+	Listen template.HTML
+}
 type PageContent struct {
 	Base  BaseContent
 	Hero  HeroContent
 	About AboutContent
 	Contact ContactContent
+	Kids KidsContent
 }

@@ -29,5 +29,15 @@
         "form_message": "Write a short message about what class you want.",
         "cta": "Send message",
         "cta_pending": "Sending..."
+    },
+    "kids": {
+        "headline": "Kids English Classes",
+        "first": "Classes for Elementary and High School students. Book private and semi-private classes custom designed for your needs and ability level.",
+        "second": "Improve all 4 fundamental language skills using a natural learning approach. Students develop the ability to think in English first without the need to translate from Chinese.",
+        "third": "Through a variety of written and verbal activities, students develop North Amerian pronunciation and natural English grammar.",
+        "speak": "Be heard. <strong>Speak</strong>",
+        "read": "Explore the world. <strong>Read</strong>",
+        "write": "Share your ideas. <strong>Write</strong>",
+        "listen": "Seek to understand. <strong>Listen</strong>"
     }
 }
