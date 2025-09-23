@@ -14,6 +14,31 @@ type FrequentlyAskedQuestion struct {
 	Answer   string `json:"answer"`
 }
 
+type heroContent struct {
+	Headline   string `json:"headline"`
+	Subhead    string `json:"subhead"`
+	CtaClasses string `json:"cta_classes"`
+	CtaTeacher string `json:"cta_teacher"`
+}
+
+type aboutContent struct {
+	Headline string
+	One      string
+	Two      string
+	Three    string
+	Four     string
+	Five     string
+	Six      string
+	Seven    string
+}
+
+type PageContent struct {
+	Base    BaseContent
+	Hero    heroContent
+	About   aboutContent
+	Contact ContactContent
+}
+
 type PageData struct {
 	NewContent PageContent               `json:"NewContent"`
 	Content    map[string]string         `json:"pageContent"`
