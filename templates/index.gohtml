@@ -146,7 +146,13 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#kids" class="underline underline-offset-2 text-purple-950 text-xl">Learn more</a>
+                            <a href="/english#kids" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
                         </div>
                     </li>
                     <li class="flex flex-col bg-white rounded-lg">
@@ -166,7 +172,13 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#adults" class="underline underline-offset-2 text-purple-950 text-xl">Learn more</a>
+                            <a href="/english#adults" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
                         </div>
                     </li>
                     <li class="flex flex-col bg-white rounded-lg">
@@ -186,7 +198,13 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#business-english" class="underline underline-offset-2 text-purple-950 text-xl">Learn more</a>
+                            <a href="/english#business-english" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
                         </div>
                     </li>
                     <li class="flex flex-col bg-white rounded-lg">
@@ -206,7 +224,13 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#test-prep" class="underline underline-offset-2 text-purple-950 text-xl">Learn more</a>
+                            <a href="/english#test-prep" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
                         </div>
                     </li>
                     {{/* <li class="flex flex-col bg-white rounded-lg">
