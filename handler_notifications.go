@@ -1,14 +1,18 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"regexp"
 )
 
 type Data struct {
-	Form   subscribeFormValues  `json:"form"`
-	Errors []subscribeFormError `json:"errors"`
+	NewContent PageContent
+	Lang       string
+	Form       subscribeFormValues  `json:"form"`
+	Errors     []subscribeFormError `json:"errors"`
 }
 
 type subscribeFormValues struct {
@@ -32,7 +36,20 @@ type subscribeFormError struct {
 func NotificationsHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodPost:
-		fmt.Println("post to notifications")
+		siteLang, _ := getSiteLanguage(r)
+		var heroContentLocation string
+		if siteLang == "zh" {
+			heroContentLocation = "./static/locales/zh/home.json"
+		} else {
+			heroContentLocation = "./static/locales/en/home.json"
+		}
+
+		var pageContentJSON PageContent
+		fileBytes, _ := os.ReadFile(heroContentLocation)
+		err := json.Unmarshal(fileBytes, &pageContentJSON)
+		if err != nil {
+			fmt.Println("error getting json content")
+		}
 
 		form := subscribeFormValues{
 			Subscribe: r.FormValue("subscribe"),
@@ -41,11 +58,17 @@ func NotificationsHandler(w http.ResponseWriter, r *http.Request) {
 		var formErrors []subscribeFormError
 
 		if form.Subscribe == "" {
+			var message string
+			if siteLang == "zh" {
+				message = "需要電子郵件。"
+			} else {
+				message = "Email is required."
+			}
 			formErrors = append(
 				formErrors,
 				subscribeFormError{
 					Field:   "subscribe",
-					Message: "Email is required.",
+					Message: message,
 				})
 		}
 
@@ -53,23 +76,29 @@ func NotificationsHandler(w http.ResponseWriter, r *http.Request) {
 			emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
 			matched, err := regexp.MatchString(emailRegex, form.Subscribe)
 			if err != nil || !matched {
+				var message string
+				if siteLang == "zh" {
+					message = "電子郵件地址無效"
+				} else {
+					message = "Invalid email address"
+				}
 				formErrors = append(
 					formErrors,
 					subscribeFormError{
 						Field:   "subscribe",
-						Message: "Invalid email address",
+						Message: message,
 					})
 			}
 		}
 
-		fmt.Println(formErrors)
-
 		pageData := Data{
-			Form:   subscribeFormValues{},
-			Errors: formErrors,
+			NewContent: pageContentJSON,
+			Lang:       siteLang,
+			Form:       subscribeFormValues{},
+			Errors:     formErrors,
 		}
 
-		err := templates.ExecuteTemplate(w, "subscribe", pageData)
+		err = templates.ExecuteTemplate(w, "subscribe", pageData)
 		if err != nil {
 			fmt.Println("Error rendering index template", err)
 			http.Error(w, "Error rendering index template", http.StatusInternalServerError)

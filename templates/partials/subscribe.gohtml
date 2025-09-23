@@ -2,7 +2,13 @@
 <form hx-post="/notifications" hx-disabled-elt="find button">
     <div class="grid mb-4">
         <label for="subscribe" class="sr-only">Email</label>
-        <input type="text" name="subscribe" id="subscribe" placeholder="{{ .NewContent.Coming.Placeholder }}" class="p-2 text-lg border rounded-md mb-2"/>
+        <input 
+            type="text" 
+            name="subscribe" 
+            id="subscribe" 
+            class="p-2 text-lg border rounded-md mb-2"
+            placeholder="{{ .NewContent.Coming.Placeholder }}"
+            />
          <p class="h-5 text-right text-sm">
             {{range .Errors}}
                 {{if eq .Field "subscribe"}}
@@ -15,6 +21,5 @@
         <span class="htmx-indicator-hide">{{ .NewContent.Coming.Cta }}</span>
         <span class="htmx-indicator">{{ .NewContent.Coming.CtaPending }}</span>
     </button>
-    <p class="text-sm">{{ .NewContent.Coming.Disclaimer }}</p>
 </form>
 {{ end }}

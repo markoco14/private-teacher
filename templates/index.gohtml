@@ -254,9 +254,10 @@
         {{/* COMING SOON SECTION */}}
         <section id="coming-soon" class="min-h-[50vh] grid place-content-center py-32 bg-purple-200 text-lg">
             <div class="hide max-w-[65ch] mx-auto px-4 sm:px-0">
-                <h2 class="text-5xl mb-8">{{ .NewContent.Coming.Headline }}</h2>
+                <h2 class="text-pretty text-5xl mb-8">{{ .NewContent.Coming.Headline }}</h2>
                 <p class="mb-4">{{ .NewContent.Coming.One }}</p>
-                <p class="mb-8">{{ .NewContent.Coming.Two }}</p>
+                <p class="mb-4">{{ .NewContent.Coming.Two }}</p>
+                <p class="text-sm mb-8">{{ .NewContent.Coming.Disclaimer }}</p>
                 {{ template "subscribe" . }}
             </div>
         </section>
