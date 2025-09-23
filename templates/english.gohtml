@@ -94,20 +94,20 @@
     <main class="mt-[72px]">
         <section>
             <div class="hide max-w-[500px] md:max-w-[800px] mx-auto py-32 px-4">
-                <h1 class="text-5xl text-balance md:text-center font-semibold mb-4">English classes for every age and every level.</h1>
-                <p class="text-lg md:text-center mb-8">Choose the classes designed for your age, ability, and learning goals.</p>
+                <h1 class="text-5xl text-balance md:text-center font-semibold mb-4">{{ .NewContent.Top.Headline }}</h1>
+                <p class="text-lg md:text-center mb-8">{{ .NewContent.Top.Description }}</p>
                 <ul class="grid md:grid-cols-2 gap-4 text-xl">
                     <li class="border rounded-md text-center">
-                        <a href="#kids" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">Kids</a>
+                        <a href="#kids" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.KidsLink }}</a>
                     </li>
                     <li class="border rounded-md text-center">
-                        <a href="#adults" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">Adult Conversation</a>
+                        <a href="#adults" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.AdultsLink }}</a>
                     </li>
                     <li class="border rounded-md text-center">
-                        <a href="#business-english" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">Business English</a>
+                        <a href="#business-english" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.BusinessLink }}</a>
                     </li>
                     <li class="border rounded-md text-center">
-                        <a href="#test-prep" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">Test Preparation</a>
+                        <a href="#test-prep" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.TestLink }}</a>
                     </li>
                 </ul>
             </div>
@@ -330,7 +330,7 @@
             </div>
         </section>
     </main>
-    
+
     <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
         <p>&copy; {{.NewContent.Base.Rights}}</p>
     </footer>

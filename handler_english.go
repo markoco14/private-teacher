@@ -48,8 +48,18 @@ type testContent struct {
 	OtherDescription string `json:"other_description"`
 }
 
+type topContent struct {
+	Headline     string
+	Description  string
+	KidsLink     string `json:"kids_link"`
+	AdultsLink   string `json:"adults_link"`
+	BusinessLink string `json:"business_link"`
+	TestLink     string `json:"test_link"`
+}
+
 type pageContent struct {
 	Base     BaseContent
+	Top      topContent
 	Kids     kidsContent
 	Adults   adultsContent
 	Business businessContent
@@ -85,7 +95,13 @@ func English(w http.ResponseWriter, r *http.Request) {
 		http.SetCookie(w, &newCookie)
 	}
 
-	heroContentLocation := "./static/content/english.en.json"
+	var heroContentLocation string
+	if siteLang == "zh" {
+		heroContentLocation = "./static/locales/zh/classes.json"
+	} else {
+		heroContentLocation = "./static/locales/en/classes.json"
+	}
+
 	var pageContentJSON pageContent
 	fileBytes, _ := os.ReadFile(heroContentLocation)
 	err := json.Unmarshal(fileBytes, &pageContentJSON)
