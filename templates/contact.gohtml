@@ -82,20 +82,20 @@
     </style>
   </head>
   <body>
-    {{ template "header" }}
+    {{ template "header" . }}
     <main class="mt-[72px]">
 
         {{/* CONTACT SECTION */}}
         <section id="contact" class="bg-gradient-to-r from-purple-700/80 to-purple-800/80 text-white py-24 md:py-24">
             <div class="hide max-w-[500px] mx-auto bg-white text-black px-6 py-6 sm:rounded-2xl">
                 <h2 class="text-2xl font-semibold text-purple-900 mb-2">
-                    {{ .Content.contact_heading }}
+                    {{ .NewContent.Contact.Headline }}
                 </h2>
                 <p>
-                    {{ .Content.contact_description }}
+                    {{ .NewContent.Contact.Description }}
                 </p>
                 <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
-                    <h3>{{ .Content.contact_line }}</h3>
+                    <h3>{{ .NewContent.Contact.Line }}</h3>
                     <hr />
                 </div>
                 <img 
@@ -105,7 +105,7 @@
                     class="w-full max-w-[200px] mx-auto"/>
                 <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
                     <h3>
-                        {{ .Content.contact_email }}
+                        {{ .NewContent.Contact.Email }}
                     </h3>
                     <hr />
                 </div>

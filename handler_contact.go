@@ -2,12 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -26,33 +24,35 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 
 	case http.MethodGet:
-		var lang string
-		cookie, err := r.Cookie("SITE_LANG")
-		if errors.Is(err, http.ErrNoCookie) {
-			lang = "en"
+		siteLang, cookieFound := getSiteLanguage(r)
+		if !cookieFound {
 			newCookie := http.Cookie{
 				Name:     "SITE_LANG",
-				Value:    "en",
+				Value:    siteLang,
 				Expires:  time.Now().Add(365 * 24 * time.Hour),
 				HttpOnly: true,
 				SameSite: http.SameSiteLaxMode,
 				Secure:   true,
 			}
 			http.SetCookie(w, &newCookie)
-		} else {
-			lang = cookie.Value
 		}
 
-		heroContentLocation := "./static/content/homepage.en.json"
+		var heroContentLocation string
+		if siteLang == "zh" {
+			heroContentLocation = "./static/locales/zh/home.json"
+		} else {
+			heroContentLocation = "./static/locales/en/home.json"
+		}
+		
 		var pageContentJSON PageContent
 		fileBytes, _ := os.ReadFile(heroContentLocation)
-		err = json.Unmarshal(fileBytes, &pageContentJSON)
+		err := json.Unmarshal(fileBytes, &pageContentJSON)
 		if err != nil {
 			fmt.Println("error getting json content")
 		}
 
 		var fileLocation string
-		if lang == "en" {
+		if siteLang == "en" {
 			fileLocation = "./static/content/homepage.en.txt"
 		} else {
 			fileLocation = "./static/content/homepage.zh.txt"
@@ -71,7 +71,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		pageData := PageData{
 			NewContent: pageContentJSON,
 			Content:    pageContent,
-			Lang:       lang,
+			Lang:       siteLang,
 			Form:       formValues{},
 			Errors:     []formError{},
 		}
@@ -89,14 +89,26 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		var lang string
-		if strings.Contains(r.Header.Get("Referer"), "en") {
-			lang = "en"
-		} else {
-			lang = "zh"
+		siteLang, cookieFound := getSiteLanguage(r)
+		if !cookieFound {
+			newCookie := http.Cookie{
+				Name:     "SITE_LANG",
+				Value:    siteLang,
+				Expires:  time.Now().Add(365 * 24 * time.Hour),
+				HttpOnly: true,
+				SameSite: http.SameSiteLaxMode,
+				Secure:   true,
+			}
+			http.SetCookie(w, &newCookie)
 		}
 
-		heroContentLocation := "./static/content/homepage.en.json"
+		var heroContentLocation string
+		if siteLang == "zh" {
+			heroContentLocation = "./static/locales/zh/home.json"
+		} else {
+			heroContentLocation = "./static/locales/en/home.json"
+		}
+		
 		var pageContentJSON PageContent
 		fileBytes, _ := os.ReadFile(heroContentLocation)
 		err := json.Unmarshal(fileBytes, &pageContentJSON)
@@ -105,7 +117,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		var fileLocation string
-		if lang == "en" {
+		if siteLang == "en" {
 			fileLocation = "./static/content/homepage.en.txt"
 		} else {
 			fileLocation = "./static/content/homepage.zh.txt"
@@ -127,7 +139,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			Message: r.FormValue("message"),
 		}
 
-		errors := validateFormData(form, lang)
+		errors := validateFormData(form, siteLang)
 
 		if len(errors) > 0 {
 			type responseWithErrors struct {
@@ -143,7 +155,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 				Content:    pageContent,
 				Form:       form,
 				Errors:     errors,
-				Lang:       lang,
+				Lang:       siteLang,
 			}
 
 			err := templates.ExecuteTemplate(w, "form", data)
@@ -160,7 +172,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		err = emailPotentialStudent(form, lang)
+		err = emailPotentialStudent(form, siteLang)
 		if err != nil {
 			// because email to Teacher successfully sent, don't need to break out
 			// just log the error and continue
@@ -183,7 +195,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 				Content:    pageContent,
 				Form:       formValues{},
 				Errors:     errors,
-				Lang:       lang,
+				Lang:       siteLang,
 			}
 
 			err := templates.ExecuteTemplate(w, "form", data)
@@ -192,7 +204,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		if lang == "en" {
+		if siteLang == "en" {
 			http.Redirect(w, r, "/en", http.StatusSeeOther)
 		} else {
 			http.Redirect(w, r, "/", http.StatusSeeOther)
