@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 )
 
 type formValues struct {
@@ -26,15 +25,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	case http.MethodGet:
 		siteLang, cookieFound := getSiteLanguage(r)
 		if !cookieFound {
-			newCookie := http.Cookie{
-				Name:     "SITE_LANG",
-				Value:    siteLang,
-				Expires:  time.Now().Add(365 * 24 * time.Hour),
-				HttpOnly: true,
-				SameSite: http.SameSiteLaxMode,
-				Secure:   true,
-			}
-			http.SetCookie(w, &newCookie)
+			setSiteLanguageCookie(w, siteLang)
 		}
 
 		var heroContentLocation string
@@ -91,15 +82,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 
 		siteLang, cookieFound := getSiteLanguage(r)
 		if !cookieFound {
-			newCookie := http.Cookie{
-				Name:     "SITE_LANG",
-				Value:    siteLang,
-				Expires:  time.Now().Add(365 * 24 * time.Hour),
-				HttpOnly: true,
-				SameSite: http.SameSiteLaxMode,
-				Secure:   true,
-			}
-			http.SetCookie(w, &newCookie)
+			setSiteLanguageCookie(w, siteLang)
 		}
 
 		var heroContentLocation string

@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 func getSiteLanguage(r *http.Request) (string, bool) {
@@ -16,6 +17,18 @@ func getSiteLanguage(r *http.Request) (string, bool) {
 		return "en", false
 	}
 	return cookie.Value, true
+}
+
+func setSiteLanguageCookie(w http.ResponseWriter, siteLang string ) {
+	newCookie := http.Cookie{
+		Name:     "SITE_LANG",
+		Value:    siteLang,
+		Expires:  time.Now().Add(365 * 24 * time.Hour),
+		HttpOnly: true,
+		SameSite: http.SameSiteLaxMode,
+		Secure:   true,
+	}
+	http.SetCookie(w, &newCookie)
 }
 
 func getFaqContent(location string) (string, error) {
