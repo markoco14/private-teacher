@@ -14,12 +14,12 @@ import (
 func getSiteLanguage(r *http.Request) (string, bool) {
 	cookie, err := r.Cookie("SITE_LANG")
 	if errors.Is(err, http.ErrNoCookie) {
-		return "en", false
+		return "zh", false
 	}
 	return cookie.Value, true
 }
 
-func setSiteLanguageCookie(w http.ResponseWriter, siteLang string ) {
+func setSiteLanguageCookie(w http.ResponseWriter, siteLang string) {
 	newCookie := http.Cookie{
 		Name:     "SITE_LANG",
 		Value:    siteLang,

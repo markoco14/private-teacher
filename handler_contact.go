@@ -34,7 +34,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			heroContentLocation = "./static/locales/en/home.json"
 		}
-		
+
 		var pageContentJSON PageContent
 		fileBytes, _ := os.ReadFile(heroContentLocation)
 		err := json.Unmarshal(fileBytes, &pageContentJSON)
@@ -91,7 +91,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			heroContentLocation = "./static/locales/en/home.json"
 		}
-		
+
 		var pageContentJSON PageContent
 		fileBytes, _ := os.ReadFile(heroContentLocation)
 		err := json.Unmarshal(fileBytes, &pageContentJSON)
