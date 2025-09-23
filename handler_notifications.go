@@ -65,7 +65,7 @@ func NotificationsHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(formErrors)
 
 		pageData := Data{
-			Form: subscribeFormValues{},
+			Form:   subscribeFormValues{},
 			Errors: formErrors,
 		}
 

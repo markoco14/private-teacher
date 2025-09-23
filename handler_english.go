@@ -9,7 +9,6 @@ import (
 	"time"
 )
 
-
 type kidsContent struct {
 	Headline string
 	First    string
@@ -31,35 +30,35 @@ type adultsContent struct {
 }
 
 type businessContent struct {
-	Headline string
-	Description string
-	SupportOne  string `json:"support_one"`
-	SupportTwo  string `json:"support_two"`
-	SupportThree  string `json:"support_three"`
+	Headline     string
+	Description  string
+	SupportOne   string `json:"support_one"`
+	SupportTwo   string `json:"support_two"`
+	SupportThree string `json:"support_three"`
 	SupportFour  string `json:"support_four"`
 }
 
 type testContent struct {
-	Headline string
-	Ielts string
+	Headline         string
+	Ielts            string
 	IeltsDescription string `json:"ielts_description"`
-	Gept string
-	GeptDescription string `json:"gept_description"`
-	Other string
+	Gept             string
+	GeptDescription  string `json:"gept_description"`
+	Other            string
 	OtherDescription string `json:"other_description"`
 }
 
 type pageContent struct {
-	Base    BaseContent
-	Kids    kidsContent
-	Adults  adultsContent
+	Base     BaseContent
+	Kids     kidsContent
+	Adults   adultsContent
 	Business businessContent
-	Test testContent
+	Test     testContent
 }
 
 type pageData struct {
-	NewContent pageContent               `json:"NewContent"`
-	Lang       string                    `json:"lang"`
+	NewContent pageContent `json:"NewContent"`
+	Lang       string      `json:"lang"`
 }
 
 func English(w http.ResponseWriter, r *http.Request) {

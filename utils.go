@@ -10,14 +10,13 @@ import (
 	"strings"
 )
 
-func getSiteLanguage( r *http.Request) (string, bool) {
+func getSiteLanguage(r *http.Request) (string, bool) {
 	cookie, err := r.Cookie("SITE_LANG")
 	if errors.Is(err, http.ErrNoCookie) {
 		return "en", false
 	}
 	return cookie.Value, true
 }
-
 
 func getFaqContent(location string) (string, error) {
 	content, err := os.ReadFile(location)
@@ -76,10 +75,10 @@ func getPageContent(location string) (map[string]string, error) {
 	file, err := os.Open(location)
 	if err != nil {
 		log.Printf("Error opening file: %v", err)
-		return nil, err 
+		return nil, err
 	}
 	defer file.Close()
-	
+
 	contentMap := make(map[string]string)
 	scanner := bufio.NewScanner(file)
 

@@ -92,11 +92,10 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		var lang string
 		if strings.Contains(r.Header.Get("Referer"), "en") {
 			lang = "en"
-			} else {
+		} else {
 			lang = "zh"
 		}
 
-		
 		heroContentLocation := "./static/content/homepage.en.json"
 		var pageContentJSON PageContent
 		fileBytes, _ := os.ReadFile(heroContentLocation)
@@ -132,19 +131,19 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 
 		if len(errors) > 0 {
 			type responseWithErrors struct {
-				NewContent PageContent               `json:"NewContent"`
-				Content map[string]string
-				Form   formValues
-				Errors []formError
-				Lang   string
+				NewContent PageContent `json:"NewContent"`
+				Content    map[string]string
+				Form       formValues
+				Errors     []formError
+				Lang       string
 			}
 
 			data := responseWithErrors{
 				NewContent: pageContentJSON,
-				Content: pageContent,
-				Form:   form,
-				Errors: errors,
-				Lang:   lang,
+				Content:    pageContent,
+				Form:       form,
+				Errors:     errors,
+				Lang:       lang,
 			}
 
 			err := templates.ExecuteTemplate(w, "form", data)
@@ -172,19 +171,19 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Hx-Trigger", `{"formSuccess": {"message": "Thank you for your message. We will get back to you soon."}}`)
 
 			type response struct {
-				NewContent PageContent               `json:"NewContent"`
-				Content map[string]string
-				Form formValues
-				Errors []formError
-				Lang string
+				NewContent PageContent `json:"NewContent"`
+				Content    map[string]string
+				Form       formValues
+				Errors     []formError
+				Lang       string
 			}
 
 			data := response{
 				NewContent: pageContentJSON,
-				Content: pageContent,
-				Form: formValues{},
-				Errors: errors,
-				Lang: lang,
+				Content:    pageContent,
+				Form:       formValues{},
+				Errors:     errors,
+				Lang:       lang,
 			}
 
 			err := templates.ExecuteTemplate(w, "form", data)
@@ -198,7 +197,7 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			http.Redirect(w, r, "/", http.StatusSeeOther)
 		}
-			return
+		return
 
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)

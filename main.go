@@ -60,7 +60,6 @@ func main() {
 	http.HandleFunc("/coding", Coding)
 	http.HandleFunc("/notifications", NotificationsHandler)
 
-
 	// Start the server
 	fmt.Println("Server is running on port 8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
