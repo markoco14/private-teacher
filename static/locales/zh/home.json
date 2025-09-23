@@ -1,0 +1,33 @@
+{
+    "base": {
+        "logo": "Teacher Mark",
+        "rights": "All rights reserved Teacher Mark 2025"
+    },
+    "hero": {
+        "headline": "獲得自信、舒適和清晰的英語表達能力。",
+        "subhead": "所有學生的私人英語和程式設計課程—從初學者到高級學員。提升你的英語水平，學習新技能，助你達成目標。",
+        "cta_classes": "探索課程",
+        "cta_teacher": "見見老師"
+    },
+    "about": {
+        "headline": "關於我",
+        "one": "7年以上經驗",
+        "two": "TEFL認證",
+        "three": "500多名學生",
+        "four": "私人課程",
+        "five": "小組課程",
+        "six": "兒童班",
+        "seven": "成人班"
+    },
+    "contact": {
+        "headline": "聯絡我安排您的第一堂課",
+        "description": "掃描 Line 二維碼或填寫下方郵件表格。我每天上午 8 點至晚上 8 點為您解答疑問。我會盡力在您發送訊息後 2 小時內回覆您。",
+        "line": "Line",
+        "email": "電子郵件",
+        "form_name": "姓名",
+        "form_email": "電子郵件",
+        "form_message": "寫一封簡短的訊息，說明您想要什麼課程。",
+        "cta": "發送訊息",
+        "cta_pending": "正在發送..."
+    }
+}

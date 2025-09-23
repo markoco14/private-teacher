@@ -72,7 +72,13 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		http.SetCookie(w, &newCookie)
 	}
 
-	heroContentLocation := "./static/content/homepage.en.json"
+	var heroContentLocation string
+	if siteLang == "zh" {
+		heroContentLocation = "./static/locales/zh/home.json"
+	} else {
+		heroContentLocation = "./static/locales/en/home.json"
+	}
+
 	var pageContentJSON PageContent
 	fileBytes, _ := os.ReadFile(heroContentLocation)
 	err := json.Unmarshal(fileBytes, &pageContentJSON)
