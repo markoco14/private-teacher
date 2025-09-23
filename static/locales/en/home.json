@@ -9,6 +9,18 @@
         "cta_classes": "Explore classes",
         "cta_teacher": "Meet the teacher"
     },
+    "classes": {
+        "headline": "English classes for every age and every level.",
+        "description": "Choose the classes designed for your age, ability, and learning goals.",
+        "kids": "Kids",
+        "kids_description": "Learn English naturally and master the fundamentals for success in school and life.",
+        "adults": "Adults",
+        "adults_description": "Have natural conversations, explore global topics, and improve your grammar.",
+        "business": "Business English",
+        "business_description": "Push your career success with classes classes for conversation, business writing, and public speaking.",
+        "test": "Test Preparation",
+        "test_description": "Prepare for your upcoming tests and achieve your best score."
+    },
     "about": {
         "headline": "About me",
         "one": "7+ years experience",

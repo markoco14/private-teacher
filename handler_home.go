@@ -32,9 +32,23 @@ type aboutContent struct {
 	Seven    string
 }
 
+type classesContent struct {
+	Headline string
+	Description string
+	Kids string
+	KidsDescription string `json:"kids_description"`
+	Adults string
+	AdultsDescription string `json:"adults_description"`
+	Business string
+	BusinessDescription string `json:"business_description"`
+	Test string
+	TestDescription string `json:"test_description"`
+}
+
 type PageContent struct {
 	Base    BaseContent
 	Hero    heroContent
+	Classes classesContent
 	About   aboutContent
 	Contact ContactContent
 }

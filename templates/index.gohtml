@@ -126,19 +126,19 @@
         {{/* CLASSES SECTION */}}
         <section id="classes" class="min-h-[50vh] grid place-content-center py-32 bg-gray-200 text-lg">
             <div class="hide max-w-[500px] md:max-w-[1200px] mx-auto px-4">
-                <h2 class="font-bold text-purple-950 text-4xl text-balance md:text-center mb-8">English classes for every age and every level.</h2>
-                <p class="text-lg md:text-center mb-8">Choose the classes designed for your age, ability, and learning goals.</p>
+                <h2 class="font-bold text-purple-950 text-4xl text-balance md:text-center mb-8">{{ .NewContent.Classes.Headline }}</h2>
+                <p class="text-lg md:text-center mb-8">{{ .NewContent.Classes.Description }}</p>
                 <ul class="grid sm:grid-cols-2 md:grid-cols-4 gap-16 sm:gap-8">
                     <li class="flex flex-col bg-white rounded-lg">
                         <div class="stacked">
                             <img src="./static/images/kids-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
-                                <h3 class="text-3xl text-white">Kids</h3>
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Kids }}</h3>
                             </div>
                         </div>
                         <div class="flex-grow px-2 py-4 flex flex-col justify-between">
-                            <p class="mb-2">Learn English naturally and master the fundamentals for success in school and life.</p>
+                            <p class="mb-2">{{ .NewContent.Classes.KidsDescription }}</p>
                             {{/* <p class="mb-2">I provide the following class types:
                             <ul class="list-disc list-inside mb-4">
                                 <li>Kids (ages 5-11)
@@ -154,11 +154,11 @@
                             <img src="./static/images/adult-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
-                                <h3 class="text-3xl text-white">Adults</h3>
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Adults }}</h3>
                             </div>
                         </div>
                         <div class="flex-grow px-2 py-4 flex flex-col justify-between">
-                            <p class="mb-2">Have natural conversations, explore global topics, and improve your grammar.</p>
+                            <p class="mb-2">{{ .NewContent.Classes.AdultsDescription }}</p>
                             {{/* <p class="mb-2">I provide the following class types:
                             <ul class="list-disc list-inside mb-4">
                                 <li>Kids (ages 5-11)
@@ -174,11 +174,11 @@
                             <img src="./static/images/business-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
-                                <h3 class="text-3xl text-white">Business English</h3>
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Business }}</h3>
                             </div>
                         </div>
                         <div class="flex-grow px-2 py-4 flex flex-col justify-between">
-                            <p class="mb-2">Push your career success with classes classes for conversation, business writing, and public speaking.</p>
+                            <p class="mb-2">{{ .NewContent.Classes.BusinessDescription }}</p>
                             {{/* <p class="mb-2">I provide the following class types:
                             <ul class="list-disc list-inside mb-4">
                                 <li>Kids (ages 5-11)
@@ -194,11 +194,11 @@
                             <img src="./static/images/test-classes-2.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
-                                <h3 class="text-3xl text-white">Test Preparation</h3>
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Test }}</h3>
                             </div>
                         </div>
                         <div class="flex-grow px-2 py-4 flex flex-col justify-between">
-                            <p class="mb-2">Prepare for your upcoming tests and achieve your best score.</p>
+                            <p class="mb-2">{{ .NewContent.Classes.TestDescription }}</p>
                             {{/* <p class="mb-2">I provide the following class types:
                             <ul class="list-disc list-inside mb-4">
                                 <li>Kids (ages 5-11)

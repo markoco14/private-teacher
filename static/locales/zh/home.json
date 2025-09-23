@@ -9,6 +9,18 @@
         "cta_classes": "探索課程",
         "cta_teacher": "見見老師"
     },
+    "classes": {
+        "headline": "適合各個年齡層和各個程度的英語課程。",
+        "description": "選擇適合您的年齡、能力和學習目標的課程。",
+        "kids": "孩子們",
+        "kids_description": "自然地學習英語並掌握在學校和生活中取得成功的基礎。",
+        "adults": "成年人",
+        "adults_description": "進行自然的對話，探索全球話題，並提高您的文法。",
+        "business": "商務英語",
+        "business_description": "透過會話、商務寫作和公開演講等課程來推動您的職業成功。",
+        "test": "考試準備",
+        "test_description": "為即將到來的考試做好準備並取得最佳的成績。"
+    },
     "about": {
         "headline": "關於我",
         "one": "7年以上經驗",
