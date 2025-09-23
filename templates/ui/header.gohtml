@@ -2,11 +2,27 @@
 <header class="fixed top-0 left-0 w-full bg-deep text-white z-10">
     <div class="h-[72px] max-w-[1000px] mx-auto px-4 xl:px-0 flex items-center justify-between">
         <a href="/">
-            Teacher Mark
+            {{ if eq .Lang  "en" }}
+                Teacher Mark
+            {{ else }}
+                馬克老師
+            {{ end }}
         </a>
         <nav class="invisible sm:visible absolute top-0 left-0 w-full h-screen grid place-content-center text-center text-2xl sm:text-base text-white gap-4 sm:static sm:flex sm:w-fit sm:h-fit gap-4 items-baseline bg-deep z-10">
-            <a href="/">Home</a>
-            <a href="/english">Classes</a>
+            <a href="/">
+                {{ if eq .Lang  "en" }}
+                    Home
+                {{ else }}
+                    首頁
+                {{ end }}
+            </a>
+            <a href="/english">
+                {{ if eq .Lang  "en" }}
+                    Classes
+                {{ else }}
+                    課程頁
+                {{ end }}
+            </a>
             {{/* <a href="/coding">Coding</a> */}}
             <div class="sm:hidden w-full flex justify-center mt-8">
                 <button onclick="let nav = document.querySelector('nav'); nav.classList.toggle('invisible'); document.querySelector('body').classList.toggle('overflow-y-hidden')">
