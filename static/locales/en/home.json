@@ -21,6 +21,15 @@
         "test": "Test Preparation",
         "test_description": "Prepare for your upcoming tests and achieve your best score."
     },
+    "coming": {
+        "headline": "Coding Classes Coming Soon",
+        "one": "I'm working to offer coding classes focused on building products that solve real world problems. Lessons are in English and will teach teamwork, product development, coding skills, task automation, and how to use AI to be competitive in the modern economy.",
+        "two": "If you are interested in Coding Classes for yourself, your teenagers, or someone you know, please sign up to be notified using the form below. I look forward to building something amazing with you.",
+        "placeholder": "Enter your email for coding class notifications.",
+        "cta": "Notify me",
+        "cta_pending": "Saving email...",
+        "disclaimer": "*We will only contact you with new information directly related to Coding classes."
+    },
     "about": {
         "headline": "About me",
         "one": "7+ years experience",
