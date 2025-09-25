@@ -1,0 +1,49 @@
+{
+    "base": {
+        "logo": "Teacher Mark",
+        "rights": "All rights reserved Teacher Mark 2025"
+    },
+    "top": {
+        "headline": "適合各個年齡層和各個程度的英語課程。",
+        "description": "選擇適合您的年齡、能力和學習目標的課程。",
+        "kids_link": "兒童英語",
+        "adults_link": "成人對話",
+        "business_link": "商務英語",
+        "test_link": "考試準備"
+    },
+    "kids": {
+        "headline": "兒童英語課程",
+        "first": "小學和中學學生的課程。預訂根據您的需求和能力水平量身定制的私人或半私人課程。",
+        "second": "採用自然學習法，提升四項基本語言技能。學生無需翻譯中文，即可先用英文思考。",
+        "third": "透過各種書面和口頭活動，學生可以培養北美發音和自然英語文法。",
+        "speak": "讓別人聽到你的聲音 <strong>說話</strong>",
+        "read": "探索世界 <strong>閱讀</strong>",
+        "write": "分享您的想法 <strong>寫字</strong>",
+        "listen": "努力去理解 <strong>傾聽</strong>"
+    },
+    "adults": {
+        "headline": "成人會話課程",
+        "description": "透過主題式會話課程提升你的英語能力。學習新詞彙、掌握正確發音，並完善文法，同時探索根據你的興趣精心挑選的現實世界主題。",
+        "subhead_one": "厭倦了尋找合適的字詞嗎？",
+        "support_one": "加入課程，讓你在現實世界中自信地使用英語。超越課本知識；在輕鬆友善的環境中掌握新詞彙和正確的文法。你將討論現實世界的話題，獲得在職業、社交生活和日常對話中取得成功所需的流利英語。",
+        "subhead_two": "自信地與他人溝通。",
+        "support_two": "告別猶豫，感受傾聽。我們以主題為基礎的對話課程為您提供練習和提升英語能力的空間。您將參與充滿活力的討論，獲得即時糾正，並學習更自然地表達——您將建立自信，清晰地表達自己，並在日常生活中與他人溝通。"
+    },
+    "business": {
+        "headline": "專業英語課程幫助您事業成功。",
+        "description": "我們的課程根據您的個人需求量身定制，旨在培養全面的英語技能，並透過專業的英語交流建立信心。",
+        "support_one": "與客戶和同事溝通",
+        "support_two": "有效寫作",
+        "support_three": "理解母語人士",
+        "support_four": "掌握業界英語"
+    },
+    "test": {
+        "headline": "IELTS、GEPT 等考試準備課程。",
+        "ielts": "IELTS",
+        "ielts_description": "在英語國家學習和工作。",
+        "gept": "GEPT",
+        "gept_description": "提升您的教育和職業可能性。",
+        "other": "其他的",
+        "other_description": "自信地參加任何語言測驗。"
+    }
+}

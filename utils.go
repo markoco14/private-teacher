@@ -2,11 +2,34 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"strings"
+	"time"
 )
+
+func getSiteLanguage(r *http.Request) (string, bool) {
+	cookie, err := r.Cookie("SITE_LANG")
+	if errors.Is(err, http.ErrNoCookie) {
+		return "zh", false
+	}
+	return cookie.Value, true
+}
+
+func setSiteLanguageCookie(w http.ResponseWriter, siteLang string) {
+	newCookie := http.Cookie{
+		Name:     "SITE_LANG",
+		Value:    siteLang,
+		Expires:  time.Now().Add(365 * 24 * time.Hour),
+		HttpOnly: true,
+		SameSite: http.SameSiteLaxMode,
+		Secure:   true,
+	}
+	http.SetCookie(w, &newCookie)
+}
 
 func getFaqContent(location string) (string, error) {
 	content, err := os.ReadFile(location)
@@ -65,10 +88,10 @@ func getPageContent(location string) (map[string]string, error) {
 	file, err := os.Open(location)
 	if err != nil {
 		log.Printf("Error opening file: %v", err)
-		return nil, err 
+		return nil, err
 	}
 	defer file.Close()
-	
+
 	contentMap := make(map[string]string)
 	scanner := bufio.NewScanner(file)
 

@@ -11,7 +11,6 @@ import (
 	"gopkg.in/gomail.v2"
 )
 
-
 func getSMPTInfo() (string, int, string, string, error) {
 	smtpEndpoint := os.Getenv("SMTP_ENDPOINT")
 	if smtpEndpoint == "" {

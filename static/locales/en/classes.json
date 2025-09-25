@@ -1,0 +1,49 @@
+{
+    "base": {
+        "logo": "Teacher Mark",
+        "rights": "All rights reserved Teacher Mark 2025"
+    },
+    "top": {
+        "headline": "English classes for every age and every level.",
+        "description": "Choose the classes designed for your age, ability, and learning goals.",
+        "kids_link": "Kids English",
+        "adults_link": "Adult Conversation",
+        "business_link": "Business English",
+        "test_link": "Test Preparation"
+    },
+    "kids": {
+        "headline": "Kids English Classes",
+        "first": "Classes for Elementary and High School students. Book private and semi-private classes custom designed for your needs and ability level.",
+        "second": "Improve all 4 fundamental language skills using a natural learning approach. Students develop the ability to think in English first without the need to translate from Chinese.",
+        "third": "Through a variety of written and verbal activities, students develop North Amerian pronunciation and natural English grammar.",
+        "speak": "Be heard. <strong>Speak</strong>",
+        "read": "Explore the world. <strong>Read</strong>",
+        "write": "Share your ideas. <strong>Write</strong>",
+        "listen": "Seek to understand. <strong>Listen</strong>"
+    },
+    "adults": {
+        "headline": "Adult Conversation Classes",
+        "description": "Improve your English with topic-based conversation classes. Learn new vocabulary, proper pronunciation, and perfect your grammar while exploring real-world topics selected for your interests.",
+        "subhead_one": "Tired of searching for the right words?",
+        "support_one": "Join classes that give you confidence speaking English in the real world. Move beyond textbooks; master new vocabulary and proper grammar in a relaxed, friendly environment. You'll discuss real-world topics and gain the fluency you need to succeed in your career, social life, and everyday conversations.",
+        "subhead_two": "Feel confident connecting with others.",
+        "support_two": "Go from feeling hesitant to feeling heard. Our topic-based conversation classes give you space to practice and perfect your English. You’ll engage in dynamic discussions, get real-time corrections, and learn to speak more naturally—you’ll build the confidence to express yourself clearly and connect with others in your daily life."
+    },
+    "business": {
+        "headline": "Professional English classes for career success.",
+        "description": "Our classes are customized for your personal needs and are designed to build well-rounded English skills and instill confidence with professional communication in English.",
+        "support_one": "Communicate with Clients and Colleagues",
+        "support_two": "Write Effectively",
+        "support_three": "Understand Native Speakers",
+        "support_four": "Master Industry English"
+    },
+    "test": {
+        "headline": "Test preparation classes for IELTS, GEPT, and more.",
+        "ielts": "IELTS",
+        "ielts_description": "Study and work in English speaking countries.",
+        "gept": "GEPT",
+        "gept_description": "Elevate your education and career possibilities.",
+        "other": "Other",
+        "other_description": "Take any language test with confidence."
+    }
+}

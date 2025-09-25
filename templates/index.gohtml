@@ -1,9 +1,384 @@
-{{template "base" .}}
-{{ define "content" }}
-    {{ template "hero" . }}
-    {{ template "test-prep" . }}
-    {{ template "business-english" . }}        
-    {{ template "about" . }}
-    {{ template "contact" . }} 
-    {{ template "faq" .}}
-{{ end }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ if eq .Lang  "en" }}Teacher Mark English Classes | Home{{ else }}馬克老師英語課程 | 首頁{{ end }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="English classes in Taiwan with Teacher Mark.">
+    <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
+    <meta name="author" content="Mark O'Connor">
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+    <style rel="stylesheet">
+        :root {
+            @media (prefers-reduced-motion: no-preference) {
+                    @view-transition {
+                            navigation: auto;
+                    }
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#020517',
+                        deephover: '#0a1971'
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+
+        .stacked {
+            display: grid;
+        }
+
+        .stacked > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
+        .hide {
+            opacity: 0;
+            filter: blur(2);
+            transform: translateY(10%);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
+        }
+
+        @media(pefers-reduced-motion) {
+            .hide {
+                transition: none;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    {{ template "header" . }}
+    <main class="mt-[72px]">
+                
+        {{/* HERO SECTION */}}
+        <section class="min-h-[75vh] bg-deep grid place-content-center">
+            <div class="hide max-w-[600px] mx-auto px-4 py-4 md:px-0">
+                <h1 class="text-5xl text-gray-100 text-pretty mb-4 md:mb-2 font-bold">{{.NewContent.Hero.Headline}}</h1>
+                <p class="text-lg text-balance text-purple-100 mb-4">{{.NewContent.Hero.Subhead}}</p>
+                <div class="grid sm:grid-cols-2 text-center gap-4">
+                    <a href="/#classes" class="inline-block text-lg bg-purple-800 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">
+                        <div class="w-full mx-auto stacked rounded-md">
+                            <img 
+                                height="200"
+                                width="200"
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-hero-write-test.jpg" 
+                                class="w-full max-h-[150px] object-cover rounded-md"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
+                                <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
+                                    {{.NewContent.Hero.CtaClasses}}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/#about" class="inline-block text-lg bg-purple-300 text-purple-800 rounded-md hover:bg-purple-200 active:bg-purple-400 active:text-purple-900 active:scale-95 duration-200 ease-in-out">
+                        <div class="w-full mx-auto stacked rounded-md">
+                            <img 
+                                height="267"
+                                width="400"
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-hero-presentation.jpg" 
+                                class="w-full max-h-[150px] object-cover rounded-md"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-900/70 hover:bg-purple-900/80 duration-300 ease-in-out rounded-md">
+                                <span class="text-2xl text-white rounded-md duration-300 ease-in-out hover:underline hover:underline-offset-4">
+                                    {{.NewContent.Hero.CtaTeacher}}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        {{/* CLASSES SECTION */}}
+        <section id="classes" class="min-h-[50vh] grid place-content-center py-32 bg-purple-200 text-lg">
+        {{/* <section id="classes" class="min-h-[50vh] grid place-content-center py-32 bg-gray-200 text-lg"> */}}
+            <div class="hide max-w-[500px] md:max-w-[1200px] mx-auto px-4">
+                <h2 class="font-bold text-purple-950 text-4xl text-balance md:text-center mb-8">{{ .NewContent.Classes.Headline }}</h2>
+                <p class="text-lg md:text-center mb-8">{{ .NewContent.Classes.Description }}</p>
+                <ul class="grid sm:grid-cols-2 md:grid-cols-4 gap-16 sm:gap-8">
+                    <li class="flex flex-col bg-white rounded-lg">
+                        <div class="stacked">
+                            <img src="/static/images/kids-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
+                            <div class="w-full h-full flex items-end p-2">
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Kids }}</h3>
+                            </div>
+                        </div>
+                        <div class="flex-grow px-2 py-4 flex flex-col justify-between">
+                            <p class="mb-2">{{ .NewContent.Classes.KidsDescription }}</p>
+                            {{/* <p class="mb-2">I provide the following class types:
+                            <ul class="list-disc list-inside mb-4">
+                                <li>Kids (ages 5-11)
+                                <li>Teenagers (ages 12-17)
+                                <li>Adults (ages 18+)
+                                <li>Test Preparation
+                            </ul> */}}
+                            <a href="/classes#kids" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
+                        </div>
+                    </li>
+                    <li class="flex flex-col bg-white rounded-lg">
+                        <div class="stacked">
+                            <img src="/static/images/adult-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
+                            <div class="w-full h-full flex items-end p-2">
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Adults }}</h3>
+                            </div>
+                        </div>
+                        <div class="flex-grow px-2 py-4 flex flex-col justify-between">
+                            <p class="mb-2">{{ .NewContent.Classes.AdultsDescription }}</p>
+                            {{/* <p class="mb-2">I provide the following class types:
+                            <ul class="list-disc list-inside mb-4">
+                                <li>Kids (ages 5-11)
+                                <li>Teenagers (ages 12-17)
+                                <li>Adults (ages 18+)
+                                <li>Test Preparation
+                            </ul> */}}
+                            <a href="/classes#adults" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
+                        </div>
+                    </li>
+                    <li class="flex flex-col bg-white rounded-lg">
+                        <div class="stacked">
+                            <img src="/static/images/business-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
+                            <div class="w-full h-full flex items-end p-2">
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Business }}</h3>
+                            </div>
+                        </div>
+                        <div class="flex-grow px-2 py-4 flex flex-col justify-between">
+                            <p class="mb-2">{{ .NewContent.Classes.BusinessDescription }}</p>
+                            {{/* <p class="mb-2">I provide the following class types:
+                            <ul class="list-disc list-inside mb-4">
+                                <li>Kids (ages 5-11)
+                                <li>Teenagers (ages 12-17)
+                                <li>Adults (ages 18+)
+                                <li>Test Preparation
+                            </ul> */}}
+                            <a href="/classes#business-english" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
+                        </div>
+                    </li>
+                    <li class="flex flex-col bg-white rounded-lg">
+                        <div class="stacked">
+                            <img src="/static/images/test-classes-2.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
+                            <div class="w-full h-full flex items-end p-2">
+                                <h3 class="text-3xl text-white">{{ .NewContent.Classes.Test }}</h3>
+                            </div>
+                        </div>
+                        <div class="flex-grow px-2 py-4 flex flex-col justify-between">
+                            <p class="mb-2">{{ .NewContent.Classes.TestDescription }}</p>
+                            {{/* <p class="mb-2">I provide the following class types:
+                            <ul class="list-disc list-inside mb-4">
+                                <li>Kids (ages 5-11)
+                                <li>Teenagers (ages 12-17)
+                                <li>Adults (ages 18+)
+                                <li>Test Preparation
+                            </ul> */}}
+                            <a href="/classes#test-prep" class="underline underline-offset-2 text-purple-950 text-xl">
+                            {{ if eq .Lang "zh"}}
+                            了解更多
+                            {{ else }}
+                            Learn More
+                            {{ end }}
+                            </a>
+                        </div>
+                    </li>
+                    {{/* <li class="flex flex-col bg-white rounded-lg">
+                        <div class="stacked">
+                            <img src="/static/images/coding-class.jpg" class="object-cover rounded-t-lg"/>
+                            <div class="w-full h-full grid place-content-center bg-purple-900/50 hover:bg-purple-800/50 duration-300 ease-in-out  rounded-t-lg"></div>
+                            <div class="w-full h-full flex items-end p-2">
+                                <h3 class="text-3xl text-white">Coding Classes</h3>
+                            </div>
+                        </div>
+                        <div class="px-2 py-4">
+                            <p class="mb-4">Learn to design and build software systems. Develop skills in Computer Science, communication, and team work.</p>
+                            <a href="/coding" class="underline underline-offset-2 text-purple-950 text-xl">Learn about Coding classes</a>
+                        </div>
+                    </div> */}}
+                </ul>
+            </div>
+        </section>
+
+
+        {{/* COMING SOON SECTION */}}
+        {{/* <section id="coming-soon" class="min-h-[50vh] grid place-content-center py-32 bg-purple-200 text-lg">
+            <div class="hide max-w-[65ch] mx-auto px-4 sm:px-0">
+                <h2 class="text-pretty text-5xl mb-8">{{ .NewContent.Coming.Headline }}</h2>
+                <p class="mb-4">{{ .NewContent.Coming.One }}</p>
+                <p class="mb-4">{{ .NewContent.Coming.Two }}</p>
+                <p class="text-sm mb-8">{{ .NewContent.Coming.Disclaimer }}</p>
+                {{ template "subscribe" . }}
+            </div>
+        </section> */}}
+
+
+        {{/* ABOUT SECTION */}}
+        <section id="about">
+            <div class="hide max-w-[1000px] mx-auto grid sm:grid-cols-2">
+                <section class="w-full h-full">
+                    <img 
+                        height="500"
+                        width="500"
+                        loading="lazy"
+                        fetchpriority="low"
+                        src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-about-teacher.png" 
+                        class="w-full h-full object-cover mx-auto"/>
+                </section>
+                <section class="py-8 text-center grid place-content-center">
+                    <h2 class="font-bold text-deep text-4xl text-balance md:text-center mb-8 text-purple-950">
+                        {{ .NewContent.About.Headline }}
+                    </h2>
+                    <div class="flex flex-col max-w-[200px] mx-auto gap-2">
+                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                            {{ .NewContent.About.One }}
+                        </span>
+                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                            {{ .NewContent.About.Two }}
+                        </span>
+                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                            {{ .NewContent.About.Three }}
+                        </span>
+                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                            {{ .NewContent.About.Four }}
+                        </span>
+                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                            {{ .NewContent.About.Five }}
+                        </span>
+                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                            {{ .NewContent.About.Six }}
+                        </span>
+                        <span class="bg-purple-100 rounded-md px-3 py-1 text-purple-950">
+                            {{ .NewContent.About.Seven }}
+                        </span>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+
+        {{/* CONTACT SECTION */}}
+        <section id="contact" class="bg-gradient-to-r from-purple-700/80 to-purple-800/80 text-white py-24 md:py-24">
+            <div class="hide max-w-[500px] mx-auto bg-white text-black px-6 py-6 sm:rounded-2xl">
+                <h2 class="text-2xl font-semibold text-purple-900 mb-2">
+                    {{ .NewContent.Contact.Headline }}
+                </h2>
+                <p>
+                    {{ .NewContent.Contact.Description }}
+                </p>
+                <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
+                    <h3>{{ .NewContent.Contact.Line }}</h3>
+                    <hr />
+                </div>
+                <img 
+                    id="line" 
+                    loading="lazy" 
+                    src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/tr-mark-qr.jpg" 
+                    class="w-full max-w-[200px] mx-auto"/>
+                <div  class="my-4 text-center text-purple-900 font-semibold text-xl">
+                    <h3>
+                        {{ .NewContent.Contact.Email }}
+                    </h3>
+                    <hr />
+                </div>
+                {{ template "form" . }}
+            </div>
+        </section>
+
+
+        {{/* FAQ SECTION */}}
+        <section id="faq">
+            <div class="py-16 mx-auto px-4 sm:px-0 bg-deep text-white">
+                <div class="hide max-w-[700px] mx-auto">
+                    <h2 class="text-4xl mb-8">
+                    {{ .Content.faq_headline }}
+                    </h2>
+                    {{- range .Faq }}
+                    <details name="faq" class="text-xl">
+                        <summary class="cursor-pointer">{{.Question}}</summary>
+                        <p class="text-lg text-purple-50/90 pt-2">{{.Answer}}</p>
+                    </details>
+                    <hr class="my-4"/>
+                    {{- end}}
+                    {{/* <dl>
+                        {{- range .Faq }}
+                            <dt class="hide text-xl mb-2 cursor-pointer">
+                                {{.Question}}
+                            </dt>
+                            <dd class="hidden max-w-[60ch] text-purple-50/90">
+                                {{.Answer}}
+                            </dd>
+                            <hr class="my-4"/>
+                        {{- end }}
+                    </dl> */}}
+                    <p class="text-purple-50/90">
+                        {{ .Content.faq_description }}
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    {{ template "footer" . }}
+
+
+    <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
+    <script src="static/js/behaviors/observer.js"></script>
+    <script src="static/js/behaviors/toast.js"></script>
+  </body>
+</html>   
+

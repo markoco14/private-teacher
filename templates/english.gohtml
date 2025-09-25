@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ if eq .Lang  "en" }}Teacher Mark English Classes | Classes{{ else }}馬克老師英語課程 | 課程頁{{ end }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="English classes in Taiwan with Teacher Mark.">
+    <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
+    <meta name="author" content="Mark O'Connor">
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+    <style rel="stylesheet">
+        :root {
+            @media (prefers-reduced-motion: no-preference) {
+                    @view-transition {
+                            navigation: auto;
+                    }
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#020517',
+                        deephover: '#0a1971'
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+
+        .stacked {
+            display: grid;
+        }
+
+        .stacked > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
+        .hide {
+            opacity: 0;
+            filter: blur(2);
+            transform: translateY(10%);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
+        }
+
+        dialog {
+            box-shadow: 0 0 1em rgb(0 0 0 / .4);
+        }
+
+        dialog::backdrop {
+            background-color: rgba(72, 0, 96, 0.4);
+        }
+
+        @media(pefers-reduced-motion) {
+            .hide {
+                transition: none;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    {{ template "header" . }}
+    <main class="mt-[72px]">
+        <section>
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto py-32 px-4">
+                <h1 class="text-5xl text-balance md:text-center font-semibold mb-4">{{ .NewContent.Top.Headline }}</h1>
+                <p class="text-lg md:text-center mb-8">{{ .NewContent.Top.Description }}</p>
+                <ul class="grid md:grid-cols-2 gap-4 text-xl">
+                    <li class="border rounded-md text-center">
+                        <a href="#kids" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.KidsLink }}</a>
+                    </li>
+                    <li class="border rounded-md text-center">
+                        <a href="#adults" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.AdultsLink }}</a>
+                    </li>
+                    <li class="border rounded-md text-center">
+                        <a href="#business-english" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.BusinessLink }}</a>
+                    </li>
+                    <li class="border rounded-md text-center">
+                        <a href="#test-prep" class="py-2 rounded-md flex justify-center hover:bg-purple-950/80 active:bg-purple-800/80 hover:text-white duration-100 ease-in">{{ .NewContent.Top.TestLink }}</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        {{/* KID CLASSES SECTION */}}
+        <section id="kids" class="min-h-[50vh] py-32 bg-gray-50">
+            <div class="hide max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">{{ .NewContent.Kids.Headline }}</h2>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">{{ .NewContent.Kids.First }}</p>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">{{ .NewContent.Kids.Second }}</p>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">{{ .NewContent.Kids.Third }}</p>
+                <ul class="grid sm:grid-cols-2 grid-rows-2 gap-4 mb-16">
+                    <li class="stacked text-white">
+                        <img src="/static/images/kids-speaking-skills.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">{{ .NewContent.Kids.Speak }}</h3>
+                        </div>
+                    </li>
+                    <li class="stacked text-white">
+                        <img src="/static/images/kids-reading-skills.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">{{ .NewContent.Kids.Read }}</h3>
+                        </div>
+                    </li>
+                    <li class="stacked text-white">
+                        <img src="/static/images/kids-writing-skills-2.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced  w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">{{ .NewContent.Kids.Write }}</h3>
+                        </div>
+                    </li>
+                    <li class="stacked text-white">
+                        <img src="/static/images/kids-listening-skills.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-900/60 text-2xl rounded-md">
+                            <h3 class="">{{ .NewContent.Kids.Listen }}</h3>
+                        </div>
+                    </li>
+                </ul>
+                <div class="flex justify-center gap-4">
+                    {{ template "go-to-contact" . }}
+                </div>
+            </div>
+        </section>
+
+        {{/* ADULT CLASSES SECTION */}}
+        <section id="adults" class="min-h-[50vh] py-32 bg-gray-50 text-lg">
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">{{ .NewContent.Adults.Headline }}</h2>
+                <p class="text-lg max-w-[65ch] mx-auto mb-4">{{ .NewContent.Adults.Description }}</p>
+                <div class="grid md:grid-cols-2 md:gap-4 mb-4 md:mb-8">
+                    <div class="stacked text-white mb-4 md:mb-0">
+                        <img src="/static/images/adults-coffee-min.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-800/40 text-2xl rounded-md">
+                            <h3 class="text-2xl text-pretty">{{ .NewContent.Adults.SubheadOne }}</h3>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <p>{{ .NewContent.Adults.SupportOne }}</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 md:gap-4 mb-16">
+                    <div class="stacked md:col-start-2 text-white mb-4 md:mb-0">
+                        <img src="/static/images/adults-laughing-min.jpg" class="aspect-video object-cover rounded-md"/>
+                        <div class="p-2 text-balanced w-full h-full flex flex-col justify-end bg-purple-800/40 text-2xl rounded-md">
+                            <h3 class="text-2xl text-pretty">{{ .NewContent.Adults.SubheadTwo }}</h3>
+                        </div>
+                    </div>
+                    <div class="md:row-start-1 md:col-start-1 flex items-center">
+                        <p>{{ .NewContent.Adults.SupportTwo }}</p>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4">
+                    {{ template "go-to-contact" . }}
+                </div>
+            </div>
+        </section>
+
+        {{/* BUSINESS ENGLISH SECTION */}}
+        <section id="business-english" class="min-h-[50vh] bg-purple-200 py-32">
+            <div class="hide">
+                <div class="px-4 max-w-[600px] mx-auto">
+                    <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">
+                        {{.NewContent.Business.Headline}}
+                    </h2>
+                    <p class="text-lg text-gray-800 mb-4">
+                        {{.NewContent.Business.Description}}
+                    </p>
+                </div>
+
+                <ul class="px-2 max-w-[800px] mx-auto grid grid-rows-4 sm:grid-rows-3 md:grid-rows-2 sm:grid-cols-6 md:grid-cols-8 gap-4 mb-16">
+                    <li class="row-span-1 md:row-span-2 stacked rounded-xl sm:col-span-6 md:col-span-8 h-[200px]">
+                        <div class="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 sm:bg-purple-950 rounded-xl">
+                            <div class="stacked sm:col-start-2 sm:col-span-2">
+                                <img
+                                    height="200"
+                                    widht="200"
+                                    loading="lazy"
+                                    fetchpriority="low"
+                                    src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-presentation.jpg" 
+                                    class="w-full object-cover h-[200px] rounded-xl sm:rounded-tr-xl sm:rounded-br-xl"/>
+                                <div class="bg-purple-950/50 sm:bg-gradient-to-r sm:from-purple-950 sm:to-transparent rounded-xl sm:rounded-tr-xl sm:rounded-br-xl"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[250px] text-2xl font-semibold text-white">
+                                {{.NewContent.Business.SupportOne}}
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-3 md:col-span-2 h-[200px]">
+                        <div class="w-full h-full">
+                            <img
+                                height="200"
+                                wids="200"
+                                loading="lazy"
+                                fetchpriority="low" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-write-effectively.jpg" 
+                                class="w-full object-cover h-[200px] rounded-xl"/>
+                        </div>
+                        <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[125px] text-xl text-white font-semibold">
+                                {{.NewContent.Business.SupportTwo}}
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-3 md:col-span-2 h-[200px]">
+                        <div class="w-full h-full">
+                            <img
+                                height="200"
+                                width="200"
+                                loading="lazy"
+                                fetchpriority="low"
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-understand.jpg"
+                                class="w-full object-cover h-[200px] rounded-xl"/>
+                        </div>
+                        <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[200px] text-xl text-white font-semibold">
+                                {{.NewContent.Business.SupportThree}}
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="row-span-1 md:row-span-2 stacked bg-white rounded-xl sm:col-span-6 md:col-span-4 h-[200px]">
+                        <div class="w-full h-full">
+                            <img
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                fetchpriority="low"
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-bus-eng-master-industry.jpg"
+                                class="w-full object-cover h-[200px] rounded-xl"/>
+                        </div>
+                        <div class="w-full h-full bg-purple-900/50 rounded-xl"></div>
+                        <div class="flex flex-col justify-end p-4">
+                            <h3 class="max-w-[200px] text-xl font-semibold text-white">
+                                {{.NewContent.Business.SupportFour}}
+                            </h3>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="flex justify-center gap-4">
+                    {{ template "go-to-contact" . }}
+                </div>
+            </div>
+        </section>
+
+        {{/* TEST PREPARATION SECTION */}}
+        <section id="test-prep" class="min-h-[50vh] py-32 bg-gray-50">
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto px-4 sm:px-0">
+                <h2 class="font-bold text-deep text-5xl text-balance md:text-center mb-8">{{.NewContent.Test.Headline}}</h2>
+                <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.NewContent.Test.Ielts}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-student-with-book.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.NewContent.Test.IeltsDescription}}</p>
+                    </div>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.NewContent.Test.Gept}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-students-classroom.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.NewContent.Test.GeptDescription}}</p>
+                    </div>
+                    <div class="md:shadow-xl rounded-xl md:text-center bg-white">
+                        <h3 class="py-2 px-4 md:text-center text-xl text-deep font-semibold">{{.NewContent.Test.Other}}</h3>
+                        <div class="stacked overflow-y-hidden w-full h-[250px] md:h-[150px] bg-purple-500">
+                            <img 
+                                height="200"
+                                width="200"
+                                loading="lazy" 
+                                src="https://teacher-mark.s3.ap-southeast-1.amazonaws.com/small-prep-write-test.jpg" 
+                                alt="A girl looking up from a book."
+                                class="w-full h-full object-cover"/>
+                            <div class="w-full h-[250px] md:h-[150px] bg-purple-300/30"></div>
+                        </div>
+                        <p class="py-2 px-4">{{.NewContent.Test.OtherDescription}}</p>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4">
+                    {{ template "go-to-contact" . }}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{ template "footer" . }}
+
+    <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
+    <script src="static/js/behaviors/observer.js"></script>
+    <script src="static/js/behaviors/toast.js"></script>
+  </body>
+</html>   
+

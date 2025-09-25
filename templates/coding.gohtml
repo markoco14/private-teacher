@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Teacher Mark English Classes | Coding</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="English classes in Taiwan with Teacher Mark.">
+    <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
+    <meta name="author" content="Mark O'Connor">
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+    <style rel="stylesheet">
+        :root {
+            @media (prefers-reduced-motion: no-preference) {
+                    @view-transition {
+                            navigation: auto;
+                    }
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#020517',
+                        deephover: '#0a1971'
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+
+        .stacked {
+            display: grid;
+        }
+
+        .stacked > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
+        .hide {
+            opacity: 0;
+            filter: blur(2);
+            transform: translateY(10%);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
+        }
+
+        @media(pefers-reduced-motion) {
+            .hide {
+                transition: none;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    {{ template "header" . }}
+    <main class="mt-[72px]">
+        <section id="business-english" class="min-h-screen bg-purple-200 py-32">
+            <div class="hide max-w-[500px] md:max-w-[800px] mx-auto">
+                <h1 class="text-5xl text-balance md:text-center font-semibold mb-8">More information about Coding Classes coming soon.</h1>
+                <p class="max-w-[70ch] mx-auto text-lg mb-8">I'm working on the curriculum for coding classes and will start offering this service after October 1, 2025. If you are interested in Coding Classes for yourself or your teenagers, please contact me with the Contact button below. I will respond to your email within 24 hours.</p>
+                <p>Sign up to be notified about Coding classes</p>
+                <form>
+                    <label for="email">Email</label>
+                    <input type="text" />
+                    <button class="uppercase inline-block bg-purple-800 px-8 py-2 text-white rounded-md hover:bg-purple-700 active:bg-purple-900 active:scale-95 duration-200 ease-in-out">Notify me</button>
+                </form>
+            </div>
+        </section>
+        <dialog class="p-2 md:p-4 rounded-md">
+            {{ template "form" . }}
+            <div class="mt-4 flex justify-center">
+                <button 
+                    onclick="document.querySelector('dialog').close();" 
+                    class="rounded-full border p-1 stroke-red-500 border-red-500">
+
+                    <svg width="18px" height="18px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 21.32L21 3.32001"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 3.32001L21 21.32"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </dialog>
+    </main>
+    {{ template "footer" . }}
+
+    <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
+    <script src="static/js/behaviors/observer.js"></script>
+    <script src="static/js/behaviors/toast.js"></script>
+  </body>
+</html>   
+
