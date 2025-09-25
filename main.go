@@ -43,26 +43,21 @@ func init() {
 
 func main() {
 	// handle server static files
-	fs := http.FileServer(http.Dir("./static"))
-	http.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {
-		http.StripPrefix("/static/", fs).ServeHTTP(w, r)
-	})
+	mux := http.NewServeMux()
 
-	// Handle favicon.ico requests explicitly
-	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
-		http.NotFound(w, r)
-	})
+	fs := http.FileServer(http.Dir("./static"))
+	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	// Routes
-	http.HandleFunc("/", HomeHandler)
-	http.HandleFunc("/contact", ContactHandler)
-	http.HandleFunc("/english", English)
+	mux.HandleFunc("/", HomeHandler)
+	mux.HandleFunc("/contact", ContactHandler)
+	mux.HandleFunc("/classes", English)
 	// http.HandleFunc("/coding", Coding)
-	http.HandleFunc("/notifications", NotificationsHandler)
+	mux.HandleFunc("/notifications", NotificationsHandler)
 
 	// Start the server
 	fmt.Println("Server is running on port 8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(":8080", mux); err != nil {
 		panic(err)
 	}
 }
