@@ -86,7 +86,7 @@
     </style>
   </head>
   <body>
-    {{ template "header" }}
+    {{ template "header" . }}
     <main class="mt-[72px]">
         <section id="business-english" class="min-h-screen bg-purple-200 py-32">
             <div class="hide max-w-[500px] md:max-w-[800px] mx-auto">
@@ -115,9 +115,7 @@
             </div>
         </dialog>
     </main>
-    <footer class="bg-deep text-purple-50/90 h-[48px] flex items-center justify-center">
-        <p>&copy; {{.NewContent.Base.Rights}}</p>
-    </footer>
+    {{ template "footer" . }}
 
     <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
     <script src="static/js/behaviors/observer.js"></script>
