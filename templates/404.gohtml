@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ if eq .Lang  "en" }}Page Not Found | Teacher Mark English Classes{{ else }}頁面未找到 | 馬克老師英語課程{{ end }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="English classes in Taiwan with Teacher Mark.">
+    <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
+    <meta name="author" content="Mark O'Connor">
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+    <style rel="stylesheet">
+        :root {
+            @media (prefers-reduced-motion: no-preference) {
+                    @view-transition {
+                            navigation: auto;
+                    }
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#020517',
+                        deephover: '#0a1971'
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+
+        .stacked {
+            display: grid;
+        }
+
+        .stacked > * {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+
+        .hide {
+            opacity: 0;
+            filter: blur(2);
+            transform: translateY(10%);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .htmx-indicator {
+            display: none;
+        }
+
+        .htmx-request .htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request.htmx-indicator{
+            display:inline;
+        }
+
+        .htmx-request .htmx-indicator-hide {
+            display: none;
+        }
+
+        .htmx-request.htmx-indicator-hide {
+            display: none;
+        }
+
+        @media(pefers-reduced-motion) {
+            .hide {
+                transition: none;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    {{ template "header" . }}
+    <main class="mt-[72px]">
+        <section class="min-h-screen bg-deep text-white text-lg pt-[72px] text-center">
+            <div class="hide max-w-[600px] mx-auto px-4 py-4 md:px-0">
+                <h1 class="text-5xl mb-8">{{ if eq .Lang  "en" }}Page Not Found{{ else }}頁面未找到{{ end }}<h1>
+                <p>{{ if eq .Lang  "en" }}We are sorry but this page cannot be found.{{ else }}很抱歉，找不到此頁面。{{ end }}</p>
+                <a href="/" class="text-purple-300 underline underline-offset-4">{{ if eq .Lang  "en" }}Please go back to the homepage{{ else }}請返回主頁{{ end }}</a>
+            </div>
+        </section>
+    </main>
+    {{ template "footer" . }}
+    <div id="alert" class="w-[300px] min-h-6 fixed top-2 left-2 bg-green-300 shadow-lg rounded-md px-4 py-2 duration-200 -translate-y-8 opacity-0"></div>
+    <script src="static/js/behaviors/observer.js"></script>
+    <script src="static/js/behaviors/toast.js"></script>
+  </body>
+</html>   
+

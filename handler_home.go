@@ -74,7 +74,20 @@ type PageData struct {
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		http.NotFound(w, r)
+		siteLang, cookieFound := getSiteLanguage(r)
+		if !cookieFound {
+			setSiteLanguageCookie(w, siteLang)
+		}
+
+		pageData := struct{ Lang string }{Lang: siteLang}
+
+        w.WriteHeader(http.StatusNotFound)
+		err := templates.ExecuteTemplate(w, "404.gohtml", pageData)
+		if err != nil {
+			fmt.Println("Error rendering index template", err)
+			http.Error(w, "Error rendering index template", http.StatusInternalServerError)
+		}
+		
 		return
 	}
 
