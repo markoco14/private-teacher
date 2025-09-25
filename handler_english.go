@@ -71,11 +71,6 @@ type pageData struct {
 }
 
 func English(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/english" {
-		http.NotFound(w, r)
-		return
-	}
-
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return

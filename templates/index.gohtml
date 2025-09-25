@@ -8,6 +8,10 @@
     <meta name="keywords" content="teaching, lessons, English, tutor, private, online, classes">
     <meta name="author" content="Mark O'Connor">
     <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
     <style rel="stylesheet">
         :root {
             @media (prefers-reduced-motion: no-preference) {
@@ -131,7 +135,7 @@
                 <ul class="grid sm:grid-cols-2 md:grid-cols-4 gap-16 sm:gap-8">
                     <li class="flex flex-col bg-white rounded-lg">
                         <div class="stacked">
-                            <img src="./static/images/kids-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <img src="/static/images/kids-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
                                 <h3 class="text-3xl text-white">{{ .NewContent.Classes.Kids }}</h3>
@@ -146,7 +150,7 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#kids" class="underline underline-offset-2 text-purple-950 text-xl">
+                            <a href="/classes#kids" class="underline underline-offset-2 text-purple-950 text-xl">
                             {{ if eq .Lang "zh"}}
                             了解更多
                             {{ else }}
@@ -157,7 +161,7 @@
                     </li>
                     <li class="flex flex-col bg-white rounded-lg">
                         <div class="stacked">
-                            <img src="./static/images/adult-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <img src="/static/images/adult-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
                                 <h3 class="text-3xl text-white">{{ .NewContent.Classes.Adults }}</h3>
@@ -172,7 +176,7 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#adults" class="underline underline-offset-2 text-purple-950 text-xl">
+                            <a href="/classes#adults" class="underline underline-offset-2 text-purple-950 text-xl">
                             {{ if eq .Lang "zh"}}
                             了解更多
                             {{ else }}
@@ -183,7 +187,7 @@
                     </li>
                     <li class="flex flex-col bg-white rounded-lg">
                         <div class="stacked">
-                            <img src="./static/images/business-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <img src="/static/images/business-classes.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
                                 <h3 class="text-3xl text-white">{{ .NewContent.Classes.Business }}</h3>
@@ -198,7 +202,7 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#business-english" class="underline underline-offset-2 text-purple-950 text-xl">
+                            <a href="/classes#business-english" class="underline underline-offset-2 text-purple-950 text-xl">
                             {{ if eq .Lang "zh"}}
                             了解更多
                             {{ else }}
@@ -209,7 +213,7 @@
                     </li>
                     <li class="flex flex-col bg-white rounded-lg">
                         <div class="stacked">
-                            <img src="./static/images/test-classes-2.jpg" class="aspect-video object-cover rounded-t-lg"/>
+                            <img src="/static/images/test-classes-2.jpg" class="aspect-video object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-400/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
                                 <h3 class="text-3xl text-white">{{ .NewContent.Classes.Test }}</h3>
@@ -224,7 +228,7 @@
                                 <li>Adults (ages 18+)
                                 <li>Test Preparation
                             </ul> */}}
-                            <a href="/english#test-prep" class="underline underline-offset-2 text-purple-950 text-xl">
+                            <a href="/classes#test-prep" class="underline underline-offset-2 text-purple-950 text-xl">
                             {{ if eq .Lang "zh"}}
                             了解更多
                             {{ else }}
@@ -235,7 +239,7 @@
                     </li>
                     {{/* <li class="flex flex-col bg-white rounded-lg">
                         <div class="stacked">
-                            <img src="./static/images/coding-class.jpg" class="object-cover rounded-t-lg"/>
+                            <img src="/static/images/coding-class.jpg" class="object-cover rounded-t-lg"/>
                             <div class="w-full h-full grid place-content-center bg-purple-900/50 hover:bg-purple-800/50 duration-300 ease-in-out  rounded-t-lg"></div>
                             <div class="w-full h-full flex items-end p-2">
                                 <h3 class="text-3xl text-white">Coding Classes</h3>
